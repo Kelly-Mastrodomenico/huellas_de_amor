@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $fuente-cuerpo;
+    font-size: $fs-normal;
+    color: $color-oscuro;
+    background-color: $color-fondo;
+    line-height: 1.6;
+    padding-bottom: $alto-nav-movil;
+
+    @include desde-tablet {
+        padding-bottom: 0;
+        font-size: $fs-base;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $color-coral;
+    transition: $transicion;
+
+    &:hover {
+        color: $color-coral-hover;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+}

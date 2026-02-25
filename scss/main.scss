@@ -1,0 +1,29 @@
+// Archivo principal — importa todos los parciales en orden.
+// Este es el archivo que se compila a css/style.css
+//
+// Para compilar (ejecutar en la terminal):
+//   sass --watch scss/main.scss:css/style.css
+// ============================================================
+
+// 1. Abstracts (variables y mixins — sin CSS propio)
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// 2. Base
+@import 'base/reset';
+@import 'base/typography';
+
+// 3. Layout
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/grid';
+
+// 4. Componentes
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/forms';
+
+// 5. Páginas
+@import 'pages/home';
+@import 'pages/adoptar';
+@import 'pages/admin';

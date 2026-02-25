@@ -1,0 +1,101 @@
+// components/_buttons.scss
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border: none;
+    border-radius: $radio-lg;
+    cursor: pointer;
+    font-size: $fs-normal;
+    font-family: $fuente-cuerpo;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: $transicion;
+
+    &:hover  { transform: scale(1.03); }
+    &:active { transform: scale(0.98); }
+}
+
+.btn-coral {
+    @extend .btn;
+    background-color: $color-coral;
+    color: $color-blanco;
+
+    &:hover { background-color: $color-coral-hover; color: $color-blanco; }
+}
+
+.btn-turquesa {
+    @extend .btn;
+    background-color: $color-turquesa;
+    color: $color-blanco;
+
+    &:hover { background-color: $color-turquesa-hover; color: $color-blanco; }
+}
+
+.btn-outline-coral {
+    @extend .btn;
+    background-color: transparent;
+    border: 2px solid $color-coral;
+    color: $color-coral;
+
+    &:hover { background-color: $color-coral; color: $color-blanco; }
+}
+
+.btn-outline-turquesa {
+    @extend .btn;
+    background-color: transparent;
+    border: 2px solid $color-turquesa;
+    color: $color-turquesa;
+
+    &:hover { background-color: $color-turquesa; color: $color-blanco; }
+}
+
+.btn-oscuro {
+    @extend .btn;
+    background-color: $color-oscuro;
+    color: $color-blanco;
+
+    &:hover { background-color: #1a252f; color: $color-blanco; }
+}
+
+.btn-blanco {
+    @extend .btn;
+    background-color: $color-blanco;
+    color: $color-oscuro;
+
+    &:hover { background-color: $color-fondo; color: $color-oscuro; }
+}
+
+.btn-editar {
+    @extend .btn;
+    background-color: #36b9cc;
+    color: $color-blanco;
+    padding: 6px 14px;
+    font-size: $fs-pequeno;
+
+    &:hover { background-color: #2c9faf; color: $color-blanco; }
+}
+
+.btn-borrar {
+    @extend .btn;
+    background-color: #e74a3b;
+    color: $color-blanco;
+    padding: 6px 14px;
+    font-size: $fs-pequeno;
+
+    &:hover { background-color: #c82333; color: $color-blanco; }
+}
+
+.btn-nuevo {
+    @extend .btn;
+    background-color: $color-verde;
+    color: $color-blanco;
+
+    &:hover { background-color: #3d8b40; color: $color-blanco; }
+}
+
+.btn-sm {
+    padding: 6px 14px;
+    font-size: $fs-pequeno;
+    border-radius: $radio-md;
+}

@@ -1,0 +1,85 @@
+// Todos los valores del proyecto en un solo lugar.
+// Si necesitas cambiar un color o fuente, hazlo aqui.
+
+// ------------------------------------------------------------
+// COLORES (de la paleta oficial del proyecto)
+
+$color-coral:     #FF6B6B;   // Botones principales, acentos
+$color-turquesa:  #4ECDC4;   // Headings, botones secundarios
+$color-amarillo:  #FFE66D;   // Badges especiales
+$color-oscuro:    #2C3E50;   // Texto principal, navegacion
+$color-fondo:     #F7F9FC;   // Fondo de secciones alternas
+$color-blanco:    #FFFFFF;   // Cards, modales, fondo principal
+
+// Variantes hover
+$color-coral-hover:    #e85555;
+$color-turquesa-hover: #3ab8af;
+
+// Colores de estado (badges de mascotas)
+$color-verde:   #4CAF50;   // Disponible
+$color-naranja: #FF9800;   // En acogida
+$color-gris:    #9E9E9E;   // Adoptado
+
+// Colores de alertas
+$color-exito-fondo: #e8f5e9;
+$color-error-fondo: #f8d7da;
+$color-aviso-fondo: #fff3cd;
+
+
+// ------------------------------------------------------------
+// TIPOGRAFIA
+
+$fuente-titulo: 'Nunito', Arial, sans-serif;   // H1, H2, logo
+$fuente-cuerpo: 'Lato', Arial, sans-serif;     // Texto general
+
+// Tamaños (mobile first — base para movil)
+$fs-pequeno: 0.75rem;    // 12px
+$fs-normal:  0.875rem;   // 14px
+$fs-base:    1rem;       // 16px
+$fs-medio:   1.125rem;   // 18px
+$fs-grande:  1.375rem;   // 22px
+$fs-h2:      1.75rem;    // 28px
+$fs-h1:      2rem;       // 32px
+$fs-hero:    2.75rem;    // 44px — solo en desktop
+
+
+// ------------------------------------------------------------
+// ESPACIADO
+
+$espacio-xs:  8px;
+$espacio-sm:  16px;
+$espacio-md:  24px;
+$espacio-lg:  40px;
+$espacio-xl:  64px;
+
+
+// ------------------------------------------------------------
+// BORDES Y SOMBRAS
+
+$radio-sm:   6px;
+$radio-md:   12px;
+$radio-lg:   20px;    // Botones redondeados
+$radio-full: 50px;    // Badges y pills
+
+$sombra-card:  0 2px 8px rgba(0, 0, 0, 0.08);
+$sombra-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
+$sombra-nav:   0 2px 8px rgba(0, 0, 0, 0.08);
+
+$transicion: all 0.3s ease;
+
+
+// ------------------------------------------------------------
+// BREAKPOINTS (mobile first — usados en los mixins)
+
+$bp-sm:  576px;    // Movil grande
+$bp-md:  768px;    // Tablet vertical
+$bp-lg:  1024px;   // Tablet horizontal / desktop pequeno
+$bp-xl:  1200px;   // Desktop grande
+
+
+// ------------------------------------------------------------
+// LAYOUT
+
+$ancho-maximo:   1200px;
+$alto-header:    65px;
+$alto-nav-movil: 60px;   // Nav inferior fija en movil

@@ -1,0 +1,33 @@
+// pages/_adoptar.scss
+.cabecera-pagina {
+    background: linear-gradient(135deg, $color-coral, $color-coral-hover);
+    color: $color-blanco;
+    padding: $espacio-lg $espacio-md;
+    text-align: center;
+    margin-bottom: $espacio-md;
+
+    h1 { color: $color-blanco; margin-bottom: 8px; }
+    p  { color: rgba(255,255,255,0.9); margin: 0; }
+}
+
+.spinner {
+    text-align: center;
+    padding: $espacio-lg;
+    color: #888;
+
+    i { font-size: 2rem; }
+    p { margin-top: $espacio-sm; }
+}
+
+.sin-mascotas {
+    text-align: center;
+    padding: $espacio-xl;
+    color: #888;
+
+    i {
+        font-size: 3rem;
+        display: block;
+        margin-bottom: $espacio-sm;
+        color: #ddd;
+    }
+}

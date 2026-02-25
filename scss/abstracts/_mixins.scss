@@ -1,0 +1,48 @@
+// Mixins reutilizables.
+// Las variables estan disponibles porque main.scss
+// importa _variables.scss antes que este archivo.
+
+// RESPONSIVE — Mobile First
+@mixin desde-movil-grande {
+    @media (min-width: $bp-sm) { @content; }
+}
+
+@mixin desde-tablet {
+    @media (min-width: $bp-md) { @content; }
+}
+
+@mixin desde-desktop {
+    @media (min-width: $bp-lg) { @content; }
+}
+
+@mixin desde-desktop-xl {
+    @media (min-width: $bp-xl) { @content; }
+}
+
+// FLEX centrado
+@mixin flex-centro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-entre {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+// TRUNCAR texto en una linea
+@mixin truncar {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// IMAGEN que rellena su contenedor
+@mixin imagen-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}

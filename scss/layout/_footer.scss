@@ -1,0 +1,125 @@
+// layout/_footer.scss
+footer {
+    background-color: $color-oscuro;
+    color: #ccc;
+    padding: $espacio-lg 0 $espacio-md;
+    margin-top: $espacio-lg;
+}
+
+.contenedor-footer {
+    max-width: $ancho-maximo;
+    margin: 0 auto;
+    padding: 0 $espacio-sm;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $espacio-md;
+
+    @include desde-tablet {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include desde-desktop {
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    }
+}
+
+.bloque-footer {
+    h3 {
+        font-family: $fuente-titulo;
+        color: $color-blanco;
+        font-size: $fs-base;
+        margin-bottom: $espacio-sm;
+    }
+
+    p {
+        color: #aaa;
+        font-size: $fs-normal;
+        line-height: 1.8;
+        margin: 0;
+    }
+
+    .logo-footer {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: $espacio-sm;
+        text-decoration: none;
+
+        i    { color: $color-coral; font-size: 1.4rem; }
+        span {
+            font-family: $fuente-titulo;
+            font-weight: 800;
+            font-size: $fs-medio;
+            color: $color-blanco;
+        }
+    }
+
+    ul li {
+        margin-bottom: 8px;
+
+        a {
+            color: #aaa;
+            font-size: $fs-normal;
+            transition: $transicion;
+
+            &:hover {
+                color: $color-coral;
+                padding-left: 4px;
+            }
+        }
+    }
+
+    .redes-sociales {
+        display: flex;
+        gap: $espacio-sm;
+        margin-top: $espacio-sm;
+
+        a {
+            color: #aaa;
+            font-size: 1.2rem;
+            transition: $transicion;
+
+            &:hover { color: $color-coral; }
+        }
+    }
+
+    .form-newsletter {
+        display: flex;
+        gap: 8px;
+        margin-top: $espacio-sm;
+
+        input[type="email"] {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #444;
+            border-radius: $radio-sm;
+            background-color: #3a4a5c;
+            color: $color-blanco;
+            font-size: $fs-normal;
+
+            &::placeholder { color: #888; }
+            &:focus { outline: none; border-color: $color-turquesa; }
+        }
+
+        button {
+            background-color: $color-turquesa;
+            color: $color-blanco;
+            border: none;
+            border-radius: $radio-sm;
+            padding: 10px 14px;
+            cursor: pointer;
+            transition: $transicion;
+
+            &:hover { background-color: $color-turquesa-hover; }
+        }
+    }
+}
+
+.footer-copyright {
+    text-align: center;
+    margin-top: $espacio-md;
+    padding-top: $espacio-sm;
+    border-top: 1px solid #3a4a5c;
+    color: #666;
+    font-size: $fs-pequeno;
+}

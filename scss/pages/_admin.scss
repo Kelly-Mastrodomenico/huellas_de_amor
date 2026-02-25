@@ -1,0 +1,116 @@
+// pages/_admin.scss
+.contenedor-admin {
+    background-color: $color-blanco;
+    padding: $espacio-md;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+
+    h1 {
+        text-align: center;
+        color: $color-oscuro;
+        margin-bottom: $espacio-md;
+        font-size: $fs-grande;
+    }
+}
+
+.barra-admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $espacio-md;
+    flex-wrap: wrap;
+    gap: $espacio-sm;
+
+    @include desde-tablet { } // ya funciona con flex-wrap
+}
+
+.form-filtro {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    label { font-weight: 700; }
+
+    select, input[type="text"] {
+        padding: 8px 12px;
+        border: 1px solid #d1d3e2;
+        border-radius: $radio-sm;
+        font-size: $fs-normal;
+
+        &:focus { outline: none; border-color: $color-turquesa; }
+    }
+}
+
+.botones-admin {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tabla-admin {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: $color-blanco;
+    font-size: $fs-normal;
+
+    thead { background-color: $color-oscuro; color: $color-blanco; }
+
+    th { padding: 12px; text-align: left; font-weight: 700; }
+
+    td {
+        padding: 12px;
+        border-bottom: 1px solid #e3e6f0;
+        vertical-align: middle;
+    }
+
+    tbody tr:hover { background-color: $color-fondo; }
+
+    .acciones { display: flex; gap: 8px; flex-wrap: wrap; }
+}
+
+.grid-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $espacio-sm;
+    margin-bottom: $espacio-md;
+
+    @include desde-desktop { grid-template-columns: repeat(4, 1fr); }
+}
+
+.stat-card {
+    padding: $espacio-md;
+    border-radius: $radio-md;
+    color: $color-blanco;
+    text-align: center;
+
+    i {
+        font-size: 2rem;
+        margin-bottom: 8px;
+        display: block;
+        opacity: 0.85;
+    }
+
+    .stat-numero {
+        font-size: 2rem;
+        font-weight: 800;
+        font-family: $fuente-titulo;
+        display: block;
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    span:last-child { font-size: $fs-pequeno; opacity: 0.85; }
+
+    &.stat-coral    { background-color: $color-coral; }
+    &.stat-turquesa { background-color: $color-turquesa; }
+    &.stat-verde    { background-color: $color-verde; }
+    &.stat-oscuro   { background-color: $color-oscuro; }
+}
+
+.sin-resultados {
+    text-align: center;
+    padding: $espacio-lg;
+    color: #888;
+    font-size: $fs-base;
+}

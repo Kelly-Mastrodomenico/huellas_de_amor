@@ -1,0 +1,260 @@
+// components/_cards.scss
+// TARJETA DE MASCOTA
+.tarjeta-mascota {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    overflow: hidden;
+    transition: $transicion;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        box-shadow: $sombra-hover;
+        transform: translateY(-4px);
+    }
+
+    .tarjeta-img {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+
+        img { width: 100%; height: 100%; object-fit: cover; }
+
+        .badge-estado { position: absolute; top: 10px; left: 10px; }
+
+        .btn-favorito {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: $transicion;
+            color: #ccc;
+
+            &:hover, &.activo { color: $color-coral; }
+        }
+    }
+
+    .tarjeta-cuerpo {
+        padding: $espacio-sm;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        h3 { font-size: $fs-base; margin-bottom: 4px; }
+
+        .tarjeta-edad {
+            font-size: $fs-pequeno;
+            color: $color-coral;
+            font-weight: 700;
+            margin-bottom: $espacio-xs;
+        }
+
+        .tarjeta-datos {
+            display: flex;
+            gap: $espacio-sm;
+            margin-bottom: $espacio-sm;
+            flex-wrap: wrap;
+
+            span {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 2px;
+                font-size: 0.65rem;
+                color: #888;
+
+                i { font-size: 0.9rem; color: $color-oscuro; }
+            }
+        }
+    }
+
+    .tarjeta-footer {
+        padding: 0 $espacio-sm $espacio-sm;
+
+        .btn-coral { width: 100%; text-align: center; }
+    }
+}
+
+// BADGES
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: $radio-full;
+    font-size: $fs-pequeno;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-disponible { background-color: $color-verde;   color: #fff; }
+.badge-acogida    { background-color: $color-naranja; color: #fff; }
+.badge-adoptado   { background-color: $color-gris;    color: #fff; }
+.badge-perro      { background-color: #e8f4fd; color: #1976d2; }
+.badge-gato       { background-color: #fce4ec; color: #c2185b; }
+.badge-otro       { background-color: #f3e5f5; color: #7b1fa2; }
+
+// TARJETA DE CATEGORIA
+.tarjeta-categoria {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    padding: $espacio-md;
+    text-align: center;
+    transition: $transicion;
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+        box-shadow: $sombra-hover;
+        transform: translateY(-4px);
+    }
+
+    .icono-categoria {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto $espacio-sm;
+        font-size: 1.8rem;
+    }
+
+    &.cat-perros .icono-categoria { background-color: #fff3e0; color: #f57c00; }
+    &.cat-gatos  .icono-categoria { background-color: #e8f5e9; color: #388e3c; }
+    &.cat-otros  .icono-categoria { background-color: #e3f2fd; color: #1976d2; }
+
+    h3 { font-size: $fs-base; color: $color-oscuro; margin-bottom: 4px; }
+    p  { font-size: $fs-pequeno; color: #888; margin: 0; }
+}
+
+// TARJETA DE NOTICIA
+.tarjeta-noticia {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    overflow: hidden;
+    transition: $transicion;
+
+    &:hover { box-shadow: $sombra-hover; transform: translateY(-4px); }
+
+    img { width: 100%; height: 180px; object-fit: cover; }
+
+    .noticia-cuerpo {
+        padding: $espacio-sm;
+
+        .noticia-categoria {
+            font-size: $fs-pequeno;
+            color: $color-turquesa;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        h3 { font-size: $fs-base; margin-bottom: 8px; }
+        p  { font-size: $fs-normal; color: #666; margin-bottom: $espacio-sm; }
+
+        .noticia-fecha { font-size: $fs-pequeno; color: #aaa; }
+    }
+}
+
+// TARJETA DE TESTIMONIO
+.tarjeta-testimonio {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    overflow: hidden;
+    transition: $transicion;
+
+    &:hover { box-shadow: $sombra-hover; }
+
+    .testimonio-img {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+
+        img { width: 100%; height: 100%; object-fit: cover; }
+
+        .badge-final-feliz {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: $color-turquesa;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: $radio-full;
+            font-size: $fs-pequeno;
+            font-weight: 700;
+        }
+    }
+
+    .testimonio-cuerpo {
+        padding: $espacio-sm;
+
+        p {
+            font-size: $fs-normal;
+            color: #444;
+            font-style: italic;
+            margin-bottom: $espacio-sm;
+        }
+
+        .testimonio-autor {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            img   { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+            span  { font-weight: 700; font-size: $fs-normal; color: $color-oscuro; display: block; }
+            small { color: #aaa; font-size: $fs-pequeno; }
+        }
+    }
+}
+
+// CONTADORES ANIMADOS
+.seccion-contadores {
+    background-color: $color-blanco;
+    box-shadow: $sombra-card;
+    border-radius: $radio-md;
+    padding: $espacio-md;
+    margin: -30px auto 0;
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+}
+
+.contador-item {
+    text-align: center;
+    padding: $espacio-sm;
+
+    i {
+        font-size: 1.8rem;
+        color: $color-coral;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .contador-numero {
+        font-family: $fuente-titulo;
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: $color-oscuro;
+        display: block;
+        line-height: 1;
+    }
+
+    span:last-child {
+        font-size: $fs-pequeno;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+}

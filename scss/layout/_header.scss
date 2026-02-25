@@ -1,0 +1,152 @@
+header {
+    background-color: $color-blanco;
+    box-shadow: $sombra-nav;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: $alto-header;
+}
+
+.contenedor-header {
+    max-width: $ancho-maximo;
+    margin: 0 auto;
+    padding: 0 $espacio-sm;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+
+    i    { color: $color-coral; font-size: 1.5rem; }
+    span {
+        font-family: $fuente-titulo;
+        font-size: $fs-medio;
+        font-weight: 800;
+        color: $color-oscuro;
+    }
+}
+
+// Checkbox hamburguesa — igual que en el portfolio
+#menu-hamburguesa { display: none; }
+
+#icono-hamburguesa {
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: $color-oscuro;
+    padding: 8px;
+    display: block;
+
+    @include desde-desktop {
+        display: none;
+    }
+}
+
+nav {
+    .menu-principal {
+        display: none;
+        position: absolute;
+        top: $alto-header;
+        left: 0;
+        right: 0;
+        background-color: $color-blanco;
+        box-shadow: $sombra-nav;
+        flex-direction: column;
+        padding: $espacio-sm 0;
+        z-index: 999;
+
+        li a {
+            display: block;
+            padding: 12px $espacio-md;
+            color: $color-oscuro;
+            font-size: $fs-base;
+            transition: $transicion;
+
+            &:hover {
+                background-color: $color-fondo;
+                color: $color-coral;
+            }
+
+            &.active {
+                color: $color-coral;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .btn-login    { color: $color-turquesa !important; font-weight: 700; }
+    .btn-admin    { color: $color-turquesa !important; font-weight: 700; }
+    .btn-cerrar-sesion { color: #e74a3b !important; font-weight: 700; }
+
+    .btn-registro {
+        background-color: $color-coral;
+        color: $color-blanco !important;
+        border-radius: $radio-lg;
+        padding: 8px 16px !important;
+        font-weight: 700;
+
+        &:hover { background-color: $color-coral-hover; }
+    }
+
+    @include desde-desktop {
+        .menu-principal {
+            display: flex !important;
+            position: static;
+            flex-direction: row;
+            box-shadow: none;
+            padding: 0;
+            gap: 4px;
+            background-color: transparent;
+
+            li a {
+                padding: 8px 12px;
+                border-radius: $radio-sm;
+            }
+        }
+    }
+}
+
+// Mostrar menu en movil cuando checkbox esta marcado
+#menu-hamburguesa:checked ~ nav .menu-principal {
+    display: flex;
+}
+
+// Nav inferior fija — solo en movil
+.nav-inferior {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: $alto-nav-movil;
+    background-color: $color-blanco;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        color: #9e9e9e;
+        font-size: 0.65rem;
+        text-decoration: none;
+        transition: $transicion;
+
+        i { font-size: 1.2rem; }
+
+        &.active, &:hover { color: $color-coral; }
+    }
+
+    @include desde-desktop {
+        display: none;
+    }
+}
