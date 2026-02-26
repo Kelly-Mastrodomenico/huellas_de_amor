@@ -5,17 +5,12 @@
 
         <!-- Columna 1: Logo y descripcion -->
         <div class="bloque-footer">
-            <a href="<?php echo $rutaBase; ?>index.php" class="logo-footer">
-                <i class="fa-solid fa-paw"></i>
-                <span>Huellas de Amor</span>
-            </a>
+<a href="<?php echo $rutaBase; ?>index.php" class="logo-footer">
+    <img src="<?php echo $rutaBase; ?>assets/img/Logo.png" alt="Huellas de Amor">
+    <span>Huellas de Amor</span>
+</a>
             <p>Dedicados a encontrar hogares amorosos para mascotas necesitadas. Tu ayuda hace la diferencia en miles de vidas.</p>
-            <div class="redes-sociales">
-                <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
-            </div>
-        </div>
+
 
         <!-- Columna 2: Enlaces rapidos -->
         <div class="bloque-footer">
@@ -28,6 +23,7 @@
                 <li><a href="<?php echo $rutaBase; ?>galeria.php">Galeria</a></li>
             </ul>
         </div>
+        
 
         <!-- Columna 3: Informacion -->
         <div class="bloque-footer">
@@ -51,6 +47,11 @@
                 </button>
             </form>
         </div>
+         <div class="redes-sociales">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+    </div>
 
     </div>
 

@@ -11,6 +11,16 @@
     @media (min-width: $bp-md) { @content; }
 }
 
+// Tablet horizontal / Desktop pequeño — 1024px
+@mixin desde-tablet-h {
+    @media (min-width: 1024px) { @content; }
+}
+
+// Tablet horizontal — 1024px (bp-lg)
+@mixin desde-tablet-h {
+    @media (min-width: $bp-lg) { @content; }
+}
+
 @mixin desde-desktop {
     @media (min-width: $bp-lg) { @content; }
 }
