@@ -43,10 +43,11 @@ $rutaBase = $enAdmin ? '../' : '';
 <div class="contenedor-header">
 
     <!-- Logo -->
-    <a href="<?php echo $rutaBase; ?>index.php" class="logo">
-        <i class="fa-solid fa-paw"></i>
-        <span>Huellas de Amor</span>
-    </a>
+<a href="<?php echo $rutaBase; ?>index.php" class="logo">
+    <img src="<?php echo $rutaBase; ?>assets/img/Logo.png" 
+         alt="Huellas de Amor" style="height:45px; width:auto;">
+         <span>Huellas de Amor</span>
+</a>
 
     <!-- Checkbox hamburguesa -->
     <input type="checkbox" id="menu-hamburguesa">
