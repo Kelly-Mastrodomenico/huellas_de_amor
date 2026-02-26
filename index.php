@@ -9,46 +9,46 @@ $sql = "SELECT m.*,
     (SELECT f.ruta_foto FROM fotos_mascotas f 
     WHERE f.id_mascota = m.id AND f.es_principal = 1 
     LIMIT 1) AS foto_principal
-FROM mascotas m
-WHERE m.activo = 1 AND m.estado = 'disponible'
-ORDER BY m.fecha_ingreso DESC
-LIMIT 8";
-$stmt = $conexion->prepare($sql);
-$stmt->execute();
-$mascotasDestacadas = $stmt->fetchAll();
-} catch (PDOException $e) {
-$mascotasDestacadas = [];
-}
+        FROM mascotas m
+        WHERE m.activo = 1 AND m.estado = 'disponible'
+        ORDER BY m.fecha_ingreso DESC
+        LIMIT 8";
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+        $mascotasDestacadas = $stmt->fetchAll();
+        } catch (PDOException $e) {
+        $mascotasDestacadas = [];
+        }
 
 // Obtener testimonios aprobados
 $testimonios = [];
 try {
-$sql = "SELECT t.*, u.nombre AS nombre_usuario
-FROM testimonios t
-INNER JOIN usuarios u ON t.id_usuario = u.id
-WHERE t.aprobado = 1
-ORDER BY t.fecha DESC
-LIMIT 3";
-$stmt = $conexion->prepare($sql);
-$stmt->execute();
-$testimonios = $stmt->fetchAll();
-} catch (PDOException $e) {
-$testimonios = [];
-}
+        $sql = "SELECT t.*, u.nombre AS nombre_usuario
+        FROM testimonios t
+        INNER JOIN usuarios u ON t.id_usuario = u.id
+        WHERE t.aprobado = 1
+        ORDER BY t.fecha DESC
+        LIMIT 3";
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+        $testimonios = $stmt->fetchAll();
+        } catch (PDOException $e) {
+        $testimonios = [];
+        }
 
 // Obtener ultimas noticias publicadas
 $noticias = [];
 try {
-$sql = "SELECT * FROM noticias
-WHERE publicada = 1
-ORDER BY fecha_publicacion DESC
-LIMIT 3";
-$stmt = $conexion->prepare($sql);
-$stmt->execute();
-$noticias = $stmt->fetchAll();
-} catch (PDOException $e) {
-$noticias = [];
-}
+        $sql = "SELECT * FROM noticias
+        WHERE publicada = 1
+        ORDER BY fecha_publicacion DESC
+        LIMIT 3";
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+        $noticias = $stmt->fetchAll();
+        } catch (PDOException $e) {
+        $noticias = [];
+        }
 
 // Contar mascotas para los contadores animados
 $totalAdoptadas  = contarMascotas('adoptado',    $conexion);

@@ -40,89 +40,89 @@ $rutaBase = $enAdmin ? '../' : '';
 <body>
 
 <header>
-    <div class="contenedor-header">
+<div class="contenedor-header">
 
-        <!-- Logo -->
-        <a href="<?php echo $rutaBase; ?>index.php" class="logo">
-            <i class="fa-solid fa-paw"></i>
-            <span>Huellas de Amor</span>
+    <!-- Logo -->
+    <a href="<?php echo $rutaBase; ?>index.php" class="logo">
+        <i class="fa-solid fa-paw"></i>
+        <span>Huellas de Amor</span>
+    </a>
+
+    <!-- Checkbox hamburguesa -->
+    <input type="checkbox" id="menu-hamburguesa">
+    <label for="menu-hamburguesa" id="icono-hamburguesa">
+        <i class="fa-solid fa-bars"></i>
+    </label>
+
+    <!-- Navegacion principal -->
+<nav>
+<ul class="menu-principal">
+    <li>
+        <a href="<?php echo $rutaBase; ?>index.php"
+            class="<?php echo ($paginaActual == 'index.php') ? 'active' : ''; ?>">
+            Inicio
         </a>
+    </li>
+    <li>
+        <a href="<?php echo $rutaBase; ?>adoptar.php"
+            class="<?php echo ($paginaActual == 'adoptar.php') ? 'active' : ''; ?>">
+            Adoptar
+        </a>
+    </li>
+    <li>
+        <a href="<?php echo $rutaBase; ?>apadrinar.php"
+            class="<?php echo ($paginaActual == 'apadrinar.php') ? 'active' : ''; ?>">
+            Apadrinar
+        </a>
+    </li>
+    <li>
+        <a href="<?php echo $rutaBase; ?>noticias.php"
+            class="<?php echo ($paginaActual == 'noticias.php') ? 'active' : ''; ?>">
+            Noticias
+        </a>
+    </li>
+    <li>
+        <a href="<?php echo $rutaBase; ?>donaciones.php"
+            class="<?php echo ($paginaActual == 'donaciones.php') ? 'active' : ''; ?>">
+            Donar
+        </a>
+    </li>
+    <li>
+        <a href="<?php echo $rutaBase; ?>contacto.php"
+            class="<?php echo ($paginaActual == 'contacto.php') ? 'active' : ''; ?>">
+            Contacto
+        </a>
+    </li>
 
-        <!-- Checkbox hamburguesa -->
-        <input type="checkbox" id="menu-hamburguesa">
-        <label for="menu-hamburguesa" id="icono-hamburguesa">
-            <i class="fa-solid fa-bars"></i>
-        </label>
+    <?php if (estaLogueado()) { ?>
+        <?php if (esAdmin()) { ?>
+            <li>
+                <a href="<?php echo $rutaBase; ?>admin/panel.php" class="btn-admin">
+                    <i class="fa-solid fa-lock"></i> Admin
+                </a>
+            </li>
+        <?php } ?>
+        <li>
+            <a href="<?php echo $rutaBase; ?>logout.php" class="btn-cerrar-sesion">
+                Cerrar sesion
+            </a>
+        </li>
+    <?php } else { ?>
+        <li>
+            <a href="<?php echo $rutaBase; ?>login.php" class="btn-login">
+                Login
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo $rutaBase; ?>registro.php" class="btn-registro">
+                Registrarse
+            </a>
+        </li>
+    <?php } ?>
+</ul>
+</nav>
 
-        <!-- Navegacion principal -->
-        <nav>
-            <ul class="menu-principal">
-                <li>
-                    <a href="<?php echo $rutaBase; ?>index.php"
-                       class="<?php echo ($paginaActual == 'index.php') ? 'active' : ''; ?>">
-                        Inicio
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo $rutaBase; ?>adoptar.php"
-                       class="<?php echo ($paginaActual == 'adoptar.php') ? 'active' : ''; ?>">
-                        Adoptar
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo $rutaBase; ?>apadrinar.php"
-                       class="<?php echo ($paginaActual == 'apadrinar.php') ? 'active' : ''; ?>">
-                        Apadrinar
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo $rutaBase; ?>noticias.php"
-                       class="<?php echo ($paginaActual == 'noticias.php') ? 'active' : ''; ?>">
-                        Noticias
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo $rutaBase; ?>donaciones.php"
-                       class="<?php echo ($paginaActual == 'donaciones.php') ? 'active' : ''; ?>">
-                        Donar
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo $rutaBase; ?>contacto.php"
-                       class="<?php echo ($paginaActual == 'contacto.php') ? 'active' : ''; ?>">
-                        Contacto
-                    </a>
-                </li>
-
-                <?php if (estaLogueado()) { ?>
-                    <?php if (esAdmin()) { ?>
-                        <li>
-                            <a href="<?php echo $rutaBase; ?>admin/panel.php" class="btn-admin">
-                                <i class="fa-solid fa-lock"></i> Admin
-                            </a>
-                        </li>
-                    <?php } ?>
-                    <li>
-                        <a href="<?php echo $rutaBase; ?>logout.php" class="btn-cerrar-sesion">
-                            Cerrar sesion
-                        </a>
-                    </li>
-                <?php } else { ?>
-                    <li>
-                        <a href="<?php echo $rutaBase; ?>login.php" class="btn-login">
-                            Login
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $rutaBase; ?>registro.php" class="btn-registro">
-                            Registrarse
-                        </a>
-                    </li>
-                <?php } ?>
-            </ul>
-        </nav>
-
-    </div>
+</div>
 </header>
 
 <!-- Mensaje flash (exito o error) — se muestra una vez y desaparece -->

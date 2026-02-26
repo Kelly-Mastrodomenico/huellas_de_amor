@@ -41,10 +41,10 @@ function obtenerFotoPrincipal($idMascota, $conexion) {
         }
 
         // imagen por defecto si no tiene foto
-        return 'https://picsum.photos/400/300?random=' . $idMascota;
+        return 'https://source.unsplash.com/featured/400x300?dog,cat' . $idMascota;
 
     } catch (PDOException $e) {
-        return 'https://picsum.photos/400/300?random=' . $idMascota;
+        return 'https://source.unsplash.com/featured/400x300?dog,cat' . $idMascota;
     }
 }
 
