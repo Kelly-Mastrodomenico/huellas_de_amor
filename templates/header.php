@@ -13,7 +13,8 @@ if (!isset($tituloPagina)) {
 $enAdmin    = (strpos($_SERVER['PHP_SELF'], '/admin/') !== false);
 $enMascotas = (strpos($_SERVER['PHP_SELF'], '/mascotas/') !== false);
 $enUsuario  = (strpos($_SERVER['PHP_SELF'], '/usuario/') !== false);
-$rutaBase   = ($enAdmin || $enMascotas || $enUsuario) ? '../' : '';
+$enNoticias = (strpos($_SERVER['PHP_SELF'], '/noticias/') !== false);
+$rutaBase   = ($enAdmin || $enMascotas || $enUsuario || $enNoticias) ? '../' : '';
 ?>
 <!DOCTYPE html>
 <html lang="es">
