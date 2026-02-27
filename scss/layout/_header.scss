@@ -118,8 +118,8 @@ nav {
     .menu-principal {
         // MOVIL y TABLET V: menu desplegable oculto
         display: none;
-        position: fixed;
-        top: $h-header-movil;
+        position: absolute;
+        top: 100%;
         left: 0;
         right: 0;
         background-color: $color-blanco;
@@ -129,6 +129,8 @@ nav {
         z-index: 998;
         list-style: none;
         margin: 0;
+        max-height: calc(100vh - 120px);  // ← altura máxima
+    overflow-y: auto; 
 
         @include desde-tablet {
             top: $h-header-tablet;

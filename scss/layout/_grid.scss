@@ -1,25 +1,20 @@
 // ============================================================
 // layout/_grid.scss — Mobile First
-// Grids responsive según mockups por breakpoint
 // ============================================================
 
-// Contenedor general
 .contenedor {
     max-width: $ancho-maximo;
     margin: 0 auto;
     padding: 0 $espacio-sm;
 }
 
-// Seccion base con padding
 .seccion {
     padding: $espacio-lg 0;
-
     @include desde-desktop { padding: $espacio-xl 0; }
 }
 
 .seccion-gris { background-color: $color-fondo; }
 
-// Titulo de seccion
 .seccion-titulo {
     text-align: center;
     margin-bottom: $espacio-md;
@@ -30,7 +25,6 @@
         font-weight: 800;
         color: $color-oscuro;
         margin-bottom: 8px;
-
         @include desde-desktop { font-size: 2rem; }
     }
 
@@ -39,57 +33,13 @@
         font-size: $fs-normal;
         max-width: 520px;
         margin: 0 auto;
-
         @include desde-desktop { font-size: $fs-base; }
     }
 }
 
 // -----------------------------------------------
-// CONTADORES
-// Movil: 1 columna | Tablet+: 3 columnas
-// -----------------------------------------------
-.grid-contadores {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-
-    @include desde-tablet {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-.contador-item {
-    text-align: center;
-    padding: $espacio-sm;
-    border-bottom: 1px solid #f0f0f0;
-
-    &:last-child { border-bottom: none; }
-
-    @include desde-tablet {
-        border-bottom: none;
-        border-right: 1px solid #f0f0f0;
-        &:last-child { border-right: none; }
-    }
-}
-
-// -----------------------------------------------
-// CATEGORIAS
-// Movil: 1 col | Movil grande+: 3 col
-// -----------------------------------------------
-.grid-categorias {
-    display: grid;
-    gap: $espacio-sm;
-    grid-template-columns: 1fr;
-
-    @include desde-movil-grande {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-// -----------------------------------------------
 // MASCOTAS
-// Movil V: 1 col
-// Movil H (576px): 2 col
+// Móvil V: 1 col | Móvil H (576px): 2 col
 // Tablet V (768px): 3 col
 // Tablet H (1024px) + Desktop: 4 col
 // -----------------------------------------------
@@ -112,8 +62,22 @@
 }
 
 // -----------------------------------------------
+// CATEGORIAS
+// Móvil V: 1 col | Móvil H+: 3 col
+// -----------------------------------------------
+.grid-categorias {
+    display: grid;
+    gap: $espacio-sm;
+    grid-template-columns: 1fr;
+
+    @include desde-movil-grande {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+// -----------------------------------------------
 // TESTIMONIOS
-// Movil: 1 col | Tablet+: 3 col
+// Móvil V/H: 1 col | Tablet V+: 3 col
 // -----------------------------------------------
 .grid-testimonios {
     display: grid;
@@ -127,7 +91,7 @@
 
 // -----------------------------------------------
 // NOTICIAS
-// Movil: 1 col | Tablet+: 3 col
+// Móvil V/H: 1 col | Tablet V+: 3 col
 // -----------------------------------------------
 .grid-noticias {
     display: grid;
@@ -136,6 +100,20 @@
 
     @include desde-tablet {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+// -----------------------------------------------
+// CONTADORES
+// -----------------------------------------------
+.grid-contadores {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    @include desde-tablet {
+        grid-template-columns: repeat(3, 1fr);
+        gap: $espacio-sm;
     }
 }
 

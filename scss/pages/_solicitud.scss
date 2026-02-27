@@ -1,0 +1,254 @@
+// Página solicitud_adopcion.php
+
+// Grid: móvil 1 col, tablet+ 2 col
+.solicitud-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $espacio-md;
+
+    @include desde-tablet {
+        grid-template-columns: 1fr 1.6fr;
+        align-items: start;
+    }
+}
+
+// -----------------------------------------------
+// COLUMNA IZQUIERDA — card mascota
+// -----------------------------------------------
+.solicitud-mascota-card {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        display: block;
+    }
+
+    .solicitud-mascota-info {
+        padding: $espacio-sm;
+
+        h3 {
+            font-family: $fuente-titulo;
+            font-size: $fs-h2;
+            font-weight: 800;
+            color: $color-oscuro;
+            margin-bottom: 4px;
+        }
+
+        p {
+            color: $color-coral;
+            font-weight: 700;
+            font-size: $fs-normal;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.solicitud-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+
+    span {
+        background-color: $color-fondo;
+        padding: 4px 10px;
+        border-radius: $radio-full;
+        font-size: $fs-pequeno;
+        color: $color-oscuro;
+        font-weight: 600;
+
+        i { color: $color-turquesa; margin-right: 4px; }
+    }
+}
+
+.solicitud-protectora {
+    font-size: $fs-pequeno;
+    color: #888;
+    margin: 0;
+
+    i { color: $color-turquesa; margin-right: 4px; }
+}
+
+// Nota informativa
+.solicitud-nota {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background-color: #e8f4fd;
+    border-radius: $radio-sm;
+    padding: 12px;
+    margin-top: $espacio-sm;
+
+    i {
+        color: #1976d2;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    p {
+        font-size: $fs-pequeno;
+        color: #1976d2;
+        margin: 0;
+        line-height: 1.5;
+    }
+}
+
+// -----------------------------------------------
+// COLUMNA DERECHA — formulario
+// -----------------------------------------------
+.solicitud-formulario {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    padding: $espacio-md;
+
+    h2 {
+        font-family: $fuente-titulo;
+        font-size: $fs-h2;
+        font-weight: 800;
+        color: $color-oscuro;
+        margin-bottom: 8px;
+
+        i { color: $color-coral; margin-right: 8px; }
+    }
+
+    .solicitud-subtitulo {
+        color: #666;
+        font-size: $fs-normal;
+        margin-bottom: $espacio-md;
+    }
+}
+
+// -----------------------------------------------
+// FORMULARIO
+// -----------------------------------------------
+.form-solicitud {
+    display: flex;
+    flex-direction: column;
+    gap: $espacio-sm;
+}
+
+.form-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+        font-weight: 700;
+        font-size: $fs-normal;
+        color: $color-oscuro;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+        padding: 10px 14px;
+        border: 1px solid #d1d3e2;
+        border-radius: $radio-sm;
+        font-size: $fs-normal;
+        font-family: $fuente-cuerpo;
+        color: $color-oscuro;
+        transition: $transicion;
+        background-color: $color-blanco;
+        resize: vertical;
+
+        &:focus {
+            outline: none;
+            border-color: $color-turquesa;
+            box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.15);
+        }
+
+        &::placeholder { color: #bbb; }
+    }
+
+    .form-ayuda {
+        font-size: $fs-pequeno;
+        color: #aaa;
+    }
+}
+
+.obligatorio { color: $color-coral; margin-left: 2px; }
+
+// Checkbox personalizado
+.form-grupo-check {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.label-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: 400 !important;
+
+    input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        margin-top: 2px;
+        accent-color: $color-coral;
+        cursor: pointer;
+    }
+
+    span {
+        font-size: $fs-normal;
+        color: #555;
+        line-height: 1.5;
+    }
+}
+
+.form-botones {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: $espacio-xs;
+
+    .btn-grande {
+        flex: 1;
+        min-width: 140px;
+        text-align: center;
+        padding: 12px 24px;
+        font-size: $fs-base;
+    }
+}
+
+// -----------------------------------------------
+// PANTALLA DE EXITO / AVISO
+// -----------------------------------------------
+.solicitud-exito {
+    text-align: center;
+    padding: $espacio-lg $espacio-md;
+
+    i {
+        font-size: 3.5rem;
+        color: $color-verde;
+        display: block;
+        margin-bottom: $espacio-sm;
+    }
+
+    h2 {
+        font-family: $fuente-titulo;
+        font-size: $fs-h2;
+        font-weight: 800;
+        color: $color-oscuro;
+        margin-bottom: $espacio-sm;
+    }
+
+    p {
+        color: #666;
+        font-size: $fs-normal;
+        margin-bottom: 8px;
+        line-height: 1.6;
+    }
+
+    &.solicitud-aviso i { color: $color-naranja; }
+}

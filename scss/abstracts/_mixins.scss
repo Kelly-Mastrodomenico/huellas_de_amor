@@ -1,35 +1,27 @@
 // Mixins reutilizables.
-// Las variables estan disponibles porque main.scss
-// importa _variables.scss antes que este archivo.
-
 // RESPONSIVE — Mobile First
+
 @mixin desde-movil-grande {
-    @media (min-width: $bp-sm) { @content; }
+    @media (min-width: $bp-sm) { @content; }   // 576px
 }
 
 @mixin desde-tablet {
-    @media (min-width: $bp-md) { @content; }
+    @media (min-width: $bp-md) { @content; }   // 768px
 }
 
-// Tablet horizontal / Desktop pequeño — 1024px
 @mixin desde-tablet-h {
-    @media (min-width: 1024px) { @content; }
-}
-
-// Tablet horizontal — 1024px (bp-lg)
-@mixin desde-tablet-h {
-    @media (min-width: $bp-lg) { @content; }
+    @media (min-width: $bp-lg) { @content; }   // 1024px
 }
 
 @mixin desde-desktop {
-    @media (min-width: $bp-lg) { @content; }
+    @media (min-width: $bp-xl) { @content; }   // 1200px ← CORREGIDO
 }
 
 @mixin desde-desktop-xl {
-    @media (min-width: $bp-xl) { @content; }
+    @media (min-width: 1440px) { @content; }
 }
 
-// FLEX centrado
+// FLEX
 @mixin flex-centro {
     display: flex;
     justify-content: center;
@@ -42,14 +34,14 @@
     align-items: center;
 }
 
-// TRUNCAR texto en una linea
+// TRUNCAR texto
 @mixin truncar {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-// IMAGEN que rellena su contenedor
+// IMAGEN cover
 @mixin imagen-cover {
     width: 100%;
     height: 100%;

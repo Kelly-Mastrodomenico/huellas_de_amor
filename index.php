@@ -109,7 +109,7 @@ Apadrinar
 
 <!-- SECCION 2: CONTADORES ANIMADOS
 jQuery anima los numeros desde 0 hasta el valor real -->
-<section class="seccion">
+<section class="seccion" >
 <div class="contenedor">
 <div class="seccion-contadores">
 <div class="grid-contadores">

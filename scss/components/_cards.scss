@@ -1,5 +1,10 @@
+// ============================================================
 // components/_cards.scss
-// TARJETA DE MASCOTA
+// ============================================================
+
+// -----------------------------------------------
+// TARJETA MASCOTA
+// -----------------------------------------------
 .tarjeta-mascota {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -16,10 +21,14 @@
 
     .tarjeta-img {
         position: relative;
-        height: 200px;
+        aspect-ratio: 1 / 1;  // cuadrada en móvil
         overflow: hidden;
 
-        img { width: 100%; height: 100%; object-fit: cover; }
+        @include desde-movil-grande {
+            aspect-ratio: 4 / 3;  // rectangular en móvil H+
+        }
+
+        img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         .badge-estado { position: absolute; top: 10px; left: 10px; }
 
@@ -49,7 +58,7 @@
         display: flex;
         flex-direction: column;
 
-        h3 { font-size: $fs-base; margin-bottom: 4px; }
+        h3 { font-size: $fs-base; margin-bottom: 4px; font-family: $fuente-titulo; font-weight: 700; }
 
         .tarjeta-edad {
             font-size: $fs-pequeno;
@@ -71,6 +80,7 @@
                 gap: 2px;
                 font-size: 0.65rem;
                 color: #888;
+                text-transform: capitalize;
 
                 i { font-size: 0.9rem; color: $color-oscuro; }
             }
@@ -80,11 +90,13 @@
     .tarjeta-footer {
         padding: 0 $espacio-sm $espacio-sm;
 
-        .btn-coral { width: 100%; text-align: center; }
+        .btn-coral { width: 100%; text-align: center; display: block; }
     }
 }
 
+// -----------------------------------------------
 // BADGES
+// -----------------------------------------------
 .badge {
     display: inline-block;
     padding: 4px 10px;
@@ -102,7 +114,9 @@
 .badge-gato       { background-color: #fce4ec; color: #c2185b; }
 .badge-otro       { background-color: #f3e5f5; color: #7b1fa2; }
 
-// TARJETA DE CATEGORIA
+// -----------------------------------------------
+// TARJETA CATEGORIA
+// -----------------------------------------------
 .tarjeta-categoria {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -113,10 +127,7 @@
     text-decoration: none;
     display: block;
 
-    &:hover {
-        box-shadow: $sombra-hover;
-        transform: translateY(-4px);
-    }
+    &:hover { box-shadow: $sombra-hover; transform: translateY(-4px); }
 
     .icono-categoria {
         width: 70px;
@@ -133,11 +144,13 @@
     &.cat-gatos  .icono-categoria { background-color: #e8f5e9; color: #388e3c; }
     &.cat-otros  .icono-categoria { background-color: #e3f2fd; color: #1976d2; }
 
-    h3 { font-size: $fs-base; color: $color-oscuro; margin-bottom: 4px; }
+    h3 { font-size: $fs-base; color: $color-oscuro; margin-bottom: 4px; font-weight: 700; }
     p  { font-size: $fs-pequeno; color: #888; margin: 0; }
 }
 
-// TARJETA DE NOTICIA
+// -----------------------------------------------
+// TARJETA NOTICIA
+// -----------------------------------------------
 .tarjeta-noticia {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -147,7 +160,7 @@
 
     &:hover { box-shadow: $sombra-hover; transform: translateY(-4px); }
 
-    img { width: 100%; height: 180px; object-fit: cover; }
+    img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
 
     .noticia-cuerpo {
         padding: $espacio-sm;
@@ -160,14 +173,16 @@
             margin-bottom: 6px;
         }
 
-        h3 { font-size: $fs-base; margin-bottom: 8px; }
+        h3 { font-size: $fs-base; margin-bottom: 8px; font-weight: 700; }
         p  { font-size: $fs-normal; color: #666; margin-bottom: $espacio-sm; }
 
         .noticia-fecha { font-size: $fs-pequeno; color: #aaa; }
     }
 }
 
-// TARJETA DE TESTIMONIO
+// -----------------------------------------------
+// TARJETA TESTIMONIO
+// -----------------------------------------------
 .tarjeta-testimonio {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -179,10 +194,10 @@
 
     .testimonio-img {
         position: relative;
-        height: 220px;
+        aspect-ratio: 4/3;
         overflow: hidden;
 
-        img { width: 100%; height: 100%; object-fit: cover; }
+        img { @include imagen-cover; }
 
         .badge-final-feliz {
             position: absolute;
@@ -219,21 +234,42 @@
     }
 }
 
-// CONTADORES ANIMADOS
+// -----------------------------------------------
+// CONTADORES
+// -----------------------------------------------
 .seccion-contadores {
+    // MÓVIL: tarjeta blanca unida
     background-color: $color-blanco;
-    box-shadow: $sombra-card;
+    box-shadow: $sombra-hover;
     border-radius: $radio-md;
     padding: $espacio-md;
-    margin: -30px auto 0;
+    margin: -50px auto 0;
     position: relative;
     z-index: 10;
-    max-width: 800px;
+    max-width: 900px;
+
+    // TABLET+: transparente, cada item es tarjeta propia
+    @include desde-tablet {
+        background-color: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+    }
 }
 
 .contador-item {
     text-align: center;
     padding: $espacio-sm;
+    border-bottom: 1px solid #f0f0f0;
+
+    &:last-child { border-bottom: none; }
+
+    @include desde-tablet {
+        border-bottom: none;
+        background-color: $color-blanco;
+        border-radius: $radio-md;
+        box-shadow: $sombra-hover;
+    }
 
     i {
         font-size: 1.8rem;
