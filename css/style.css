@@ -3268,4 +3268,524 @@ footer {
   border-color: #4ECDC4;
 }
 
+.donacion-hero {
+  position: relative;
+  height: 360px;
+  background: url("https://picsum.photos/1400/600?random=77") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .donacion-hero {
+    height: 440px;
+  }
+}
+@media (min-width: 1200px) {
+  .donacion-hero {
+    height: 480px;
+  }
+}
+
+.donacion-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.85) 0%, rgba(44, 62, 80, 0.75) 100%);
+}
+
+.donacion-hero-contenido {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 16px;
+  max-width: 600px;
+}
+.donacion-hero-contenido .donacion-hero-tag {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(4px);
+}
+.donacion-hero-contenido h1 {
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.donacion-hero-contenido h1 span {
+  color: #FFE66D;
+}
+@media (min-width: 768px) {
+  .donacion-hero-contenido h1 {
+    font-size: 2.8rem;
+  }
+}
+@media (min-width: 1200px) {
+  .donacion-hero-contenido h1 {
+    font-size: 3.2rem;
+  }
+}
+.donacion-hero-contenido p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+@media (min-width: 768px) {
+  .donacion-hero-contenido p {
+    font-size: 1rem;
+  }
+}
+
+.donacion-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.donacion-stat {
+  padding: 16px;
+}
+.donacion-stat i {
+  font-size: 1.8rem;
+  color: #FF6B6B;
+  display: block;
+  margin-bottom: 8px;
+}
+.donacion-stat .stat-num {
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #2C3E50;
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+@media (min-width: 768px) {
+  .donacion-stat .stat-num {
+    font-size: 2.2rem;
+  }
+}
+.donacion-stat span:last-child {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.donacion-destinos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 768px) {
+  .donacion-destinos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.destino-item {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  text-align: center;
+}
+.destino-item h3 {
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin-bottom: 8px;
+}
+.destino-item p {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.destino-item span {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #2C3E50;
+}
+
+.destino-icono {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 1.5rem;
+}
+.destino-icono.destino-coral {
+  background-color: rgba(255, 107, 107, 0.15);
+  color: #FF6B6B;
+}
+.destino-icono.destino-turquesa {
+  background-color: rgba(78, 205, 196, 0.15);
+  color: #4ECDC4;
+}
+.destino-icono.destino-verde {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: #4CAF50;
+}
+
+.destino-barra {
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.destino-progreso {
+  height: 100%;
+  background-color: #FF6B6B;
+  border-radius: 50px;
+}
+.destino-progreso.destino-progreso-verde {
+  background-color: #4CAF50;
+}
+
+.donacion-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
+}
+@media (min-width: 768px) {
+  .donacion-grid {
+    grid-template-columns: 1fr 1.6fr;
+    gap: 40px;
+  }
+}
+
+.donacion-info h2 {
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #2C3E50;
+  margin-bottom: 16px;
+}
+.donacion-info p {
+  color: #666;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.donacion-metodos-info {
+  background-color: #F7F9FC;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.donacion-metodos-info h4 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin-bottom: 6px;
+}
+.donacion-metodos-info h4 i {
+  color: #4CAF50;
+  margin-right: 6px;
+}
+.donacion-metodos-info p {
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.metodos-logos {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.metodo-logo {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.metodo-logo.metodo-tarjeta {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+.metodo-logo.metodo-paypal {
+  background-color: #e8f5e9;
+  color: #1565c0;
+}
+.metodo-logo.metodo-bizum {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.donacion-fiscal-info {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background-color: #e8f4fd;
+  border-radius: 12px;
+  padding: 16px;
+}
+.donacion-fiscal-info i {
+  font-size: 1.4rem;
+  color: #1976d2;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.donacion-fiscal-info h4 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin-bottom: 4px;
+}
+.donacion-fiscal-info p {
+  font-size: 0.75rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.5;
+}
+.donacion-fiscal-info strong {
+  color: #1976d2;
+}
+
+.donacion-formulario {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+}
+
+.form-donacion {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.donacion-paso h3 {
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.paso-num {
+  width: 26px;
+  height: 26px;
+  background-color: #FF6B6B;
+  color: #FFFFFF;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.montos-rapidos {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.monto-item {
+  cursor: pointer;
+}
+.monto-item input[type=radio] {
+  display: none;
+}
+.monto-item span {
+  display: block;
+  padding: 10px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2C3E50;
+  transition: all 0.3s ease;
+  min-width: 60px;
+  text-align: center;
+}
+.monto-item input:checked + span {
+  border-color: #FF6B6B;
+  background-color: #FF6B6B;
+  color: #FFFFFF;
+}
+.monto-item:hover span {
+  border-color: #FF6B6B;
+}
+
+.monto-custom input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d1d3e2;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.monto-custom input:focus {
+  outline: none;
+  border-color: #4ECDC4;
+}
+
+.metodos-pago {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.metodo-item {
+  flex: 1;
+  min-width: 90px;
+  cursor: pointer;
+}
+.metodo-item input[type=radio] {
+  display: none;
+}
+.metodo-item .metodo-caja {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+.metodo-item .metodo-caja i {
+  font-size: 1.4rem;
+  color: #aaa;
+}
+.metodo-item .metodo-caja span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #888;
+}
+.metodo-item input:checked + .metodo-caja {
+  border-color: #4ECDC4;
+  background-color: rgba(78, 205, 196, 0.08);
+}
+.metodo-item input:checked + .metodo-caja i {
+  color: #4ECDC4;
+}
+.metodo-item input:checked + .metodo-caja span {
+  color: #4ECDC4;
+}
+.metodo-item:hover .metodo-caja {
+  border-color: #4ECDC4;
+}
+
+.datos-pago {
+  background-color: #F7F9FC;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aviso-simulado {
+  font-size: 0.75rem;
+  color: #e65100;
+  background-color: #fff3e0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin: 0;
+}
+.aviso-simulado i {
+  margin-right: 6px;
+}
+
+.donacion-legal {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-top: -8px;
+}
+.donacion-legal i {
+  margin-right: 4px;
+  color: #4CAF50;
+}
+.donacion-legal a {
+  color: #4ECDC4;
+}
+
+.donacion-exito {
+  text-align: center;
+  padding: 24px 0;
+}
+.donacion-exito .donacion-exito-icono i {
+  font-size: 4rem;
+  color: #4CAF50;
+  display: block;
+  margin-bottom: 16px;
+}
+.donacion-exito h2 {
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #2C3E50;
+  margin-bottom: 16px;
+}
+.donacion-exito p {
+  color: #666;
+  font-size: 0.875rem;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.donacion-resumen {
+  background-color: #F7F9FC;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  text-align: left;
+}
+
+.resumen-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.875rem;
+}
+.resumen-fila:last-child {
+  border-bottom: none;
+}
+.resumen-fila span {
+  color: #888;
+}
+.resumen-fila strong {
+  color: #2C3E50;
+}
+
 /*# sourceMappingURL=style.css.map */
