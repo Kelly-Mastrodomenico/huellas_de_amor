@@ -1,7 +1,3 @@
-// ============================================================
-// pages/_admin.scss — Mobile First
-// ============================================================
-
 .contenedor-admin {
     background-color: $color-blanco;
     padding: $espacio-sm;
@@ -302,4 +298,14 @@
         &:hover { background-color: $color-coral; color: $color-blanco; border-color: $color-coral; }
         &.activo { background-color: $color-coral; color: $color-blanco; border-color: $color-coral; }
     }
+}
+
+// -----------------------------------------------
+// FILA NO LEÍDA EN TABLA
+// -----------------------------------------------
+.fila-no-leida {
+    background-color: #fff8f0 !important;
+    font-weight: 600;
+
+    &:hover { background-color: #fff3e0 !important; }
 }

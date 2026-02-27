@@ -81,6 +81,23 @@ if (!isset($tituloPagina)) {
                     </a>
                 </li>
                 <li>
+    <a href="contacto.php" class="<?php echo $paginaAdmin === 'contacto' ? 'activo' : ''; ?>">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Mensajes</span>
+        <?php
+        // Contar no leídos
+        try {
+            $stmtBadge = $conexion->prepare("SELECT COUNT(*) FROM `contacto` WHERE `leido` = 0");
+            $stmtBadge->execute();
+            $noLeidos = $stmtBadge->fetchColumn();
+            if ($noLeidos > 0) {
+                echo '<span class="menu-badge">' . $noLeidos . '</span>';
+            }
+        } catch (PDOException $e) {}
+        ?>
+    </a>
+</li>
+                <li>
                     <a href="../index.php">
                         <i class="fa-solid fa-globe"></i> Ver web
                     </a>

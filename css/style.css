@@ -3788,4 +3788,232 @@ footer {
   color: #2C3E50;
 }
 
+.contacto-hero {
+  position: relative;
+  height: 220px;
+  background: linear-gradient(135deg, #2C3E50 0%, #4ECDC4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .contacto-hero {
+    height: 280px;
+  }
+}
+
+.contacto-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.contacto-hero-contenido {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 16px;
+}
+.contacto-hero-contenido h1 {
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.contacto-hero-contenido h1 i {
+  margin-right: 10px;
+  color: #FFE66D;
+}
+@media (min-width: 768px) {
+  .contacto-hero-contenido h1 {
+    font-size: 2.4rem;
+  }
+}
+.contacto-hero-contenido p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+}
+@media (min-width: 768px) {
+  .contacto-hero-contenido p {
+    font-size: 1rem;
+  }
+}
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
+}
+@media (min-width: 768px) {
+  .contacto-grid {
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+  }
+}
+
+.contacto-info-card {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.contacto-info-card h2 {
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #2C3E50;
+  margin-bottom: 10px;
+}
+.contacto-info-card p {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.contacto-datos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.contacto-dato {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+.contacto-dato:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transform: translateX(4px);
+}
+.contacto-dato .contacto-dato-icono {
+  width: 42px;
+  height: 42px;
+  background-color: rgba(255, 107, 107, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contacto-dato .contacto-dato-icono i {
+  color: #FF6B6B;
+  font-size: 1rem;
+}
+.contacto-dato h4 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin-bottom: 4px;
+}
+.contacto-dato p {
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+.contacto-dato small {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.contacto-redes {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+}
+.contacto-redes h4 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin-bottom: 12px;
+}
+
+.contacto-redes-iconos {
+  display: flex;
+  gap: 10px;
+}
+.contacto-redes-iconos a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.contacto-redes-iconos a:hover {
+  transform: scale(1.1);
+}
+.contacto-redes-iconos a.red-facebook {
+  background-color: #1877f2;
+}
+.contacto-redes-iconos a.red-instagram {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+.contacto-redes-iconos a.red-twitter {
+  background-color: #000;
+}
+.contacto-redes-iconos a.red-whatsapp {
+  background-color: #25d366;
+}
+
+.contacto-formulario {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+}
+.contacto-formulario h2 {
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #2C3E50;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #F7F9FC;
+}
+
+.form-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contacto-exito {
+  text-align: center;
+  padding: 40px 24px;
+}
+.contacto-exito i {
+  font-size: 4rem;
+  color: #4CAF50;
+  display: block;
+  margin-bottom: 16px;
+}
+.contacto-exito h2 {
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #2C3E50;
+  margin-bottom: 16px;
+}
+.contacto-exito p {
+  color: #666;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
 /*# sourceMappingURL=style.css.map */

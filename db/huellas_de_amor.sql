@@ -308,6 +308,17 @@ INSERT INTO `foro_categorias` (`nombre`, `descripcion`, `icono`, `orden`) VALUES
 ('Historias de Exito',  'Comparte tu historia de adopcion exitosa',             'fa-star',           4),
 ('General',             'Cualquier otro tema sobre bienestar animal',           'fa-comments',       5);
 
+-- Contacto
+CREATE TABLE `contacto` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `nombre` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(150) NOT NULL,
+  `asunto` VARCHAR(200) NOT NULL,
+  `mensaje` TEXT NOT NULL,
+  `leido` TINYINT(1) DEFAULT 0,
+  `fecha` DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Noticias de ejemplo
 INSERT INTO `noticias` (`titulo`, `slug`, `contenido`, `id_admin`, `categoria`, `publicada`, `fecha_publicacion`) VALUES
 ('Jornada de adopcion este sabado en Valencia',

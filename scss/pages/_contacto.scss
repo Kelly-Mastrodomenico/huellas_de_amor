@@ -1,0 +1,236 @@
+// ============================================================
+// pages/_contacto.scss — Mobile First
+// ============================================================
+
+// -----------------------------------------------
+// HERO
+// -----------------------------------------------
+.contacto-hero {
+    position: relative;
+    height: 220px;
+    background: linear-gradient(135deg, $color-oscuro 0%, $color-turquesa 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include desde-tablet { height: 280px; }
+}
+
+.contacto-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.15);
+}
+
+.contacto-hero-contenido {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 $espacio-sm;
+
+    h1 {
+        font-family: $fuente-titulo;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: $color-blanco;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+
+        i { margin-right: 10px; color: $color-amarillo; }
+
+        @include desde-tablet { font-size: 2.4rem; }
+    }
+
+    p {
+        color: rgba(255,255,255,0.9);
+        font-size: $fs-normal;
+        @include desde-tablet { font-size: $fs-base; }
+    }
+}
+
+// -----------------------------------------------
+// GRID
+// -----------------------------------------------
+.contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $espacio-md;
+    align-items: start;
+
+    @include desde-tablet {
+        grid-template-columns: 1fr 1.5fr;
+        gap: $espacio-lg;
+    }
+}
+
+// -----------------------------------------------
+// INFO LATERAL
+// -----------------------------------------------
+.contacto-info-card {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    padding: $espacio-md;
+    margin-bottom: $espacio-sm;
+
+    h2 {
+        font-family: $fuente-titulo;
+        font-size: $fs-h2;
+        font-weight: 800;
+        color: $color-oscuro;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: $fs-normal;
+        color: #666;
+        line-height: 1.6;
+    }
+}
+
+.contacto-datos {
+    display: flex;
+    flex-direction: column;
+    gap: $espacio-sm;
+    margin-bottom: $espacio-sm;
+}
+
+.contacto-dato {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    padding: $espacio-sm;
+    transition: $transicion;
+
+    &:hover { box-shadow: $sombra-hover; transform: translateX(4px); }
+
+    .contacto-dato-icono {
+        width: 42px;
+        height: 42px;
+        background-color: rgba(255,107,107,0.12);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        i { color: $color-coral; font-size: 1rem; }
+    }
+
+    h4 {
+        font-size: $fs-normal;
+        font-weight: 700;
+        color: $color-oscuro;
+        margin-bottom: 4px;
+    }
+
+    p {
+        font-size: $fs-normal;
+        color: #555;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    small {
+        font-size: $fs-pequeno;
+        color: #aaa;
+    }
+}
+
+// Redes sociales
+.contacto-redes {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    padding: $espacio-sm;
+
+    h4 {
+        font-size: $fs-normal;
+        font-weight: 700;
+        color: $color-oscuro;
+        margin-bottom: 12px;
+    }
+}
+
+.contacto-redes-iconos {
+    display: flex;
+    gap: 10px;
+
+    a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        color: $color-blanco;
+        transition: $transicion;
+        text-decoration: none;
+
+        &:hover { transform: scale(1.1); }
+
+        &.red-facebook  { background-color: #1877f2; }
+        &.red-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        &.red-twitter   { background-color: #000; }
+        &.red-whatsapp  { background-color: #25d366; }
+    }
+}
+
+// -----------------------------------------------
+// FORMULARIO
+// -----------------------------------------------
+.contacto-formulario {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    padding: $espacio-md;
+
+    h2 {
+        font-family: $fuente-titulo;
+        font-size: $fs-h2;
+        font-weight: 800;
+        color: $color-oscuro;
+        margin-bottom: $espacio-md;
+        padding-bottom: $espacio-sm;
+        border-bottom: 2px solid $color-fondo;
+    }
+}
+
+.form-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: $espacio-sm;
+}
+
+// -----------------------------------------------
+// ÉXITO
+// -----------------------------------------------
+.contacto-exito {
+    text-align: center;
+    padding: $espacio-lg $espacio-md;
+
+    i {
+        font-size: 4rem;
+        color: $color-verde;
+        display: block;
+        margin-bottom: $espacio-sm;
+    }
+
+    h2 {
+        font-family: $fuente-titulo;
+        font-size: $fs-h2;
+        font-weight: 800;
+        color: $color-oscuro;
+        margin-bottom: $espacio-sm;
+    }
+
+    p {
+        color: #666;
+        font-size: $fs-normal;
+        line-height: 1.6;
+    }
+}
