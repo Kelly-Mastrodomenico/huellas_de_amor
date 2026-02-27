@@ -12,7 +12,8 @@ if (!isset($tituloPagina)) {
 
 $enAdmin    = (strpos($_SERVER['PHP_SELF'], '/admin/') !== false);
 $enMascotas = (strpos($_SERVER['PHP_SELF'], '/mascotas/') !== false);
-$rutaBase   = ($enAdmin || $enMascotas) ? '../' : '';
+$enUsuario  = (strpos($_SERVER['PHP_SELF'], '/usuario/') !== false);
+$rutaBase   = ($enAdmin || $enMascotas || $enUsuario) ? '../' : '';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -60,13 +61,16 @@ $rutaBase   = ($enAdmin || $enMascotas) ? '../' : '';
                     class="<?php echo ($paginaActual == 'contacto.php') ? 'active' : ''; ?>">Contacto</a></li>
 
                 <?php if (estaLogueado()) { ?>
-                    <?php if (esAdmin()) { ?>
-                        <li><a href="<?php echo $rutaBase; ?>admin/panel.php" class="btn-admin">
-                            <i class="fa-solid fa-lock"></i> Admin</a></li>
-                    <?php } ?>
-                    <li><a href="<?php echo $rutaBase; ?>logout.php" class="btn-cerrar-sesion">
-                        Cerrar sesion</a></li>
-                <?php } else { ?>
+    <?php if (esAdmin()) { ?>
+        <li><a href="<?php echo $rutaBase; ?>admin/panel.php" class="btn-admin">
+            <i class="fa-solid fa-lock"></i> Admin</a></li>
+    <?php } ?>
+    <li><a href="<?php echo $rutaBase; ?>usuario/panel.php"
+        class="<?php echo ($paginaActual == 'panel.php') ? 'active' : ''; ?>">
+        <i class="fa-solid fa-user"></i> Mi Panel</a></li>
+    <li><a href="<?php echo $rutaBase; ?>logout.php" class="btn-cerrar-sesion">
+        Cerrar sesion</a></li>
+<?php } else { ?>
                     <li class="btn-login"><a href="<?php echo $rutaBase; ?>login.php">Login</a></li>
                     <li class="btn-registro"><a href="<?php echo $rutaBase; ?>registro.php">Registrarse</a></li>
                 <?php } ?>

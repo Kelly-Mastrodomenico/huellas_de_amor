@@ -57,12 +57,10 @@ exit();
 }
 
 // Obtener foto principal de la mascota
+
 $fotoPrincipal = obtenerFotoPrincipal($idMascota, $conexion);
-if ($fotoPrincipal && !str_starts_with($fotoPrincipal, 'http')) {
-$fotoPrincipal = $fotoPrincipal;
-}
 if (!$fotoPrincipal) {
-$fotoPrincipal = 'https://picsum.photos/200/200?random=' . $idMascota;
+    $fotoPrincipal = 'https://picsum.photos/400/300?random=' . $idMascota;
 }
 
 // PROCESAR FORMULARIO

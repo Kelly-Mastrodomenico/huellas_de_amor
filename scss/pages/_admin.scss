@@ -1,3 +1,7 @@
+// ============================================================
+// pages/_admin.scss — Mobile First
+// ============================================================
+
 .contenedor-admin {
     background-color: $color-blanco;
     padding: $espacio-sm;
@@ -205,4 +209,97 @@
     padding: $espacio-lg;
     color: #888;
     font-size: $fs-base;
+}
+
+// -----------------------------------------------
+// MODAL
+// -----------------------------------------------
+.modal-fondo {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $espacio-sm;
+}
+
+.modal-caja {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-hover;
+    padding: $espacio-md;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+
+    h3 {
+        font-family: $fuente-titulo;
+        font-size: $fs-h2;
+        font-weight: 800;
+        color: $color-oscuro;
+        margin-bottom: $espacio-sm;
+    }
+}
+
+.modal-cerrar {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #aaa;
+    padding: 4px 8px;
+    border-radius: $radio-sm;
+    transition: $transicion;
+
+    &:hover { color: $color-coral; background-color: #fff0f0; }
+}
+
+.modal-detalle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $espacio-sm;
+
+    > div {
+        strong { font-size: $fs-pequeno; color: #888; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
+        p { font-size: $fs-normal; color: $color-oscuro; margin: 0; line-height: 1.5; }
+    }
+
+    .modal-detalle-full { grid-column: 1 / -1; }
+}
+
+// -----------------------------------------------
+// PAGINACION
+// -----------------------------------------------
+.paginacion {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: $espacio-md;
+
+    .paginacion-item {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: $radio-sm;
+        background-color: $color-fondo;
+        color: $color-oscuro;
+        font-weight: 700;
+        font-size: $fs-normal;
+        text-decoration: none;
+        transition: $transicion;
+        border: 1px solid #e3e6f0;
+
+        &:hover { background-color: $color-coral; color: $color-blanco; border-color: $color-coral; }
+        &.activo { background-color: $color-coral; color: $color-blanco; border-color: $color-coral; }
+    }
 }
