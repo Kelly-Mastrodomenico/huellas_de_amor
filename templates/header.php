@@ -10,8 +10,9 @@ if (!isset($tituloPagina)) {
     $tituloPagina = 'Huellas de Amor';
 }
 
-$enAdmin  = (strpos($_SERVER['PHP_SELF'], '/admin/') !== false);
-$rutaBase = $enAdmin ? '../' : '';
+$enAdmin    = (strpos($_SERVER['PHP_SELF'], '/admin/') !== false);
+$enMascotas = (strpos($_SERVER['PHP_SELF'], '/mascotas/') !== false);
+$rutaBase   = ($enAdmin || $enMascotas) ? '../' : '';
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -1,0 +1,268 @@
+// Estilos exclusivos de mascotas/detalle.php
+
+// Migas de pan
+.migas-pan {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: $fs-normal;
+    color: #888;
+    margin-bottom: $espacio-sm;
+    flex-wrap: wrap;
+
+    a {
+        color: $color-coral;
+        text-decoration: none;
+        &:hover { text-decoration: underline; }
+    }
+
+    i { font-size: 0.65rem; color: #ccc; }
+
+    span:last-child { color: $color-oscuro; font-weight: 600; }
+}
+
+// GRID PRINCIPAL: foto izquierda, info derecha
+
+.detalle-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $espacio-md;
+
+    @include desde-tablet {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+
+    @include desde-desktop {
+        grid-template-columns: 1.1fr 1fr;
+        gap: $espacio-lg;
+    }
+}
+
+// GALERIA
+.detalle-galeria {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.galeria-principal {
+    position: relative;
+    border-radius: $radio-md;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+
+    a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+        &:hover { transform: scale(1.03); }
+    }
+
+    .badge-detalle {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        font-size: $fs-normal;
+        padding: 6px 14px;
+    }
+}
+
+.galeria-miniaturas {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    .miniatura {
+        width: calc(25% - 6px);
+        aspect-ratio: 1;
+        border-radius: $radio-sm;
+        overflow: hidden;
+        border: 2px solid transparent;
+        transition: $transicion;
+
+        &:hover, &.activa { border-color: $color-coral; }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+}
+
+// INFO DERECHA
+.detalle-info {
+    display: flex;
+    flex-direction: column;
+    gap: $espacio-sm;
+}
+
+.detalle-encabezado {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    h1 {
+        font-family: $fuente-titulo;
+        font-size: $fs-h2;
+        font-weight: 800;
+        color: $color-oscuro;
+        margin: 0;
+    }
+
+    .detalle-edad {
+        font-size: $fs-base;
+        color: $color-coral;
+        font-weight: 700;
+    }
+}
+
+// Chips de datos rapidos
+.detalle-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background-color: $color-fondo;
+        color: $color-oscuro;
+        padding: 6px 14px;
+        border-radius: $radio-full;
+        font-size: $fs-normal;
+        font-weight: 600;
+
+        i { color: $color-turquesa; }
+    }
+}
+
+// Secciones de texto
+.detalle-seccion {
+    h3 {
+        font-family: $fuente-titulo;
+        font-size: $fs-base;
+        font-weight: 700;
+        color: $color-oscuro;
+        margin-bottom: 8px;
+    }
+
+    p {
+        font-size: $fs-normal;
+        color: #555;
+        line-height: 1.7;
+    }
+}
+
+// Protectora
+.detalle-protectora {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: $color-fondo;
+    padding: 12px 16px;
+    border-radius: $radio-md;
+    border-left: 4px solid $color-turquesa;
+
+    i {
+        font-size: 1.4rem;
+        color: $color-turquesa;
+        flex-shrink: 0;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+
+        span   { font-size: $fs-pequeno; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+        strong { font-size: $fs-base; color: $color-oscuro; }
+        small  { font-size: $fs-pequeno; color: #888; }
+    }
+}
+
+// BOTONES DE ACCION
+.detalle-botones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @include desde-movil-grande {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .btn-grande {
+        padding: 12px 24px;
+        font-size: $fs-base;
+        flex: 1;
+        text-align: center;
+        min-width: 160px;
+    }
+}
+
+// Boton guardar favorito
+.btn-favorito-detalle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    border: 2px solid #dde2e8;
+    border-radius: $radio-lg;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #888;
+    font-size: $fs-normal;
+    font-weight: 600;
+    font-family: $fuente-cuerpo;
+    transition: $transicion;
+
+    &:hover, &.activo {
+        border-color: $color-coral;
+        color: $color-coral;
+        i { font-weight: 900; }
+    }
+}
+
+// COMPARTIR
+.detalle-compartir {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #f0f0f0;
+
+    span {
+        font-size: $fs-normal;
+        color: #888;
+    }
+
+    a {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background-color: $color-fondo;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $color-oscuro;
+        font-size: 0.9rem;
+        transition: $transicion;
+        text-decoration: none;
+
+        &:hover { background-color: $color-coral; color: $color-blanco; }
+    }
+}

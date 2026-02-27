@@ -79,7 +79,7 @@ jQuery se encarga de animar las slides en main.js -->
 <div class="hero-contenido">
 <h1>Encuentra tu <span>compañero</span> perfecto</h1>
 <p>Miles de mascotas esperan un hogar lleno de amor. Tu nueva historia comienza aqui.</p>
-<div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+<div class="hero-botones">
 <a href="adoptar.php" class="btn-coral">
 <i class="fa-solid fa-paw"></i> Explorar Mascotas
 </a>

@@ -22,7 +22,6 @@ if (!isset($tituloPagina)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($tituloPagina); ?></title>
-
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -32,8 +31,9 @@ if (!isset($tituloPagina)) {
 <header>
     <div class="contenedor-header">
 
+        <!-- LOGO — ruta fija con ../ porque siempre estamos en /admin/ -->
         <a href="../index.php" class="logo">
-            <i class="fa-solid fa-paw"></i>
+            <img src="../assets/img/Logo.png" alt="Huellas de Amor">
             <span>Huellas de Amor</span>
         </a>
 
@@ -96,16 +96,12 @@ if (!isset($tituloPagina)) {
     </div>
 </header>
 
-<!-- Mensaje flash -->
 <?php if (isset($_SESSION['mensaje'])) { ?>
     <div class="alerta alerta-<?php echo $_SESSION['mensaje_tipo']; ?>" id="mensajeFlash">
         <?php echo htmlspecialchars($_SESSION['mensaje']); ?>
     </div>
-    <?php
-    unset($_SESSION['mensaje']);
-    unset($_SESSION['mensaje_tipo']);
-    ?>
+    <?php unset($_SESSION['mensaje'], $_SESSION['mensaje_tipo']); ?>
 <?php } ?>
 
 <main>
-<div class="contenedor"></div>
+<div class="contenedor">
