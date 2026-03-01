@@ -3,7 +3,7 @@
 // Panel del usuario registrado
 // ============================================================
 
-// Grid: móvil 1 col, tablet+ sidebar + contenido
+// Grid: movil 1 col, tablet+ sidebar + contenido
 .panel-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -20,9 +20,7 @@
     }
 }
 
-// -----------------------------------------------
 // SIDEBAR IZQUIERDO
-// -----------------------------------------------
 .panel-sidebar {
     display: flex;
     flex-direction: column;
@@ -162,9 +160,7 @@
     @include desde-tablet { display: inline-block; }
 }
 
-// -----------------------------------------------
 // CONTENIDO DERECHO
-// -----------------------------------------------
 .panel-contenido {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -188,9 +184,7 @@
     }
 }
 
-// -----------------------------------------------
 // LISTA DE SOLICITUDES
-// -----------------------------------------------
 .panel-solicitudes {
     display: flex;
     flex-direction: column;
@@ -241,9 +235,7 @@
     }
 }
 
-// -----------------------------------------------
 // ESTADO VACIO
-// -----------------------------------------------
 .panel-vacio {
     text-align: center;
     padding: $espacio-xl $espacio-md;
@@ -269,9 +261,7 @@
     }
 }
 
-// -----------------------------------------------
 // PERFIL — filas de datos
-// -----------------------------------------------
 .panel-perfil-datos {
     display: flex;
     flex-direction: column;
@@ -304,9 +294,7 @@
     }
 }
 
-// -----------------------------------------------
 // EDITAR PERFIL
-// -----------------------------------------------
 .form-editar-perfil {
     display: flex;
     flex-direction: column;

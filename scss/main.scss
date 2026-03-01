@@ -5,25 +5,25 @@
 //   sass --watch scss/main.scss:css/style.css
 // ============================================================
 
-// 1. Abstracts (variables y mixins — sin CSS propio)
+// Abstracts (variables y mixins — sin CSS propio)
 @import 'abstracts/variables';
 @import 'abstracts/mixins';
 
-// 2. Base
+// Base
 @import 'base/reset';
 @import 'base/tipografia';
 
-// 3. Layout
+// Layout
 @import 'layout/header';
 @import 'layout/footer';
 @import 'layout/grid';
 
-// 4. Componentes
+// Componentes
 @import 'components/buttons';
 @import 'components/cards';
 @import 'components/forms';
 
-// 5. Páginas
+// Paginas
 @import 'pages/home';
 @import 'pages/adoptar';
 @import 'pages/admin';

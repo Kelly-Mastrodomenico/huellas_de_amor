@@ -142,187 +142,187 @@ if ($usuario['foto_perfil']) {
 </div>
 
 <section class="seccion">
-    <div class="contenedor">
-        <div class="panel-grid">
+<div class="contenedor">
+<div class="panel-grid">
 
-            <!-- SIDEBAR -->
-            <aside class="panel-sidebar">
-                <div class="panel-perfil-card">
-                    <div class="panel-avatar">
-                        <?php if ($fotoPerfilUrl) { ?>
-                            <img src="<?php echo htmlspecialchars($fotoPerfilUrl); ?>"
-                                 alt="<?php echo htmlspecialchars($usuario['nombre']); ?>">
-                        <?php } else { ?>
-                            <i class="fa-solid fa-user"></i>
-                        <?php } ?>
-                    </div>
-                    <h3><?php echo htmlspecialchars($usuario['nombre'] . ' ' . $usuario['apellidos']); ?></h3>
-                    <p><?php echo htmlspecialchars($usuario['email']); ?></p>
-                    <span class="badge badge-disponible">Adoptante</span>
-                </div>
+<!-- SIDEBAR -->
+<aside class="panel-sidebar">
+    <div class="panel-perfil-card">
+        <div class="panel-avatar">
+            <?php if ($fotoPerfilUrl) { ?>
+                <img src="<?php echo htmlspecialchars($fotoPerfilUrl); ?>"
+                        alt="<?php echo htmlspecialchars($usuario['nombre']); ?>">
+            <?php } else { ?>
+                <i class="fa-solid fa-user"></i>
+            <?php } ?>
+        </div>
+        <h3><?php echo htmlspecialchars($usuario['nombre'] . ' ' . $usuario['apellidos']); ?></h3>
+        <p><?php echo htmlspecialchars($usuario['email']); ?></p>
+        <span class="badge badge-disponible">Adoptante</span>
+    </div>
 
-                <nav class="panel-menu">
-                    <a href="panel.php?tab=solicitudes" class="panel-menu-item">
-                        <i class="fa-solid fa-file-pen"></i><span>Mis Solicitudes</span>
-                    </a>
-                    <a href="panel.php?tab=favoritos" class="panel-menu-item">
-                        <i class="fa-solid fa-heart"></i><span>Mis Favoritos</span>
-                    </a>
-                    <a href="panel.php?tab=apadrinamientos" class="panel-menu-item">
-                        <i class="fa-solid fa-star"></i><span>Mis Apadrinamientos</span>
-                    </a>
-                    <a href="panel.php?tab=donaciones" class="panel-menu-item">
-                        <i class="fa-solid fa-hand-holding-heart"></i><span>Mis Donaciones</span>
-                    </a>
-                    <a href="panel.php?tab=perfil" class="panel-menu-item activo">
-                        <i class="fa-solid fa-user-pen"></i><span>Mi Perfil</span>
-                    </a>
-                    <a href="../logout.php" class="panel-menu-item panel-menu-salir">
-                        <i class="fa-solid fa-right-from-bracket"></i><span>Cerrar Sesion</span>
-                    </a>
-                </nav>
-            </aside>
+    <nav class="panel-menu">
+        <a href="panel.php?tab=solicitudes" class="panel-menu-item">
+            <i class="fa-solid fa-file-pen"></i><span>Mis Solicitudes</span>
+        </a>
+        <a href="panel.php?tab=favoritos" class="panel-menu-item">
+            <i class="fa-solid fa-heart"></i><span>Mis Favoritos</span>
+        </a>
+        <a href="panel.php?tab=apadrinamientos" class="panel-menu-item">
+            <i class="fa-solid fa-star"></i><span>Mis Apadrinamientos</span>
+        </a>
+        <a href="panel.php?tab=donaciones" class="panel-menu-item">
+            <i class="fa-solid fa-hand-holding-heart"></i><span>Mis Donaciones</span>
+        </a>
+        <a href="panel.php?tab=perfil" class="panel-menu-item activo">
+            <i class="fa-solid fa-user-pen"></i><span>Mi Perfil</span>
+        </a>
+        <a href="../logout.php" class="panel-menu-item panel-menu-salir">
+            <i class="fa-solid fa-right-from-bracket"></i><span>Cerrar Sesion</span>
+        </a>
+    </nav>
+</aside>
 
-            <!-- CONTENIDO -->
-            <div class="panel-contenido">
-                <div class="panel-seccion">
+<!-- CONTENIDO -->
+<div class="panel-contenido">
+    <div class="panel-seccion">
 
-                    <?php if (!empty($errores)) { ?>
-                    <div class="alerta alerta-error">
-                        <?php foreach ($errores as $error) { ?>
-                            <p><?php echo htmlspecialchars($error); ?></p>
-                        <?php } ?>
-                    </div>
+        <?php if (!empty($errores)) { ?>
+        <div class="alerta alerta-error">
+            <?php foreach ($errores as $error) { ?>
+                <p><?php echo htmlspecialchars($error); ?></p>
+            <?php } ?>
+        </div>
+        <?php } ?>
+
+        <!-- FORMULARIO DATOS PERSONALES -->
+        <h2><i class="fa-solid fa-user-pen"></i> Editar Perfil</h2>
+
+        <form method="post" action="editar_perfil.php"
+                enctype="multipart/form-data" class="form-editar-perfil">
+
+            <!-- Foto de perfil -->
+            <div class="editar-foto-grupo">
+                <div class="editar-foto-preview" id="fotoPreview">
+                    <?php if ($fotoPerfilUrl) { ?>
+                        <img src="<?php echo htmlspecialchars($fotoPerfilUrl); ?>"
+                                alt="Foto de perfil" id="imgPreview">
+                    <?php } else { ?>
+                        <i class="fa-solid fa-user" id="iconoDefault"></i>
+                        <img src="" alt="" id="imgPreview" style="display:none;">
                     <?php } ?>
-
-                    <!-- FORMULARIO DATOS PERSONALES -->
-                    <h2><i class="fa-solid fa-user-pen"></i> Editar Perfil</h2>
-
-                    <form method="post" action="editar_perfil.php"
-                          enctype="multipart/form-data" class="form-editar-perfil">
-
-                        <!-- Foto de perfil -->
-                        <div class="editar-foto-grupo">
-                            <div class="editar-foto-preview" id="fotoPreview">
-                                <?php if ($fotoPerfilUrl) { ?>
-                                    <img src="<?php echo htmlspecialchars($fotoPerfilUrl); ?>"
-                                         alt="Foto de perfil" id="imgPreview">
-                                <?php } else { ?>
-                                    <i class="fa-solid fa-user" id="iconoDefault"></i>
-                                    <img src="" alt="" id="imgPreview" style="display:none;">
-                                <?php } ?>
-                            </div>
-                            <div class="editar-foto-info">
-                                <label for="foto_perfil" class="btn-outline-turquesa btn-sm" style="cursor:pointer;">
-                                    <i class="fa-solid fa-camera"></i> Cambiar foto
-                                </label>
-                                <input type="file" id="foto_perfil" name="foto_perfil"
-                                       accept="image/jpeg,image/png,image/webp" style="display:none;">
-                                <small>JPG, PNG o WEBP. Max 2MB.</small>
-                            </div>
-                        </div>
-
-                        <div class="form-dos-columnas">
-                            <div class="form-grupo">
-                                <label for="nombre">Nombre <span class="obligatorio">*</span></label>
-                                <input type="text" id="nombre" name="nombre"
-                                       value="<?php echo htmlspecialchars($usuario['nombre']); ?>"
-                                       required>
-                            </div>
-                            <div class="form-grupo">
-                                <label for="apellidos">Apellidos <span class="obligatorio">*</span></label>
-                                <input type="text" id="apellidos" name="apellidos"
-                                       value="<?php echo htmlspecialchars($usuario['apellidos']); ?>"
-                                       required>
-                            </div>
-                        </div>
-
-                        <div class="form-grupo">
-                            <label for="email">Correo electronico</label>
-                            <input type="email" value="<?php echo htmlspecialchars($usuario['email']); ?>"
-                                   disabled style="background:#f7f9fc; cursor:not-allowed;">
-                            <small class="form-ayuda">El email no se puede cambiar.</small>
-                        </div>
-
-                        <div class="form-dos-columnas">
-                            <div class="form-grupo">
-                                <label for="telefono">Telefono</label>
-                                <input type="tel" id="telefono" name="telefono"
-                                       value="<?php echo htmlspecialchars($usuario['telefono'] ?? ''); ?>"
-                                       placeholder="612 345 678">
-                            </div>
-                            <div class="form-grupo">
-                                <label for="ciudad">Ciudad</label>
-                                <input type="text" id="ciudad" name="ciudad"
-                                       value="<?php echo htmlspecialchars($usuario['ciudad'] ?? ''); ?>"
-                                       placeholder="Tu ciudad">
-                            </div>
-                        </div>
-
-                        <div class="form-dos-columnas">
-                            <div class="form-grupo">
-                                <label for="direccion">Direccion</label>
-                                <input type="text" id="direccion" name="direccion"
-                                       value="<?php echo htmlspecialchars($usuario['direccion'] ?? ''); ?>"
-                                       placeholder="Calle, numero...">
-                            </div>
-                            <div class="form-grupo">
-                                <label for="cp">Codigo Postal</label>
-                                <input type="text" id="cp" name="cp"
-                                       value="<?php echo htmlspecialchars($usuario['cp'] ?? ''); ?>"
-                                       placeholder="03000">
-                            </div>
-                        </div>
-
-                        <div class="form-botones">
-                            <button type="submit" name="guardar_datos" class="btn-coral btn-grande">
-                                <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios
-                            </button>
-                            <a href="panel.php" class="btn-outline-turquesa btn-grande">Cancelar</a>
-                        </div>
-
-                    </form>
-
-                    <!-- SEPARADOR -->
-                    <hr style="margin: 32px 0; border-color: #f0f0f0;">
-
-                    <!-- CAMBIAR CONTRASEÑA -->
-                    <h2><i class="fa-solid fa-lock"></i> Cambiar Contraseña</h2>
-
-                    <form method="post" action="editar_perfil.php" class="form-editar-perfil">
-
-                        <div class="form-grupo">
-                            <label for="password_actual">Contraseña actual <span class="obligatorio">*</span></label>
-                            <input type="password" id="password_actual" name="password_actual"
-                                   placeholder="Tu contraseña actual" required>
-                        </div>
-
-                        <div class="form-dos-columnas">
-                            <div class="form-grupo">
-                                <label for="password_nueva">Nueva contraseña <span class="obligatorio">*</span></label>
-                                <input type="password" id="password_nueva" name="password_nueva"
-                                       placeholder="Minimo 6 caracteres" required>
-                            </div>
-                            <div class="form-grupo">
-                                <label for="password_repetir">Repetir contraseña <span class="obligatorio">*</span></label>
-                                <input type="password" id="password_repetir" name="password_repetir"
-                                       placeholder="Repite la nueva contraseña" required>
-                            </div>
-                        </div>
-
-                        <div class="form-botones">
-                            <button type="submit" name="cambiar_password" class="btn-oscuro btn-grande">
-                                <i class="fa-solid fa-key"></i> Cambiar Contraseña
-                            </button>
-                        </div>
-
-                    </form>
-
+                </div>
+                <div class="editar-foto-info">
+                    <label for="foto_perfil" class="btn-outline-turquesa btn-sm" style="cursor:pointer;">
+                        <i class="fa-solid fa-camera"></i> Cambiar foto
+                    </label>
+                    <input type="file" id="foto_perfil" name="foto_perfil"
+                            accept="image/jpeg,image/png,image/webp" style="display:none;">
+                    <small>JPG, PNG o WEBP. Max 2MB.</small>
                 </div>
             </div>
 
-        </div>
+            <div class="form-dos-columnas">
+                <div class="form-grupo">
+                    <label for="nombre">Nombre <span class="obligatorio">*</span></label>
+                    <input type="text" id="nombre" name="nombre"
+                            value="<?php echo htmlspecialchars($usuario['nombre']); ?>"
+                            required>
+                </div>
+                <div class="form-grupo">
+                    <label for="apellidos">Apellidos <span class="obligatorio">*</span></label>
+                    <input type="text" id="apellidos" name="apellidos"
+                            value="<?php echo htmlspecialchars($usuario['apellidos']); ?>"
+                            required>
+                </div>
+            </div>
+
+            <div class="form-grupo">
+                <label for="email">Correo electronico</label>
+                <input type="email" value="<?php echo htmlspecialchars($usuario['email']); ?>"
+                        disabled style="background:#f7f9fc; cursor:not-allowed;">
+                <small class="form-ayuda">El email no se puede cambiar.</small>
+            </div>
+
+            <div class="form-dos-columnas">
+                <div class="form-grupo">
+                    <label for="telefono">Telefono</label>
+                    <input type="tel" id="telefono" name="telefono"
+                            value="<?php echo htmlspecialchars($usuario['telefono'] ?? ''); ?>"
+                            placeholder="612 345 678">
+                </div>
+                <div class="form-grupo">
+                    <label for="ciudad">Ciudad</label>
+                    <input type="text" id="ciudad" name="ciudad"
+                            value="<?php echo htmlspecialchars($usuario['ciudad'] ?? ''); ?>"
+                            placeholder="Tu ciudad">
+                </div>
+            </div>
+
+            <div class="form-dos-columnas">
+                <div class="form-grupo">
+                    <label for="direccion">Direccion</label>
+                    <input type="text" id="direccion" name="direccion"
+                            value="<?php echo htmlspecialchars($usuario['direccion'] ?? ''); ?>"
+                            placeholder="Calle, numero...">
+                </div>
+                <div class="form-grupo">
+                    <label for="cp">Codigo Postal</label>
+                    <input type="text" id="cp" name="cp"
+                            value="<?php echo htmlspecialchars($usuario['cp'] ?? ''); ?>"
+                            placeholder="03000">
+                </div>
+            </div>
+
+            <div class="form-botones">
+                <button type="submit" name="guardar_datos" class="btn-coral btn-grande">
+                    <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios
+                </button>
+                <a href="panel.php" class="btn-outline-turquesa btn-grande">Cancelar</a>
+            </div>
+
+        </form>
+
+        <!-- SEPARADOR -->
+        <hr style="margin: 32px 0; border-color: #f0f0f0;">
+
+        <!-- CAMBIAR CONTRASEÑA -->
+        <h2><i class="fa-solid fa-lock"></i> Cambiar Contraseña</h2>
+
+        <form method="post" action="editar_perfil.php" class="form-editar-perfil">
+
+            <div class="form-grupo">
+                <label for="password_actual">Contraseña actual <span class="obligatorio">*</span></label>
+                <input type="password" id="password_actual" name="password_actual"
+                        placeholder="Tu contraseña actual" required>
+            </div>
+
+            <div class="form-dos-columnas">
+                <div class="form-grupo">
+                    <label for="password_nueva">Nueva contraseña <span class="obligatorio">*</span></label>
+                    <input type="password" id="password_nueva" name="password_nueva"
+                            placeholder="Minimo 6 caracteres" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="password_repetir">Repetir contraseña <span class="obligatorio">*</span></label>
+                    <input type="password" id="password_repetir" name="password_repetir"
+                            placeholder="Repite la nueva contraseña" required>
+                </div>
+            </div>
+
+            <div class="form-botones">
+                <button type="submit" name="cambiar_password" class="btn-oscuro btn-grande">
+                    <i class="fa-solid fa-key"></i> Cambiar Contraseña
+                </button>
+            </div>
+
+        </form>
+
     </div>
+</div>
+
+</div>
+</div>
 </section>
 
 <!-- Preview foto antes de subir -->

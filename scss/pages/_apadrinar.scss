@@ -1,10 +1,7 @@
-// ============================================================
-// pages/_apadrinar.scss — Mobile First
-// ============================================================
 
-// -----------------------------------------------
+// pages/_apadrinar.scss — Mobile First
+
 // HERO
-// -----------------------------------------------
 .apadrinar-hero {
     position: relative;
     height: 380px;
@@ -69,9 +66,7 @@
     }
 }
 
-// -----------------------------------------------
-// PASOS — cómo funciona
-// -----------------------------------------------
+// PASOS — como funciona
 .apadrinar-pasos {
     display: grid;
     grid-template-columns: 1fr;
@@ -143,9 +138,7 @@
     @include desde-tablet { display: block; }
 }
 
-// -----------------------------------------------
 // PLANES
-// -----------------------------------------------
 .apadrinar-planes {
     display: grid;
     grid-template-columns: 1fr;
@@ -318,9 +311,8 @@
     i { margin-right: 3px; }
 }
 
-// -----------------------------------------------
-// BENEFICIOS — ¿Por qué apadrinar?
-// -----------------------------------------------
+
+// BENEFICIOS — Por que apadrinar?
 .apadrinar-beneficios {
     display: grid;
     grid-template-columns: 1fr;
@@ -367,9 +359,7 @@
     }
 }
 
-// -----------------------------------------------
 // SELECTOR DE PLANES EN FORMULARIO
-// -----------------------------------------------
 .planes-selector {
     display: flex;
     flex-direction: column;

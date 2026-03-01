@@ -30,7 +30,7 @@ if (isset($_GET['borrar']) && is_numeric($_GET['borrar'])) {
     exit();
 }
 
-// MARCAR TODOS COMO LEÍDOS
+// MARCAR TODOS COMO LEIDOS
 if (isset($_POST['marcar_todos'])) {
     try {
         $conexion->prepare("UPDATE `contacto` SET `leido` = 1")->execute();
@@ -46,7 +46,7 @@ if (isset($_POST['marcar_todos'])) {
 $filtroLeido = isset($_GET['leido']) ? trim($_GET['leido']) : '';
 $filtroBuscar = isset($_GET['buscar']) ? trim($_GET['buscar']) : '';
 
-// Paginación
+// Paginacion
 $porPagina    = 10;
 $paginaActual = isset($_GET['pagina']) && is_numeric($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
 $offset       = ($paginaActual - 1) * $porPagina;
@@ -75,7 +75,7 @@ try {
     $totalMensajes = $stmtTotal->fetchColumn();
     $totalPaginas  = ceil($totalMensajes / $porPagina);
 
-    // No leídos
+    // No leidos
     $stmtNoLeidos = $conexion->prepare("SELECT COUNT(*) FROM `contacto` WHERE `leido` = 0");
     $stmtNoLeidos->execute();
     $totalNoLeidos = $stmtNoLeidos->fetchColumn();
@@ -200,7 +200,7 @@ try {
         </table>
     </div>
 
-    <!-- PAGINACIÓN -->
+    <!-- PAGINACION -->
     <?php if ($totalPaginas > 1) { ?>
     <div class="paginacion">
         <?php for ($i = 1; $i <= $totalPaginas; $i++) { ?>
@@ -257,7 +257,7 @@ document.querySelectorAll('.btn-ver-mensaje').forEach(function(btn) {
 
         document.getElementById('modalMensaje').style.display = 'flex';
 
-        // Marcar como leído automáticamente al abrir
+        // Marcar como leido automaticamente al abrir
         if (msg.leido == 0) {
             fetch('contacto.php?leer=' + msg.id);
             msg.leido = 1;

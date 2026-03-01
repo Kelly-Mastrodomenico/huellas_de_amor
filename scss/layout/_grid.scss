@@ -1,6 +1,5 @@
-// ============================================================
+
 // layout/_grid.scss — Mobile First
-// ============================================================
 
 .contenedor {
     max-width: $ancho-maximo;
@@ -37,12 +36,11 @@
     }
 }
 
-// -----------------------------------------------
+
 // MASCOTAS
 // Móvil V: 1 col | Móvil H (576px): 2 col
 // Tablet V (768px): 3 col
 // Tablet H (1024px) + Desktop: 4 col
-// -----------------------------------------------
 .grid-mascotas {
     display: grid;
     gap: $espacio-sm;
@@ -61,10 +59,8 @@
     }
 }
 
-// -----------------------------------------------
 // CATEGORIAS
 // Móvil V: 1 col | Móvil H+: 3 col
-// -----------------------------------------------
 .grid-categorias {
     display: grid;
     gap: $espacio-sm;
@@ -75,10 +71,8 @@
     }
 }
 
-// -----------------------------------------------
 // TESTIMONIOS
 // Móvil V/H: 1 col | Tablet V+: 3 col
-// -----------------------------------------------
 .grid-testimonios {
     display: grid;
     gap: $espacio-sm;
@@ -89,10 +83,8 @@
     }
 }
 
-// -----------------------------------------------
 // NOTICIAS
 // Móvil V/H: 1 col | Tablet V+: 3 col
-// -----------------------------------------------
 .grid-noticias {
     display: grid;
     gap: $espacio-sm;
@@ -103,9 +95,7 @@
     }
 }
 
-// -----------------------------------------------
 // CONTADORES
-// -----------------------------------------------
 .grid-contadores {
     display: grid;
     grid-template-columns: 1fr;
@@ -117,9 +107,8 @@
     }
 }
 
-// -----------------------------------------------
+
 // ALERTAS FLASH
-// -----------------------------------------------
 .alerta {
     padding: 12px $espacio-sm;
     border-radius: $radio-sm;

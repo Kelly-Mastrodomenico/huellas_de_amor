@@ -2,13 +2,13 @@
 $tituloPagina = 'Noticias y Eventos — Huellas de Amor';
 require_once 'templates/header.php';
 
-// Categorías disponibles
+// Categorias disponibles
 $categorias = ['Eventos', 'Consejos', 'Salud', 'Leyes', 'Adopciones'];
 
-// Filtro de categoría
+// Filtro de categoria
 $categoriaActiva = isset($_GET['categoria']) ? trim($_GET['categoria']) : '';
 
-// Paginación
+// Paginacion
 $porPagina    = 9;
 $paginaActual = isset($_GET['pagina']) && is_numeric($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
 $offset       = ($paginaActual - 1) * $porPagina;
@@ -29,7 +29,7 @@ try {
     $totalNoticias = $stmtTotal->fetchColumn();
     $totalPaginas  = ceil($totalNoticias / $porPagina);
 
-    // Noticias de esta página
+    // Noticias de esta pagina
     $stmtNoticias = $conexion->prepare(
         "SELECT * FROM `noticias` $donde
          ORDER BY `fecha_publicacion` DESC
@@ -41,7 +41,7 @@ try {
     $stmtNoticias->execute();
     $noticias = $stmtNoticias->fetchAll();
 
-    // Próximos eventos
+    // Proximos eventos
     $stmtEventos = $conexion->prepare(
         "SELECT * FROM `eventos`
          WHERE `publicado` = 1 AND `fecha_evento` >= NOW()
@@ -51,7 +51,7 @@ try {
     $stmtEventos->execute();
     $proximosEventos = $stmtEventos->fetchAll();
 
-    // Noticia destacada (la más reciente)
+    // Noticia destacada (la mas reciente)
     $stmtDestacada = $conexion->prepare(
         "SELECT * FROM `noticias` WHERE `publicada` = 1
          ORDER BY `fecha_publicacion` DESC LIMIT 1"
@@ -111,7 +111,7 @@ try {
         </a>
         <?php } ?>
 
-        <!-- Filtros de categoría -->
+        <!-- Filtros de categoria -->
         <div class="noticias-filtros">
             <a href="noticias.php"
                 class="filtro-btn <?php echo empty($categoriaActiva) ? 'activo' : ''; ?>">
@@ -152,7 +152,7 @@ try {
             <?php } ?>
         </div>
 
-        <!-- Paginación -->
+        <!-- Paginacion -->
         <?php if ($totalPaginas > 1) { ?>
         <div class="paginacion" style="margin-top:32px;">
             <?php for ($i = 1; $i <= $totalPaginas; $i++) { ?>
@@ -173,7 +173,7 @@ try {
     <!-- SIDEBAR -->
     <aside class="noticias-sidebar">
 
-        <!-- Próximos eventos -->
+        <!-- Proximos eventos -->
         <div class="sidebar-card">
             <h3><i class="fa-solid fa-calendar-days"></i> Próximos Eventos</h3>
             <?php if (!empty($proximosEventos)) { ?>
@@ -204,7 +204,7 @@ try {
             <?php } ?>
         </div>
 
-        <!-- Categorías -->
+        <!-- Categorias -->
         <div class="sidebar-card">
             <h3><i class="fa-solid fa-tags"></i> Categorías</h3>
             <div class="sidebar-categorias">

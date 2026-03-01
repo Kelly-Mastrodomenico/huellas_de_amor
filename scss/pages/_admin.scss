@@ -1,7 +1,5 @@
-// ============================================================
-// pages/_admin.scss — Mobile First
-// ============================================================
 
+// pages/_admin.scss — Mobile First
 .contenedor-admin {
     background-color: $color-blanco;
     padding: $espacio-sm;
@@ -37,10 +35,8 @@
     }
 }
 
-// -----------------------------------------------
 // STATS GRID
 // Móvil: 2 col | Desktop: 4 col
-// -----------------------------------------------
 .grid-stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -95,9 +91,7 @@
     &.stat-oscuro   { background-color: $color-oscuro; }
 }
 
-// -----------------------------------------------
 // BOTONES ACCESO RAPIDO
-// -----------------------------------------------
 .botones-rapidos {
     display: flex;
     gap: 10px;
@@ -113,9 +107,7 @@
     }
 }
 
-// -----------------------------------------------
 // BARRA ADMIN (filtros + botones)
-// -----------------------------------------------
 .barra-admin {
     display: flex;
     justify-content: space-between;
@@ -148,9 +140,7 @@
     flex-wrap: wrap;
 }
 
-// -----------------------------------------------
-// TABLA ADMIN — scroll horizontal en móvil
-// -----------------------------------------------
+// TABLA ADMIN — scroll horizontal en movil
 .tabla-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -201,9 +191,7 @@
     }
 }
 
-// -----------------------------------------------
 // SIN RESULTADOS
-// -----------------------------------------------
 .sin-resultados {
     text-align: center;
     padding: $espacio-lg;
@@ -211,9 +199,7 @@
     font-size: $fs-base;
 }
 
-// -----------------------------------------------
 // MODAL
-// -----------------------------------------------
 .modal-fondo {
     position: fixed;
     inset: 0;
@@ -274,9 +260,7 @@
     .modal-detalle-full { grid-column: 1 / -1; }
 }
 
-// -----------------------------------------------
 // PAGINACION
-// -----------------------------------------------
 .paginacion {
     display: flex;
     gap: 6px;
@@ -304,9 +288,7 @@
     }
 }
 
-// -----------------------------------------------
-// FILA NO LEÍDA EN TABLA
-// -----------------------------------------------
+// FILA NO LEIDA EN TABLA
 .fila-no-leida {
     background-color: #fff8f0 !important;
     font-weight: 600;
@@ -314,9 +296,7 @@
     &:hover { background-color: #fff3e0 !important; }
 }
 
-// -----------------------------------------------
 // FORMULARIO ADMIN NOTICIAS — layout 2 columnas
-// -----------------------------------------------
 .form-admin-noticia {
     display: flex;
     flex-direction: column;
@@ -397,9 +377,8 @@
     }
 }
 
-// -----------------------------------------------
-// ESTADÍSTICAS DONACIONES ADMIN
-// -----------------------------------------------
+
+// ESTADISTICAS DONACIONES ADMIN
 .donacion-stats-admin {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

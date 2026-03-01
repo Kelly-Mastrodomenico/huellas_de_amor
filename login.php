@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 </div>
 
-<!-- Validacion con JavaScript — Requisito DWEC -->
+<!-- Validacion con JavaScript -->
 <script>
 $(document).ready(function() {
 

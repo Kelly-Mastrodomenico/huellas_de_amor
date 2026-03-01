@@ -1,10 +1,4 @@
-// ============================================================
-// components/_cards.scss
-// ============================================================
-
-// -----------------------------------------------
 // TARJETA MASCOTA
-// -----------------------------------------------
 .tarjeta-mascota {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -94,9 +88,7 @@
     }
 }
 
-// -----------------------------------------------
 // BADGES
-// -----------------------------------------------
 .badge {
     display: inline-block;
     padding: 4px 10px;
@@ -114,9 +106,8 @@
 .badge-gato       { background-color: #fce4ec; color: #c2185b; }
 .badge-otro       { background-color: #f3e5f5; color: #7b1fa2; }
 
-// -----------------------------------------------
+
 // TARJETA CATEGORIA
-// -----------------------------------------------
 .tarjeta-categoria {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -148,9 +139,7 @@
     p  { font-size: $fs-pequeno; color: #888; margin: 0; }
 }
 
-// -----------------------------------------------
 // TARJETA NOTICIA
-// -----------------------------------------------
 .tarjeta-noticia {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -180,9 +169,7 @@
     }
 }
 
-// -----------------------------------------------
 // TARJETA TESTIMONIO
-// -----------------------------------------------
 .tarjeta-testimonio {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -234,9 +221,7 @@
     }
 }
 
-// -----------------------------------------------
 // CONTADORES
-// -----------------------------------------------
 .seccion-contadores {
     // MÓVIL: tarjeta blanca unida
     background-color: $color-blanco;

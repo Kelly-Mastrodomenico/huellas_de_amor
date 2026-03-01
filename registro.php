@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script>
 $(document).ready(function() {
 
-    // Pasar DNI a mayúsculas mientras escribe
+    // Pasar DNI a mayusculas mientras escribe
     $('#dni').on('input', function() {
         $(this).val($(this).val().toUpperCase());
     });
@@ -200,7 +200,7 @@ $(document).ready(function() {
             hayErrores = true;
         }
 
-        // Teléfono (opcional)
+        // Telefono (opcional)
         var telefono = $('#telefono').val().trim();
         var regexTelefono = /^[0-9\s\+\-]{9,15}$/;
         if (telefono !== '' && !regexTelefono.test(telefono)) {

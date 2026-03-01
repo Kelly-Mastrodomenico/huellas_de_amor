@@ -45,9 +45,7 @@
     }
 }
 
-// -----------------------------------------------
-// LAYOUT — artículo + sidebar
-// -----------------------------------------------
+// LAYOUT — articulo + sidebar
 .noticias-layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -66,9 +64,7 @@
 
 .noticias-principal { min-width: 0; }
 
-// -----------------------------------------------
 // NOTICIA DESTACADA
-// -----------------------------------------------
 .noticia-destacada {
     display: grid;
     grid-template-columns: 1fr;
@@ -134,9 +130,7 @@
     }
 }
 
-// -----------------------------------------------
-// FILTROS DE CATEGORÍA
-// -----------------------------------------------
+// FILTROS DE CATEGORIA
 .noticias-filtros {
     display: flex;
     gap: 8px;
@@ -164,9 +158,7 @@
     }
 }
 
-// -----------------------------------------------
-// BADGE CATEGORÍA EN TARJETA
-// -----------------------------------------------
+// BADGE CATEGORIA EN TARJETA
 .noticia-cat, .noticia-categoria {
     display: inline-block;
     padding: 3px 10px;
@@ -191,9 +183,7 @@
     i { margin-right: 4px; }
 }
 
-// -----------------------------------------------
 // SIDEBAR
-// -----------------------------------------------
 .noticias-sidebar {
     display: flex;
     flex-direction: column;
@@ -271,7 +261,7 @@
     p  { font-size: $fs-pequeno; color: #888; margin: 0; i { margin-right: 4px; } }
 }
 
-// Categorías sidebar
+// Categorias sidebar
 .sidebar-categorias { display: flex; flex-direction: column; gap: 2px; }
 
 .sidebar-cat-item {
@@ -295,9 +285,7 @@
     i { color: #ddd; font-size: 0.75rem; }
 }
 
-// -----------------------------------------------
-// ARTÍCULO DETALLE
-// -----------------------------------------------
+// ARTICULO DETALLE
 .noticia-articulo {
     background-color: $color-blanco;
     border-radius: $radio-md;

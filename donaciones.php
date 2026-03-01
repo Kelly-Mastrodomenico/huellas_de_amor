@@ -6,7 +6,7 @@ $errores  = [];
 $enviado  = false;
 $idUsuario = estaLogueado() ? (int) $_SESSION['usuario_id'] : null;
 
-// Estadísticas de donaciones
+// Estadisticas de donaciones
 $totalDonado    = 0;
 $totalDonantes  = 0;
 try {
@@ -22,7 +22,7 @@ try {
     $totalDonantes = 0;
 }
 
-// PROCESAR DONACIÓN
+// PROCESAR DONACION
 if (isset($_POST['donar'])) {
     $monto      = trim($_POST['monto'] ?? '');
     $montoCustom = trim($_POST['monto_custom'] ?? '');
@@ -86,7 +86,7 @@ if (isset($_POST['donar'])) {
     }
 }
 
-// Recuperar datos de éxito
+// Recuperar datos de exito
 $donacionExito = null;
 if ($enviado && isset($_SESSION['donacion_exito'])) {
     $donacionExito = $_SESSION['donacion_exito'];
@@ -107,7 +107,7 @@ if ($enviado && isset($_SESSION['donacion_exito'])) {
 </div>
 </section>
 
-<!-- ESTADÍSTICAS -->
+<!-- ESTADISTICAS -->
 <section class="seccion">
 <div class="contenedor">
 <div class="donacion-stats">
@@ -214,7 +214,7 @@ if ($enviado && isset($_SESSION['donacion_exito'])) {
     <div class="donacion-formulario">
 
         <?php if ($enviado && $donacionExito) { ?>
-        <!-- PANTALLA DE ÉXITO -->
+        <!-- PANTALLA DE EXITO -->
         <div class="donacion-exito">
             <div class="donacion-exito-icono">
                 <i class="fa-solid fa-circle-check"></i>
@@ -252,7 +252,7 @@ if ($enviado && isset($_SESSION['donacion_exito'])) {
         </div>
 
         <?php } else { ?>
-        <!-- FORMULARIO DE DONACIÓN -->
+        <!-- FORMULARIO DE DONACION -->
         <?php if (!empty($errores)) { ?>
         <div class="alerta alerta-error">
             <?php foreach ($errores as $error) { ?>
@@ -339,7 +339,7 @@ if ($enviado && isset($_SESSION['donacion_exito'])) {
                 </div>
             </div>
 
-            <!-- Paso 4: Método de pago -->
+            <!-- Paso 4: Metodo de pago -->
             <div class="donacion-paso">
                 <h3><span class="paso-num">4</span> Método de pago</h3>
                 <div class="metodos-pago">
@@ -446,7 +446,7 @@ document.querySelectorAll('input[name="monto"]').forEach(function(radio) {
     });
 });
 
-// Mostrar método de pago correspondiente
+// Mostrar metodo de pago correspondiente
 document.querySelectorAll('input[name="metodo_pago"]').forEach(function(radio) {
     radio.addEventListener('change', function() {
         document.getElementById('datosTarjeta').style.display = 'none';
@@ -459,7 +459,7 @@ document.querySelectorAll('input[name="metodo_pago"]').forEach(function(radio) {
     });
 });
 
-// Formatear número de tarjeta
+// Formatear numero de tarjeta
 const numTarjeta = document.getElementById('numTarjeta');
 if (numTarjeta) {
     numTarjeta.addEventListener('input', function() {

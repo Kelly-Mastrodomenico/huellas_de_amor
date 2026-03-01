@@ -126,7 +126,7 @@ if ($exportarPDF) {
     $pdf->AddPage();
     $pdf->SetAutoPageBreak(true, 20);
 
-    // Resumen estadísticas
+    // Resumen estadisticas
     $pdf->SetFont('Arial', 'B', 10);
     $pdf->SetFillColor(247, 249, 252);
     $pdf->SetTextColor(44, 62, 80);
@@ -211,7 +211,6 @@ if ($exportarPDF) {
     </div>
 
     <!-- ESTADISTICAS -->
-<!-- ESTADÍSTICAS -->
 <div class="dashboard-stats">
     <div class="stat-card stat-coral">
         <i class="fa-solid fa-hand-holding-heart"></i>

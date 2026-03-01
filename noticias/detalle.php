@@ -28,7 +28,7 @@ try {
         exit();
     }
 
-    // Noticias relacionadas misma categoría
+    // Noticias relacionadas misma categoria
     $stmtRel = $conexion->prepare(
         "SELECT * FROM `noticias`
          WHERE `publicada` = 1 AND `categoria` = :categoria AND `id` != :id
@@ -66,7 +66,7 @@ $imgNoticia = $noticia['imagen']
     <div class="contenedor">
         <div class="noticias-layout">
 
-<!-- ARTÍCULO -->
+<!-- ARTICULO -->
 <article class="noticia-articulo">
 
     <!-- Cabecera -->
@@ -96,7 +96,7 @@ $imgNoticia = $noticia['imagen']
 
     <!-- Contenido -->
     <div class="noticia-articulo-contenido">
-        <?php echo nl2br(htmlspecialchars($noticia['contenido'])); ?>
+        <?php echo $noticia['contenido']; ?>
     </div>
 
     <!-- Compartir -->

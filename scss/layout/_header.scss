@@ -1,7 +1,6 @@
-// ============================================================
+
 // layout/_header.scss — Mobile First
 // Basado en mockups: movil V/H, tablet V/H, escritorio
-// ============================================================
 
 // Altura del header por breakpoint
 $h-header-movil:   60px;
@@ -44,11 +43,9 @@ header {
     }
 }
 
-// -----------------------------------------------
 // LOGO
 // Movil: icono mediano + texto
 // Desktop: icono un poco mayor + texto
-// -----------------------------------------------
 .logo {
     display: flex;
     align-items: center;
@@ -88,9 +85,7 @@ header {
     }
 }
 
-// -----------------------------------------------
 // HAMBURGUESA — solo movil y tablet V
-// -----------------------------------------------
 #menu-hamburguesa { display: none; }
 
 #icono-hamburguesa {
@@ -109,9 +104,7 @@ header {
     }
 }
 
-// -----------------------------------------------
 // NAVEGACION
-// -----------------------------------------------
 nav {
     order: 2;
 
@@ -129,7 +122,7 @@ nav {
         z-index: 998;
         list-style: none;
         margin: 0;
-        max-height: calc(100vh - 120px);  // ← altura máxima
+        max-height: calc(100vh - 120px);  // altura máxima
     overflow-y: auto; 
 
         @include desde-tablet {
@@ -230,9 +223,8 @@ nav {
     display: flex;
 }
 
-// -----------------------------------------------
+
 // NAV INFERIOR FIJA — solo movil
-// -----------------------------------------------
 .nav-inferior {
     position: fixed;
     bottom: 0;

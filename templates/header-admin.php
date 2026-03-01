@@ -85,7 +85,7 @@ if (!isset($tituloPagina)) {
         <i class="fa-solid fa-envelope"></i>
         <span>Mensajes</span>
         <?php
-        // Contar no leídos
+        // Contar no leidos
         try {
             $stmtBadge = $conexion->prepare("SELECT COUNT(*) FROM `contacto` WHERE `leido` = 0");
             $stmtBadge->execute();

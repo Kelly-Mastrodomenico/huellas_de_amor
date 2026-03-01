@@ -5,7 +5,7 @@ require_once 'templates/header.php';
 $errores = [];
 $enviado = false;
 
-// Prellenar datos si está logueado
+// Prellenar datos si esta logueado
 $nombrePre = '';
 $emailPre  = '';
 if (estaLogueado() && isset($_SESSION['usuario_id'])) {
@@ -60,7 +60,7 @@ if (isset($_POST['enviar'])) {
             $stmt->bindParam(':mensaje', $mensaje, PDO::PARAM_STR);
             $stmt->execute();
 
-            // Enviar email al admin (funciona en producción con servidor SMTP)
+            // Enviar email al admin (funciona en produccion con servidor SMTP)
             // $emailAdmin = 'admin@huellasdeamor.com';
             // $asuntoEmail = '[Huellas de Amor] Nuevo mensaje: ' . $asunto;
             // $cuerpo = "Nombre: $nombre\nEmail: $email\nAsunto: $asunto\n\nMensaje:\n$mensaje";

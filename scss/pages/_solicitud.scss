@@ -1,6 +1,6 @@
 // Página solicitud_adopcion.php
 
-// Grid: móvil 1 col, tablet+ 2 col
+// Grid: movil 1 col, tablet+ 2 col
 .solicitud-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -12,9 +12,7 @@
     }
 }
 
-// -----------------------------------------------
 // COLUMNA IZQUIERDA — card mascota
-// -----------------------------------------------
 .solicitud-mascota-card {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -99,9 +97,7 @@
     }
 }
 
-// -----------------------------------------------
 // COLUMNA DERECHA — formulario
-// -----------------------------------------------
 .solicitud-formulario {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -125,9 +121,7 @@
     }
 }
 
-// -----------------------------------------------
 // FORMULARIO
-// -----------------------------------------------
 .form-solicitud {
     display: flex;
     flex-direction: column;
@@ -221,9 +215,7 @@
     }
 }
 
-// -----------------------------------------------
 // PANTALLA DE EXITO / AVISO
-// -----------------------------------------------
 .solicitud-exito {
     text-align: center;
     padding: $espacio-lg $espacio-md;

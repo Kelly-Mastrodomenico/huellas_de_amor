@@ -2,9 +2,7 @@
 // pages/_contacto.scss — Mobile First
 // ============================================================
 
-// -----------------------------------------------
 // HERO
-// -----------------------------------------------
 .contacto-hero {
     position: relative;
     height: 220px;
@@ -48,9 +46,7 @@
     }
 }
 
-// -----------------------------------------------
 // GRID
-// -----------------------------------------------
 .contacto-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -63,9 +59,7 @@
     }
 }
 
-// -----------------------------------------------
 // INFO LATERAL
-// -----------------------------------------------
 .contacto-info-card {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -180,9 +174,7 @@
     }
 }
 
-// -----------------------------------------------
 // FORMULARIO
-// -----------------------------------------------
 .contacto-formulario {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -206,9 +198,7 @@
     gap: $espacio-sm;
 }
 
-// -----------------------------------------------
-// ÉXITO
-// -----------------------------------------------
+// EXITO
 .contacto-exito {
     text-align: center;
     padding: $espacio-lg $espacio-md;

@@ -386,9 +386,7 @@ jQuery anima los numeros desde 0 hasta el valor real -->
 <?php } ?>
 
 
-<!-- ============================================================
-SECCION 7: CTA — APADRINAR O DONAR
-============================================================ -->
+<!--SECCION 7: CTA — APADRINAR O DONAR-->
 <section class="seccion-cta">
 <h2>¿Quieres marcar la diferencia?</h2>
 <p>No todos pueden adoptar, pero todos pueden ayudar. Tu apoyo financiero o tiempo de voluntariado salva vidas.</p>

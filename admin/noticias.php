@@ -11,7 +11,6 @@ $exito      = '';
 
 // -----------------------------------------------
 // ELIMINAR
-// -----------------------------------------------
 if (isset($_GET['borrar']) && is_numeric($_GET['borrar'])) {
     try {
         $stmtBorrar = $conexion->prepare("DELETE FROM `noticias` WHERE `id` = :id");
@@ -25,9 +24,7 @@ if (isset($_GET['borrar']) && is_numeric($_GET['borrar'])) {
     exit();
 }
 
-// -----------------------------------------------
 // PUBLICAR / DESPUBLICAR
-// -----------------------------------------------
 if (isset($_GET['toggle']) && is_numeric($_GET['toggle'])) {
     try {
         $stmtToggle = $conexion->prepare(
@@ -46,9 +43,8 @@ if (isset($_GET['toggle']) && is_numeric($_GET['toggle'])) {
     exit();
 }
 
-// -----------------------------------------------
+
 // GUARDAR (crear o editar)
-// -----------------------------------------------
 if (isset($_POST['guardar'])) {
     $titulo    = trim($_POST['titulo']    ?? '');
     $contenido = trim($_POST['contenido'] ?? '');
@@ -56,7 +52,7 @@ if (isset($_POST['guardar'])) {
     $publicada = isset($_POST['publicada']) ? 1 : 0;
     $idAdmin   = (int) $_SESSION['usuario_id'];
 
-    // Generar slug desde título
+    // Generar slug desde titulo
     $slug = strtolower(trim($titulo));
     $slug = preg_replace('/[áàäâ]/u', 'a', $slug);
     $slug = preg_replace('/[éèëê]/u', 'e', $slug);
@@ -133,9 +129,8 @@ if (isset($_POST['guardar'])) {
     $accion = $idEditar > 0 ? 'editar' : 'nueva';
 }
 
-// -----------------------------------------------
+
 // CARGAR NOTICIA PARA EDITAR
-// -----------------------------------------------
 $noticiaEditar = null;
 if (($accion === 'editar') && $idEditar > 0) {
     try {
@@ -153,9 +148,8 @@ if (($accion === 'editar') && $idEditar > 0) {
     }
 }
 
-// -----------------------------------------------
+
 // LISTADO
-// -----------------------------------------------
 $noticias      = [];
 $totalNoticias = 0;
 $filtroCategoria = trim($_GET['categoria'] ?? '');
@@ -205,9 +199,7 @@ if ($accion === 'listado') {
 <div class="contenedor-admin">
 
 <?php if ($accion === 'listado') { ?>
-<!-- ================================================
-     LISTADO
-     ================================================ -->
+<!-- LISTADO -->
 <div class="admin-cabecera">
     <h1><i class="fa-solid fa-newspaper"></i> Noticias</h1>
     <a href="noticias.php?accion=nueva" class="btn-coral btn-sm">
@@ -315,7 +307,7 @@ if ($accion === 'listado') {
     </table>
 </div>
 
-<!-- Paginación -->
+<!-- Paginacion -->
 <?php if (!empty($totalPaginas) && $totalPaginas > 1) { ?>
 <div class="paginacion" style="margin-top:24px;">
     <?php for ($i = 1; $i <= $totalPaginas; $i++) { ?>
@@ -365,7 +357,7 @@ if ($accion === 'listado') {
         <!-- Columna principal -->
         <div class="form-admin-principal">
 
-            <!-- Título -->
+            <!-- Titulo -->
             <div class="form-grupo">
                 <label for="titulo">Título <span class="obligatorio">*</span></label>
                 <input type="text" id="titulo" name="titulo"
@@ -482,7 +474,7 @@ tinymce.init({
     promotion: false
 });
 
-// Generar slug automático desde el título
+// Generar slug automatico desde el título
 function generarSlug(texto) {
     let slug = texto.toLowerCase()
         .replace(/[áàäâ]/g, 'a')

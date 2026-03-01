@@ -62,9 +62,7 @@
     }
 }
 
-// -----------------------------------------------
-// ESTADÍSTICAS
-// -----------------------------------------------
+// ESTADISTICAS
 .donacion-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -104,9 +102,7 @@
     }
 }
 
-// -----------------------------------------------
 // DESTINO DONACIONES
-// -----------------------------------------------
 .donacion-destinos {
     display: grid;
     grid-template-columns: 1fr;
@@ -177,9 +173,7 @@
     &.destino-progreso-verde { background-color: $color-verde; }
 }
 
-// -----------------------------------------------
 // GRID FORMULARIO
-// -----------------------------------------------
 .donacion-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -266,9 +260,7 @@
     strong { color: #1976d2; }
 }
 
-// -----------------------------------------------
 // FORMULARIO
-// -----------------------------------------------
 .donacion-formulario {
     background-color: $color-blanco;
     border-radius: $radio-md;
@@ -309,7 +301,7 @@
     flex-shrink: 0;
 }
 
-// Montos rápidos
+// Montos rapidos
 .montos-rapidos {
     display: flex;
     gap: 10px;
@@ -356,7 +348,7 @@
     }
 }
 
-// Métodos de pago
+// Metodos de pago
 .metodos-pago {
     display: flex;
     gap: 10px;
@@ -426,9 +418,7 @@
     a { color: $color-turquesa; }
 }
 
-// -----------------------------------------------
-// PANTALLA ÉXITO
-// -----------------------------------------------
+// PANTALLA EXITO
 .donacion-exito {
     text-align: center;
     padding: $espacio-md 0;

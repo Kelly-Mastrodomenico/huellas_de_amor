@@ -39,7 +39,7 @@ $rutaBase   = ($enAdmin || $enMascotas || $enUsuario || $enNoticias) ? '../' : '
             <span>Huellas de Amor</span>
         </a>
 
-        <!-- HAMBURGUESA — checkbox tecnica sin JS -->
+        <!-- HAMBURGUESA — checkbox tecnica -->
         <input type="checkbox" id="menu-hamburguesa">
         <label for="menu-hamburguesa" id="icono-hamburguesa">
             <i class="fa-solid fa-bars"></i>

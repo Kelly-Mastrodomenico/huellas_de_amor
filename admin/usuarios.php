@@ -5,9 +5,7 @@ protegerAdmin();
 
 $errores = [];
 
-// -----------------------------------------------
 // CAMBIAR ROL
-// -----------------------------------------------
 if (isset($_POST['cambiar_rol'])) {
     $idUsuario = isset($_POST['id_usuario']) && is_numeric($_POST['id_usuario']) ? (int) $_POST['id_usuario'] : 0;
     $nuevoRol  = trim($_POST['nuevo_rol'] ?? '');
@@ -32,9 +30,7 @@ if (isset($_POST['cambiar_rol'])) {
     exit();
 }
 
-// -----------------------------------------------
 // ACTIVAR / DESACTIVAR
-// -----------------------------------------------
 if (isset($_GET['toggle']) && is_numeric($_GET['toggle'])) {
     $idToggle = (int) $_GET['toggle'];
     if ($idToggle === (int) $_SESSION['usuario_id']) {
@@ -55,9 +51,8 @@ if (isset($_GET['toggle']) && is_numeric($_GET['toggle'])) {
     exit();
 }
 
-// -----------------------------------------------
+
 // ELIMINAR
-// -----------------------------------------------
 if (isset($_GET['borrar']) && is_numeric($_GET['borrar'])) {
     $idBorrar = (int) $_GET['borrar'];
     if ($idBorrar === (int) $_SESSION['usuario_id']) {
@@ -76,9 +71,8 @@ if (isset($_GET['borrar']) && is_numeric($_GET['borrar'])) {
     exit();
 }
 
-// -----------------------------------------------
-// FILTROS Y PAGINACIÓN
-// -----------------------------------------------
+
+// FILTROS Y PAGINACION
 $filtroRol    = trim($_GET['rol']    ?? '');
 $filtroBuscar = trim($_GET['buscar'] ?? '');
 $filtroActivo = trim($_GET['activo'] ?? '');
@@ -106,7 +100,7 @@ try {
         $params[':buscar3'] = '%' . $filtroBuscar . '%';
     }
 
-    // Estadísticas
+    // Estadisticas
     $stmtStats = $conexion->prepare(
         "SELECT
             COUNT(*) AS total,
@@ -152,7 +146,7 @@ try {
         <h1><i class="fa-solid fa-users"></i> Usuarios</h1>
     </div>
 
-    <!-- ESTADÍSTICAS -->
+    <!-- ESTADISTICAS -->
     <div class="dashboard-stats">
         <div class="stat-card stat-coral">
             <i class="fa-solid fa-users"></i>
@@ -318,7 +312,7 @@ try {
         </table>
     </div>
 
-    <!-- PAGINACIÓN -->
+    <!-- PAGINACION -->
     <?php if ($totalPaginas > 1) { ?>
     <div class="paginacion" style="margin-top:24px;">
         <?php for ($i = 1; $i <= $totalPaginas; $i++) { ?>
