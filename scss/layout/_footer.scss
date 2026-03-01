@@ -1,104 +1,244 @@
-// layout/_footer.scss
+// ============================================================
+// layout/_footer.scss — Mobile First
+// Movil V:    fondo oscuro, 1 columna centrada
+// Tablet V/H: fondo oscuro, logo centrado arriba + columnas
+// Desktop:    fondo blanco, 4 columnas
+// ============================================================
+
 footer {
     background-color: $color-oscuro;
     color: #ccc;
-    padding: $espacio-lg 0 $espacio-md;
-    margin-top: $espacio-lg;
+    padding: $espacio-lg 0 0;
+
+    @include desde-desktop {
+        background-color: $color-blanco;
+        color: $color-oscuro;
+        border-top: 1px solid #e8ecf0;
+    }
 }
 
+// -----------------------------------------------
+// GRID PRINCIPAL
+// -----------------------------------------------
 .contenedor-footer {
     max-width: $ancho-maximo;
     margin: 0 auto;
-    padding: 0 $espacio-sm;
+    padding: 0 $espacio-sm $espacio-lg;
+
+    // MOVIL: 1 columna centrada
     display: grid;
     grid-template-columns: 1fr;
     gap: $espacio-md;
+    text-align: center;
 
+    // TABLET V: primer bloque ancho completo + 3 columnas debajo
     @include desde-tablet {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        text-align: left;
+
+        .bloque-footer:first-child {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+        }
     }
 
+    // TABLET H: mismo layout que tablet V pero 3 columnas
+    @include desde-tablet-h {
+        grid-template-columns: repeat(3, 1fr);
+        text-align: left;
+
+        .bloque-footer:first-child {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+        }
+    }
+
+    // DESKTOP: 4 columnas, primer bloque vuelve a ser 1 columna normal
     @include desde-desktop {
-        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+        grid-template-columns: 1.8fr 1fr 1fr 1.5fr;
+        text-align: left;
+
+        .bloque-footer:first-child {
+            grid-column: auto;
+            display: block;
+            text-align: left;
+            align-items: flex-start;
+        }
     }
 }
 
+// -----------------------------------------------
+// BLOQUES
+// -----------------------------------------------
 .bloque-footer {
-    h3 {
-        font-family: $fuente-titulo;
-        color: $color-blanco;
-        font-size: $fs-base;
-        margin-bottom: $espacio-sm;
-    }
 
-    p {
-        color: #aaa;
-        font-size: $fs-normal;
-        line-height: 1.8;
-        margin: 0;
-    }
-
+    // --- Logo ---
     .logo-footer {
         display: flex;
+        flex-direction: column;  // movil/tablet: icono encima del span
         align-items: center;
-        gap: 8px;
-        margin-bottom: $espacio-sm;
+        justify-content: center;
+        gap: 6px;
         text-decoration: none;
+        margin-bottom: 12px;
 
-        i    { color: $color-coral; font-size: 1.4rem; }
+        @include desde-desktop {
+            flex-direction: row;  // desktop: icono al lado del span
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 12px;
+        }
+
+        img {
+            height: 65px;
+            width: auto;
+
+            @include desde-tablet {
+                height: 55px;
+            }
+
+            @include desde-desktop {
+                height: 36px;
+            }
+        }
+
         span {
             font-family: $fuente-titulo;
             font-weight: 800;
             font-size: $fs-medio;
             color: $color-blanco;
-        }
-    }
 
-    ul li {
-        margin-bottom: 8px;
-
-        a {
-            color: #aaa;
-            font-size: $fs-normal;
-            transition: $transicion;
-
-            &:hover {
+            @include desde-desktop {
                 color: $color-coral;
-                padding-left: 4px;
+                font-size: 1rem;
             }
         }
     }
 
-    .redes-sociales {
-        display: flex;
-        gap: $espacio-sm;
-        margin-top: $espacio-sm;
+    // --- Parrafo ---
+    p {
+        font-size: $fs-normal;
+        line-height: 1.8;
+        color: #aaa;
+        margin: 0 auto 12px;
+        max-width: 280px;
 
-        a {
-            color: #aaa;
-            font-size: 1.2rem;
+        @include desde-tablet {
+            max-width: none;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+            margin: 0;
+        }
+
+        @include desde-desktop {
+            white-space: normal;
+            text-align: left;
+            color: #666;
+            margin: 0 0 12px;
+        }
+    }
+
+    // --- Titulos columnas ---
+    h3 {
+        font-family: $fuente-titulo;
+        font-size: $fs-base;
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: $color-blanco;
+
+        @include desde-desktop {
+            color: $color-oscuro;
+        }
+    }
+
+    // --- Listas de enlaces ---
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        @include desde-tablet {
+            align-items: flex-start;
+        }
+
+        li a {
+            font-size: $fs-normal;
+            text-decoration: none;
             transition: $transicion;
+            color: #aaa;
+
+            @include desde-desktop {
+                color: #666;
+            }
 
             &:hover { color: $color-coral; }
         }
     }
 
+    // --- Redes sociales ---
+    .redes-sociales {
+        display: flex;
+        gap: 16px;
+        margin-top: 16px;
+        justify-content: center;
+
+        @include desde-desktop {
+            justify-content: flex-start;
+        }
+
+        a {
+            font-size: 1.2rem;
+            transition: $transicion;
+            color: #aaa;
+
+            @include desde-desktop {
+                color: #888;
+            }
+
+            &:hover { color: $color-coral; }
+        }
+    }
+
+    // --- Newsletter ---
     .form-newsletter {
         display: flex;
         gap: 8px;
-        margin-top: $espacio-sm;
+        margin-bottom: 12px;
 
         input[type="email"] {
             flex: 1;
-            padding: 10px 12px;
-            border: 1px solid #444;
+            min-width: 0;
+            padding: 10px 14px;
             border-radius: $radio-sm;
+            font-size: $fs-normal;
+            border: 1px solid #3a4a5c;
             background-color: #3a4a5c;
             color: $color-blanco;
-            font-size: $fs-normal;
 
             &::placeholder { color: #888; }
             &:focus { outline: none; border-color: $color-turquesa; }
+
+            @include desde-desktop {
+                border: 1px solid #dde2e8;
+                background-color: $color-blanco;
+                color: $color-oscuro;
+                &::placeholder { color: #aaa; }
+            }
         }
 
         button {
@@ -108,18 +248,27 @@ footer {
             border-radius: $radio-sm;
             padding: 10px 14px;
             cursor: pointer;
+            flex-shrink: 0;
             transition: $transicion;
-
-            &:hover { background-color: $color-turquesa-hover; }
+            &:hover { opacity: 0.85; }
         }
     }
 }
 
+// -----------------------------------------------
+// COPYRIGHT
+// -----------------------------------------------
 .footer-copyright {
     text-align: center;
-    margin-top: $espacio-md;
-    padding-top: $espacio-sm;
+    padding: 14px $espacio-sm;
     border-top: 1px solid #3a4a5c;
-    color: #666;
     font-size: $fs-pequeno;
+    color: #555;
+    background-color: $color-oscuro;
+
+    @include desde-desktop {
+        background-color: #f7f9fc;
+        border-top: 1px solid #e8ecf0;
+        color: #888;
+    }
 }

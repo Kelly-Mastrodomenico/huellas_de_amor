@@ -1,0 +1,405 @@
+// ============================================================
+// pages/_apadrinar.scss — Mobile First
+// ============================================================
+
+// -----------------------------------------------
+// HERO
+// -----------------------------------------------
+.apadrinar-hero {
+    position: relative;
+    height: 380px;
+    background: url('https://picsum.photos/1400/600?random=99') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include desde-tablet  { height: 460px; }
+    @include desde-desktop { height: 520px; }
+}
+
+.apadrinar-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(44,62,80,0.82) 0%, rgba(78,205,196,0.55) 100%);
+}
+
+.apadrinar-hero-contenido {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 $espacio-sm;
+    max-width: 640px;
+
+    .apadrinar-hero-tag {
+        display: inline-block;
+        background-color: rgba(255,255,255,0.2);
+        color: $color-blanco;
+        padding: 6px 16px;
+        border-radius: $radio-full;
+        font-size: $fs-pequeno;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+        backdrop-filter: blur(4px);
+    }
+
+    h1 {
+        font-family: $fuente-titulo;
+        font-size: 2rem;
+        font-weight: 800;
+        color: $color-blanco;
+        margin-bottom: 16px;
+        line-height: 1.2;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+
+        span { color: $color-turquesa; }
+
+        @include desde-tablet  { font-size: 2.8rem; }
+        @include desde-desktop { font-size: 3.2rem; }
+    }
+
+    p {
+        color: rgba(255,255,255,0.9);
+        font-size: $fs-normal;
+        margin-bottom: $espacio-md;
+        line-height: 1.7;
+
+        @include desde-tablet { font-size: $fs-base; }
+    }
+}
+
+// -----------------------------------------------
+// PASOS — cómo funciona
+// -----------------------------------------------
+.apadrinar-pasos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $espacio-md;
+    align-items: center;
+
+    @include desde-tablet {
+        grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+        gap: 0;
+    }
+}
+
+.paso-item {
+    text-align: center;
+    position: relative;
+    padding: $espacio-sm;
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+
+    @include desde-tablet {
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .paso-numero {
+        width: 28px;
+        height: 28px;
+        background-color: $color-coral;
+        color: $color-blanco;
+        border-radius: 50%;
+        font-size: $fs-pequeno;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 12px;
+    }
+
+    i {
+        font-size: 2rem;
+        color: $color-turquesa;
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    h3 {
+        font-family: $fuente-titulo;
+        font-size: $fs-base;
+        font-weight: 700;
+        color: $color-oscuro;
+        margin-bottom: 8px;
+    }
+
+    p {
+        font-size: $fs-normal;
+        color: #666;
+        line-height: 1.5;
+    }
+}
+
+.paso-flecha {
+    color: #ddd;
+    font-size: 1.4rem;
+    text-align: center;
+    display: none;
+
+    @include desde-tablet { display: block; }
+}
+
+// -----------------------------------------------
+// PLANES
+// -----------------------------------------------
+.apadrinar-planes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $espacio-md;
+    margin-bottom: $espacio-md;
+    align-items: start;
+
+    @include desde-tablet {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.plan-card {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    padding: $espacio-md;
+    text-align: center;
+    position: relative;
+    transition: $transicion;
+    border: 2px solid transparent;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: $sombra-hover;
+    }
+
+    &.plan-popular {
+        border-color: $color-coral;
+
+        @include desde-tablet {
+            transform: scale(1.03);
+            &:hover { transform: scale(1.03) translateY(-4px); }
+        }
+    }
+}
+
+.plan-badge-popular {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $color-coral;
+    color: $color-blanco;
+    padding: 4px 16px;
+    border-radius: $radio-full;
+    font-size: $fs-pequeno;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.plan-icono {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto $espacio-sm;
+    font-size: 1.6rem;
+
+    &.plan-icono-turquesa { background-color: rgba(78,205,196,0.15); color: $color-turquesa; }
+    &.plan-icono-coral    { background-color: rgba(255,107,107,0.15); color: $color-coral; }
+    &.plan-icono-oscuro   { background-color: rgba(44,62,80,0.1);     color: $color-oscuro; }
+}
+
+.plan-card h3 {
+    font-family: $fuente-titulo;
+    font-size: $fs-base;
+    font-weight: 800;
+    color: $color-oscuro;
+    margin-bottom: $espacio-sm;
+}
+
+.plan-precio {
+    margin-bottom: $espacio-md;
+
+    .plan-monto {
+        font-family: $fuente-titulo;
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: $color-oscuro;
+    }
+
+    .plan-periodo {
+        font-size: $fs-normal;
+        color: #888;
+    }
+}
+
+.plan-beneficios {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 $espacio-md;
+    text-align: left;
+
+    li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 7px 0;
+        font-size: $fs-normal;
+        color: #555;
+        border-bottom: 1px solid #f5f5f5;
+
+        &:last-child { border-bottom: none; }
+
+        i {
+            color: $color-verde;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+    }
+}
+
+.plan-btn {
+    display: block;
+    padding: 12px;
+    border-radius: $radio-lg;
+    font-weight: 700;
+    text-decoration: none;
+    transition: $transicion;
+    font-size: $fs-normal;
+    text-align: center;
+
+    &.plan-btn-turquesa {
+        background-color: transparent;
+        border: 2px solid $color-turquesa;
+        color: $color-turquesa;
+        &:hover { background-color: $color-turquesa; color: $color-blanco; }
+    }
+
+    &.plan-btn-coral {
+        background-color: $color-coral;
+        color: $color-blanco;
+        &:hover { background-color: $color-coral-hover; }
+    }
+
+    &.plan-btn-oscuro {
+        background-color: $color-oscuro;
+        color: $color-blanco;
+        &:hover { background-color: #1a252f; }
+    }
+}
+
+.apadrinar-fiscal {
+    text-align: center;
+    font-size: $fs-normal;
+    color: #555;
+    background-color: #e8f4fd;
+    padding: 14px $espacio-md;
+    border-radius: $radio-md;
+
+    i      { color: #1976d2; margin-right: 6px; }
+    strong { color: #1976d2; }
+}
+
+// Badge padrinos sobre tarjeta mascota
+.badge-padrinos {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(255,107,107,0.9);
+    color: $color-blanco;
+    padding: 3px 8px;
+    border-radius: $radio-full;
+    font-size: 0.65rem;
+    font-weight: 700;
+
+    i { margin-right: 3px; }
+}
+
+// -----------------------------------------------
+// BENEFICIOS — ¿Por qué apadrinar?
+// -----------------------------------------------
+.apadrinar-beneficios {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $espacio-md;
+
+    @include desde-movil-grande {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include desde-desktop {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.beneficio-item {
+    text-align: center;
+    padding: $espacio-md;
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    transition: $transicion;
+
+    &:hover { transform: translateY(-4px); box-shadow: $sombra-hover; }
+
+    i {
+        font-size: 2rem;
+        color: $color-turquesa;
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    h3 {
+        font-family: $fuente-titulo;
+        font-size: $fs-base;
+        font-weight: 700;
+        color: $color-oscuro;
+        margin-bottom: 8px;
+    }
+
+    p {
+        font-size: $fs-normal;
+        color: #666;
+        line-height: 1.6;
+    }
+}
+
+// -----------------------------------------------
+// SELECTOR DE PLANES EN FORMULARIO
+// -----------------------------------------------
+.planes-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: $espacio-sm;
+}
+
+.plan-selector-item {
+    cursor: pointer;
+
+    input[type="radio"] { display: none; }
+
+    .plan-selector-caja {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 18px;
+        border: 2px solid #e0e0e0;
+        border-radius: $radio-md;
+        transition: $transicion;
+
+        strong { font-size: $fs-base; color: $color-oscuro; }
+        span   { font-size: $fs-h2; font-weight: 800; font-family: $fuente-titulo; color: $color-coral; }
+    }
+
+    input:checked + .plan-selector-caja {
+        border-color: $color-coral;
+        background-color: #fff8f8;
+        box-shadow: 0 0 0 3px rgba(255,107,107,0.15);
+    }
+
+    &:hover .plan-selector-caja { border-color: $color-turquesa; }
+}

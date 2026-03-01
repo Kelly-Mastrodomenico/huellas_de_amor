@@ -1,0 +1,487 @@
+// ============================================================
+// pages/_donaciones.scss — Mobile First
+// ============================================================
+
+// -----------------------------------------------
+// HERO
+// -----------------------------------------------
+.donacion-hero {
+    position: relative;
+    height: 360px;
+    background: url('https://picsum.photos/1400/600?random=77') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include desde-tablet  { height: 440px; }
+    @include desde-desktop { height: 480px; }
+}
+
+.donacion-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,107,107,0.85) 0%, rgba(44,62,80,0.75) 100%);
+}
+
+.donacion-hero-contenido {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 $espacio-sm;
+    max-width: 600px;
+
+    .donacion-hero-tag {
+        display: inline-block;
+        background-color: rgba(255,255,255,0.2);
+        color: $color-blanco;
+        padding: 6px 16px;
+        border-radius: $radio-full;
+        font-size: $fs-pequeno;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+        backdrop-filter: blur(4px);
+    }
+
+    h1 {
+        font-family: $fuente-titulo;
+        font-size: 2rem;
+        font-weight: 800;
+        color: $color-blanco;
+        margin-bottom: 16px;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+
+        span { color: $color-amarillo; }
+
+        @include desde-tablet  { font-size: 2.8rem; }
+        @include desde-desktop { font-size: 3.2rem; }
+    }
+
+    p {
+        color: rgba(255,255,255,0.9);
+        font-size: $fs-normal;
+        margin-bottom: $espacio-md;
+        line-height: 1.7;
+
+        @include desde-tablet { font-size: $fs-base; }
+    }
+}
+
+// -----------------------------------------------
+// ESTADÍSTICAS
+// -----------------------------------------------
+.donacion-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $espacio-sm;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.donacion-stat {
+    padding: $espacio-sm;
+
+    i {
+        font-size: 1.8rem;
+        color: $color-coral;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .stat-num {
+        font-family: $fuente-titulo;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: $color-oscuro;
+        display: block;
+        line-height: 1;
+        margin-bottom: 4px;
+
+        @include desde-tablet { font-size: 2.2rem; }
+    }
+
+    span:last-child {
+        font-size: $fs-pequeno;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+}
+
+// -----------------------------------------------
+// DESTINO DONACIONES
+// -----------------------------------------------
+.donacion-destinos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $espacio-md;
+
+    @include desde-tablet {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.destino-item {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    padding: $espacio-md;
+    text-align: center;
+
+    h3 {
+        font-family: $fuente-titulo;
+        font-size: $fs-base;
+        font-weight: 700;
+        color: $color-oscuro;
+        margin-bottom: 8px;
+    }
+
+    p {
+        font-size: $fs-normal;
+        color: #666;
+        margin-bottom: $espacio-sm;
+        line-height: 1.5;
+    }
+
+    span {
+        font-size: $fs-normal;
+        font-weight: 700;
+        color: $color-oscuro;
+    }
+}
+
+.destino-icono {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto $espacio-sm;
+    font-size: 1.5rem;
+
+    &.destino-coral   { background-color: rgba(255,107,107,0.15); color: $color-coral; }
+    &.destino-turquesa { background-color: rgba(78,205,196,0.15); color: $color-turquesa; }
+    &.destino-verde   { background-color: rgba(76,175,80,0.15);   color: $color-verde; }
+}
+
+.destino-barra {
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: $radio-full;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.destino-progreso {
+    height: 100%;
+    background-color: $color-coral;
+    border-radius: $radio-full;
+
+    &.destino-progreso-verde { background-color: $color-verde; }
+}
+
+// -----------------------------------------------
+// GRID FORMULARIO
+// -----------------------------------------------
+.donacion-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $espacio-md;
+    align-items: start;
+
+    @include desde-tablet {
+        grid-template-columns: 1fr 1.6fr;
+        gap: $espacio-lg;
+    }
+}
+
+.donacion-info {
+    h2 {
+        font-family: $fuente-titulo;
+        font-size: $fs-h2;
+        font-weight: 800;
+        color: $color-oscuro;
+        margin-bottom: $espacio-sm;
+    }
+
+    p {
+        color: #666;
+        font-size: $fs-normal;
+        line-height: 1.6;
+        margin-bottom: $espacio-md;
+    }
+}
+
+.donacion-metodos-info {
+    background-color: $color-fondo;
+    border-radius: $radio-md;
+    padding: $espacio-sm;
+    margin-bottom: $espacio-sm;
+
+    h4 {
+        font-size: $fs-normal;
+        font-weight: 700;
+        color: $color-oscuro;
+        margin-bottom: 6px;
+        i { color: $color-verde; margin-right: 6px; }
+    }
+
+    p { font-size: $fs-pequeno; color: #888; margin-bottom: 10px; }
+}
+
+.metodos-logos {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.metodo-logo {
+    padding: 6px 12px;
+    border-radius: $radio-sm;
+    font-size: $fs-pequeno;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &.metodo-tarjeta { background-color: #e3f2fd; color: #1976d2; }
+    &.metodo-paypal  { background-color: #e8f5e9; color: #1565c0; }
+    &.metodo-bizum   { background-color: #fff3e0; color: #e65100; }
+}
+
+.donacion-fiscal-info {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background-color: #e8f4fd;
+    border-radius: $radio-md;
+    padding: $espacio-sm;
+
+    i {
+        font-size: 1.4rem;
+        color: #1976d2;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    h4 { font-size: $fs-normal; font-weight: 700; color: $color-oscuro; margin-bottom: 4px; }
+    p  { font-size: $fs-pequeno; color: #555; margin: 0; line-height: 1.5; }
+    strong { color: #1976d2; }
+}
+
+// -----------------------------------------------
+// FORMULARIO
+// -----------------------------------------------
+.donacion-formulario {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    padding: $espacio-md;
+}
+
+.form-donacion {
+    display: flex;
+    flex-direction: column;
+    gap: $espacio-md;
+}
+
+.donacion-paso {
+    h3 {
+        font-family: $fuente-titulo;
+        font-size: $fs-base;
+        font-weight: 700;
+        color: $color-oscuro;
+        margin-bottom: $espacio-sm;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+.paso-num {
+    width: 26px;
+    height: 26px;
+    background-color: $color-coral;
+    color: $color-blanco;
+    border-radius: 50%;
+    font-size: $fs-pequeno;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+// Montos rápidos
+.montos-rapidos {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.monto-item {
+    cursor: pointer;
+
+    input[type="radio"] { display: none; }
+
+    span {
+        display: block;
+        padding: 10px 20px;
+        border: 2px solid #e0e0e0;
+        border-radius: $radio-md;
+        font-size: $fs-base;
+        font-weight: 700;
+        color: $color-oscuro;
+        transition: $transicion;
+        min-width: 60px;
+        text-align: center;
+    }
+
+    input:checked + span {
+        border-color: $color-coral;
+        background-color: $color-coral;
+        color: $color-blanco;
+    }
+
+    &:hover span { border-color: $color-coral; }
+}
+
+.monto-custom {
+    input {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #d1d3e2;
+        border-radius: $radio-sm;
+        font-size: $fs-base;
+        font-weight: 700;
+        &:focus { outline: none; border-color: $color-turquesa; }
+    }
+}
+
+// Métodos de pago
+.metodos-pago {
+    display: flex;
+    gap: 10px;
+    margin-bottom: $espacio-sm;
+    flex-wrap: wrap;
+}
+
+.metodo-item {
+    flex: 1;
+    min-width: 90px;
+    cursor: pointer;
+
+    input[type="radio"] { display: none; }
+
+    .metodo-caja {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 14px 10px;
+        border: 2px solid #e0e0e0;
+        border-radius: $radio-md;
+        transition: $transicion;
+        text-align: center;
+
+        i    { font-size: 1.4rem; color: #aaa; }
+        span { font-size: $fs-pequeno; font-weight: 700; color: #888; }
+    }
+
+    input:checked + .metodo-caja {
+        border-color: $color-turquesa;
+        background-color: rgba(78,205,196,0.08);
+        i    { color: $color-turquesa; }
+        span { color: $color-turquesa; }
+    }
+
+    &:hover .metodo-caja { border-color: $color-turquesa; }
+}
+
+.datos-pago {
+    background-color: $color-fondo;
+    border-radius: $radio-md;
+    padding: $espacio-sm;
+    display: flex;
+    flex-direction: column;
+    gap: $espacio-sm;
+}
+
+.aviso-simulado {
+    font-size: $fs-pequeno;
+    color: #e65100;
+    background-color: #fff3e0;
+    padding: 8px 12px;
+    border-radius: $radio-sm;
+    margin: 0;
+
+    i { margin-right: 6px; }
+}
+
+.donacion-legal {
+    text-align: center;
+    font-size: $fs-pequeno;
+    color: #aaa;
+    margin-top: -8px;
+
+    i { margin-right: 4px; color: $color-verde; }
+    a { color: $color-turquesa; }
+}
+
+// -----------------------------------------------
+// PANTALLA ÉXITO
+// -----------------------------------------------
+.donacion-exito {
+    text-align: center;
+    padding: $espacio-md 0;
+
+    .donacion-exito-icono {
+        i {
+            font-size: 4rem;
+            color: $color-verde;
+            display: block;
+            margin-bottom: $espacio-sm;
+        }
+    }
+
+    h2 {
+        font-family: $fuente-titulo;
+        font-size: $fs-h2;
+        font-weight: 800;
+        color: $color-oscuro;
+        margin-bottom: $espacio-sm;
+    }
+
+    p {
+        color: #666;
+        font-size: $fs-normal;
+        margin-bottom: 8px;
+        line-height: 1.6;
+    }
+}
+
+.donacion-resumen {
+    background-color: $color-fondo;
+    border-radius: $radio-md;
+    padding: $espacio-sm;
+    margin: $espacio-sm 0;
+    text-align: left;
+}
+
+.resumen-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: $fs-normal;
+
+    &:last-child { border-bottom: none; }
+
+    span   { color: #888; }
+    strong { color: $color-oscuro; }
+}

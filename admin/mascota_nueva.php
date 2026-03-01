@@ -1,4 +1,9 @@
 <?php
+// ============================================================
+// admin/mascota_nueva.php — Añadir nueva mascota
+// Requisito DAWES: INSERT con PDO + subida de ficheros
+// ============================================================
+
 $tituloPagina = 'Nueva Mascota — Admin';
 require_once '../templates/header-admin.php';
 
@@ -62,10 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Obtener el id de la mascota recien insertada
             $idMascota = $conexion->lastInsertId();
 
-            // SUBIDA DE FOTO —  subir ficheros al servidor
+            // SUBIDA DE FOTO — Requisito DAWES: subir ficheros al servidor
             if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
 
-                $rutaFoto = subirImagen($_FILES['foto'], 'uploads/mascotas/');
+                $rutaFoto = subirImagen($_FILES['foto'], '../uploads/mascotas/');
 
                 if ($rutaFoto) {
                     // Guardar la ruta en fotos_mascotas como foto principal
@@ -203,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <textarea name="caracter" rows="3" placeholder="Como es su caracter, con niños, con otros animales..."><?php echo isset($_POST['caracter']) ? htmlspecialchars($_POST['caracter']) : ''; ?></textarea>
         </div>
 
-        <!-- SUBIDA DE FOTO -->
+        <!-- SUBIDA DE FOTO — Requisito DAWES -->
         <div class="form-grupo">
             <label>Foto Principal</label>
             <input type="file" name="foto" accept="image/*">

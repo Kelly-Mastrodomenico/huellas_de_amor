@@ -3,17 +3,17 @@
 <footer>
     <div class="contenedor-footer">
 
-        <!-- Columna 1: Logo y descripcion -->
+        <!-- Columna 1: Logo + descripcion + redes -->
         <div class="bloque-footer">
             <a href="<?php echo $rutaBase; ?>index.php" class="logo-footer">
-                <i class="fa-solid fa-paw"></i>
+                <img src="<?php echo $rutaBase; ?>assets/img/Logo.png" alt="Huellas de Amor">
                 <span>Huellas de Amor</span>
             </a>
             <p>Dedicados a encontrar hogares amorosos para mascotas necesitadas. Tu ayuda hace la diferencia en miles de vidas.</p>
             <div class="redes-sociales">
-                <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
             </div>
         </div>
 
@@ -40,7 +40,7 @@
             </ul>
         </div>
 
-        <!-- Columna 4: Newsletter -->
+        <!-- Columna 4: Newsletter + redes (desktop) -->
         <div class="bloque-footer">
             <h3>Newsletter</h3>
             <p>Suscribete para recibir noticias de nuevas mascotas y eventos especiales.</p>
@@ -55,7 +55,7 @@
     </div>
 
     <div class="footer-copyright">
-        <p>&copy; <?php echo date('Y'); ?> Huellas de Amor &mdash; Proyecto Intermodular 2DAW &mdash; Kelly Rodriguez Mastrodomenico</p>
+        <p>&copy; <?php echo date('Y'); ?> Huellas de Amor &mdash; Todos los derechos reservados.</p>
     </div>
 </footer>
 
@@ -68,6 +68,5 @@
 <!-- Nuestro JS -->
 <script src="<?php echo $rutaBase; ?>js/main.js"></script>
 <script src="<?php echo $rutaBase; ?>js/ajax.js"></script>
-
 </body>
 </html>

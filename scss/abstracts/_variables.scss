@@ -1,9 +1,13 @@
+// ============================================================
+// abstracts/_variables.scss
 // Todos los valores del proyecto en un solo lugar.
 // Si necesitas cambiar un color o fuente, hazlo aqui.
+// ============================================================
+
 
 // ------------------------------------------------------------
 // COLORES (de la paleta oficial del proyecto)
-
+// ------------------------------------------------------------
 $color-coral:     #FF6B6B;   // Botones principales, acentos
 $color-turquesa:  #4ECDC4;   // Headings, botones secundarios
 $color-amarillo:  #FFE66D;   // Badges especiales
@@ -28,7 +32,7 @@ $color-aviso-fondo: #fff3cd;
 
 // ------------------------------------------------------------
 // TIPOGRAFIA
-
+// ------------------------------------------------------------
 $fuente-titulo: 'Nunito', Arial, sans-serif;   // H1, H2, logo
 $fuente-cuerpo: 'Lato', Arial, sans-serif;     // Texto general
 
@@ -45,7 +49,7 @@ $fs-hero:    2.75rem;    // 44px — solo en desktop
 
 // ------------------------------------------------------------
 // ESPACIADO
-
+// ------------------------------------------------------------
 $espacio-xs:  8px;
 $espacio-sm:  16px;
 $espacio-md:  24px;
@@ -55,7 +59,7 @@ $espacio-xl:  64px;
 
 // ------------------------------------------------------------
 // BORDES Y SOMBRAS
-
+// ------------------------------------------------------------
 $radio-sm:   6px;
 $radio-md:   12px;
 $radio-lg:   20px;    // Botones redondeados
@@ -70,7 +74,7 @@ $transicion: all 0.3s ease;
 
 // ------------------------------------------------------------
 // BREAKPOINTS (mobile first — usados en los mixins)
-
+// ------------------------------------------------------------
 $bp-sm:  576px;    // Movil grande
 $bp-md:  768px;    // Tablet vertical
 $bp-lg:  1024px;   // Tablet horizontal / desktop pequeno
@@ -79,7 +83,7 @@ $bp-xl:  1200px;   // Desktop grande
 
 // ------------------------------------------------------------
 // LAYOUT
-
+// ------------------------------------------------------------
 $ancho-maximo:   1200px;
 $alto-header:    65px;
 $alto-nav-movil: 60px;   // Nav inferior fija en movil

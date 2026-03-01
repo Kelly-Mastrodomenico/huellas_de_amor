@@ -1,4 +1,8 @@
 <?php
+// ============================================================
+// login.php — Inicio de sesion
+// ============================================================
+
 $tituloPagina = 'Iniciar Sesion — Huellas de Amor';
 require_once 'templates/header.php';
 

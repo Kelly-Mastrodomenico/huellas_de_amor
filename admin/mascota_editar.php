@@ -1,4 +1,9 @@
 <?php
+// ============================================================
+// admin/mascota_editar.php — Editar mascota existente
+// Requisito DAWES: UPDATE con PDO
+// ============================================================
+
 $tituloPagina = 'Editar Mascota — Admin';
 require_once '../templates/header-admin.php';
 
@@ -66,73 +71,73 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'El nombre, la especie y el sexo son obligatorios.';
     } else {
 
-try {
-    $sql = "UPDATE `mascotas` SET
-                `nombre`        = :nombre,
-                `especie`       = :especie,
-                `raza`          = :raza,
-                `edad_anios`    = :edad_anios,
-                `edad_meses`    = :edad_meses,
-                `sexo`          = :sexo,
-                `tamanio`       = :tamanio,
-                `descripcion`   = :descripcion,
-                `caracter`      = :caracter,
-                `estado`        = :estado,
-                `id_protectora` = :id_protectora,
-                `fecha_ingreso` = :fecha_ingreso
-            WHERE `id` = :id";
+        try {
+            $sql = "UPDATE `mascotas` SET
+                        `nombre`        = :nombre,
+                        `especie`       = :especie,
+                        `raza`          = :raza,
+                        `edad_anios`    = :edad_anios,
+                        `edad_meses`    = :edad_meses,
+                        `sexo`          = :sexo,
+                        `tamanio`       = :tamanio,
+                        `descripcion`   = :descripcion,
+                        `caracter`      = :caracter,
+                        `estado`        = :estado,
+                        `id_protectora` = :id_protectora,
+                        `fecha_ingreso` = :fecha_ingreso
+                    WHERE `id` = :id";
 
-    $stmt = $conexion->prepare($sql);
-    $stmt->bindValue(':nombre',        $nombre,       PDO::PARAM_STR);
-    $stmt->bindValue(':especie',       $especie,      PDO::PARAM_STR);
-    $stmt->bindValue(':raza',          $raza,         PDO::PARAM_STR);
-    $stmt->bindValue(':edad_anios',    $edadAnios,    PDO::PARAM_INT);
-    $stmt->bindValue(':edad_meses',    $edadMeses,    PDO::PARAM_INT);
-    $stmt->bindValue(':sexo',          $sexo,         PDO::PARAM_STR);
-    $stmt->bindValue(':tamanio',       $tamanio,      PDO::PARAM_STR);
-    $stmt->bindValue(':descripcion',   $descripcion,  PDO::PARAM_STR);
-    $stmt->bindValue(':caracter',      $caracter,     PDO::PARAM_STR);
-    $stmt->bindValue(':estado',        $estado,       PDO::PARAM_STR);
-    $stmt->bindValue(':id_protectora', $idProtectora, PDO::PARAM_INT);
-    $stmt->bindValue(':fecha_ingreso', $fechaIngreso, PDO::PARAM_STR);
-    $stmt->bindValue(':id',            $idMascota,    PDO::PARAM_INT);
-    $stmt->execute();
+            $stmt = $conexion->prepare($sql);
+            $stmt->bindValue(':nombre',        $nombre,       PDO::PARAM_STR);
+            $stmt->bindValue(':especie',       $especie,      PDO::PARAM_STR);
+            $stmt->bindValue(':raza',          $raza,         PDO::PARAM_STR);
+            $stmt->bindValue(':edad_anios',    $edadAnios,    PDO::PARAM_INT);
+            $stmt->bindValue(':edad_meses',    $edadMeses,    PDO::PARAM_INT);
+            $stmt->bindValue(':sexo',          $sexo,         PDO::PARAM_STR);
+            $stmt->bindValue(':tamanio',       $tamanio,      PDO::PARAM_STR);
+            $stmt->bindValue(':descripcion',   $descripcion,  PDO::PARAM_STR);
+            $stmt->bindValue(':caracter',      $caracter,     PDO::PARAM_STR);
+            $stmt->bindValue(':estado',        $estado,       PDO::PARAM_STR);
+            $stmt->bindValue(':id_protectora', $idProtectora, PDO::PARAM_INT);
+            $stmt->bindValue(':fecha_ingreso', $fechaIngreso, PDO::PARAM_STR);
+            $stmt->bindValue(':id',            $idMascota,    PDO::PARAM_INT);
+            $stmt->execute();
 
-    // Si se sube una foto nueva, reemplazar la anterior
-    if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+            // Si se sube una foto nueva, reemplazar la anterior
+            if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
 
-        $rutaFoto = subirImagen($_FILES['foto'], 'uploads/mascotas/');
+                $rutaFoto = subirImagen($_FILES['foto'], 'uploads/mascotas/');
 
-        if ($rutaFoto) {
-            if ($fotoPrincipal) {
-                // Actualizar la foto existente
-                $sqlFoto = "UPDATE `fotos_mascotas` SET `ruta_foto` = :ruta_foto
-                            WHERE `id_mascota` = :id_mascota AND `es_principal` = 1";
-                $stmtFoto = $conexion->prepare($sqlFoto);
-                $stmtFoto->bindValue(':ruta_foto',  $rutaFoto,  PDO::PARAM_STR);
-                $stmtFoto->bindValue(':id_mascota', $idMascota, PDO::PARAM_INT);
-                $stmtFoto->execute();
-            } else {
-                // Insertar nueva foto principal
-                $sqlFoto = "INSERT INTO `fotos_mascotas` (`id_mascota`, `ruta_foto`, `es_principal`)
-                            VALUES (:id_mascota, :ruta_foto, 1)";
-                $stmtFoto = $conexion->prepare($sqlFoto);
-                $stmtFoto->bindValue(':id_mascota', $idMascota, PDO::PARAM_INT);
-                $stmtFoto->bindValue(':ruta_foto',  $rutaFoto,  PDO::PARAM_STR);
-                $stmtFoto->execute();
+                if ($rutaFoto) {
+                    if ($fotoPrincipal) {
+                        // Actualizar la foto existente
+                        $sqlFoto = "UPDATE `fotos_mascotas` SET `ruta_foto` = :ruta_foto
+                                    WHERE `id_mascota` = :id_mascota AND `es_principal` = 1";
+                        $stmtFoto = $conexion->prepare($sqlFoto);
+                        $stmtFoto->bindValue(':ruta_foto',  $rutaFoto,  PDO::PARAM_STR);
+                        $stmtFoto->bindValue(':id_mascota', $idMascota, PDO::PARAM_INT);
+                        $stmtFoto->execute();
+                    } else {
+                        // Insertar nueva foto principal
+                        $sqlFoto = "INSERT INTO `fotos_mascotas` (`id_mascota`, `ruta_foto`, `es_principal`)
+                                    VALUES (:id_mascota, :ruta_foto, 1)";
+                        $stmtFoto = $conexion->prepare($sqlFoto);
+                        $stmtFoto->bindValue(':id_mascota', $idMascota, PDO::PARAM_INT);
+                        $stmtFoto->bindValue(':ruta_foto',  $rutaFoto,  PDO::PARAM_STR);
+                        $stmtFoto->execute();
+                    }
+                }
             }
+
+            $_SESSION['mensaje']      = 'Mascota actualizada correctamente.';
+            $_SESSION['mensaje_tipo'] = 'exito';
+            header('Location: mascotas.php');
+            exit();
+
+        } catch (PDOException $e) {
+            $error = 'Error al actualizar la mascota. Intentalo de nuevo.';
         }
     }
-
-    $_SESSION['mensaje']      = 'Mascota actualizada correctamente.';
-    $_SESSION['mensaje_tipo'] = 'exito';
-    header('Location: mascotas.php');
-    exit();
-
-} catch (PDOException $e) {
-    $error = 'Error al actualizar la mascota. Intentalo de nuevo.';
-}
-}
 
     // Si hay error rellenar con los datos del POST
     $mascota['nombre']        = $nombre;
@@ -159,130 +164,130 @@ try {
         </div>
     <?php } ?>
 
-<form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data">
 
-<div class="form-fila">
-    <div class="form-grupo">
-        <label>Nombre <span style="color:#e74a3b">*</span></label>
-        <input type="text" name="nombre"
-                value="<?php echo htmlspecialchars($mascota['nombre']); ?>">
-    </div>
+        <div class="form-fila">
+            <div class="form-grupo">
+                <label>Nombre <span style="color:#e74a3b">*</span></label>
+                <input type="text" name="nombre"
+                       value="<?php echo htmlspecialchars($mascota['nombre']); ?>">
+            </div>
 
-    <div class="form-grupo">
-        <label>Especie <span style="color:#e74a3b">*</span></label>
-        <select name="especie">
-            <option value="perro" <?php echo ($mascota['especie'] === 'perro') ? 'selected' : ''; ?>>Perro</option>
-            <option value="gato"  <?php echo ($mascota['especie'] === 'gato')  ? 'selected' : ''; ?>>Gato</option>
-            <option value="otro"  <?php echo ($mascota['especie'] === 'otro')  ? 'selected' : ''; ?>>Otro</option>
-        </select>
-    </div>
-</div>
+            <div class="form-grupo">
+                <label>Especie <span style="color:#e74a3b">*</span></label>
+                <select name="especie">
+                    <option value="perro" <?php echo ($mascota['especie'] === 'perro') ? 'selected' : ''; ?>>Perro</option>
+                    <option value="gato"  <?php echo ($mascota['especie'] === 'gato')  ? 'selected' : ''; ?>>Gato</option>
+                    <option value="otro"  <?php echo ($mascota['especie'] === 'otro')  ? 'selected' : ''; ?>>Otro</option>
+                </select>
+            </div>
+        </div>
 
-<div class="form-fila">
-    <div class="form-grupo">
-        <label>Raza</label>
-        <input type="text" name="raza"
-                value="<?php echo htmlspecialchars($mascota['raza']); ?>">
-    </div>
+        <div class="form-fila">
+            <div class="form-grupo">
+                <label>Raza</label>
+                <input type="text" name="raza"
+                       value="<?php echo htmlspecialchars($mascota['raza']); ?>">
+            </div>
 
-    <div class="form-grupo">
-        <label>Sexo <span style="color:#e74a3b">*</span></label>
-        <select name="sexo">
-            <option value="macho"  <?php echo ($mascota['sexo'] === 'macho')  ? 'selected' : ''; ?>>Macho</option>
-            <option value="hembra" <?php echo ($mascota['sexo'] === 'hembra') ? 'selected' : ''; ?>>Hembra</option>
-        </select>
-    </div>
-</div>
+            <div class="form-grupo">
+                <label>Sexo <span style="color:#e74a3b">*</span></label>
+                <select name="sexo">
+                    <option value="macho"  <?php echo ($mascota['sexo'] === 'macho')  ? 'selected' : ''; ?>>Macho</option>
+                    <option value="hembra" <?php echo ($mascota['sexo'] === 'hembra') ? 'selected' : ''; ?>>Hembra</option>
+                </select>
+            </div>
+        </div>
 
-<div class="form-fila">
-    <div class="form-grupo">
-        <label>Edad (años)</label>
-        <input type="number" name="edad_anios" min="0" max="30"
-                value="<?php echo (int)$mascota['edad_anios']; ?>">
-    </div>
+        <div class="form-fila">
+            <div class="form-grupo">
+                <label>Edad (años)</label>
+                <input type="number" name="edad_anios" min="0" max="30"
+                       value="<?php echo (int)$mascota['edad_anios']; ?>">
+            </div>
 
-    <div class="form-grupo">
-        <label>Edad (meses)</label>
-        <input type="number" name="edad_meses" min="0" max="11"
-                value="<?php echo (int)$mascota['edad_meses']; ?>">
-    </div>
-</div>
+            <div class="form-grupo">
+                <label>Edad (meses)</label>
+                <input type="number" name="edad_meses" min="0" max="11"
+                       value="<?php echo (int)$mascota['edad_meses']; ?>">
+            </div>
+        </div>
 
-<div class="form-fila">
-    <div class="form-grupo">
-        <label>Tamaño</label>
-        <select name="tamanio">
-            <option value="pequeño"  <?php echo ($mascota['tamanio'] === 'pequeño')  ? 'selected' : ''; ?>>Pequeño</option>
-            <option value="mediano"  <?php echo ($mascota['tamanio'] === 'mediano')  ? 'selected' : ''; ?>>Mediano</option>
-            <option value="grande"   <?php echo ($mascota['tamanio'] === 'grande')   ? 'selected' : ''; ?>>Grande</option>
-        </select>
-    </div>
+        <div class="form-fila">
+            <div class="form-grupo">
+                <label>Tamaño</label>
+                <select name="tamanio">
+                    <option value="pequeño"  <?php echo ($mascota['tamanio'] === 'pequeño')  ? 'selected' : ''; ?>>Pequeño</option>
+                    <option value="mediano"  <?php echo ($mascota['tamanio'] === 'mediano')  ? 'selected' : ''; ?>>Mediano</option>
+                    <option value="grande"   <?php echo ($mascota['tamanio'] === 'grande')   ? 'selected' : ''; ?>>Grande</option>
+                </select>
+            </div>
 
-    <div class="form-grupo">
-        <label>Estado</label>
-        <select name="estado">
-            <option value="disponible" <?php echo ($mascota['estado'] === 'disponible') ? 'selected' : ''; ?>>Disponible</option>
-            <option value="acogida"    <?php echo ($mascota['estado'] === 'acogida')    ? 'selected' : ''; ?>>En Acogida</option>
-            <option value="adoptado"   <?php echo ($mascota['estado'] === 'adoptado')   ? 'selected' : ''; ?>>Adoptado</option>
-        </select>
-    </div>
-</div>
+            <div class="form-grupo">
+                <label>Estado</label>
+                <select name="estado">
+                    <option value="disponible" <?php echo ($mascota['estado'] === 'disponible') ? 'selected' : ''; ?>>Disponible</option>
+                    <option value="acogida"    <?php echo ($mascota['estado'] === 'acogida')    ? 'selected' : ''; ?>>En Acogida</option>
+                    <option value="adoptado"   <?php echo ($mascota['estado'] === 'adoptado')   ? 'selected' : ''; ?>>Adoptado</option>
+                </select>
+            </div>
+        </div>
 
-<div class="form-fila">
-    <div class="form-grupo">
-        <label>Protectora</label>
-        <select name="id_protectora">
-            <option value="">Sin protectora</option>
-            <?php foreach ($protectoras as $protectora) { ?>
-                <option value="<?php echo $protectora['id']; ?>"
-                    <?php echo ($mascota['id_protectora'] == $protectora['id']) ? 'selected' : ''; ?>>
-                    <?php echo htmlspecialchars($protectora['nombre']); ?>
-                </option>
-            <?php } ?>
-        </select>
-    </div>
+        <div class="form-fila">
+            <div class="form-grupo">
+                <label>Protectora</label>
+                <select name="id_protectora">
+                    <option value="">Sin protectora</option>
+                    <?php foreach ($protectoras as $protectora) { ?>
+                        <option value="<?php echo $protectora['id']; ?>"
+                            <?php echo ($mascota['id_protectora'] == $protectora['id']) ? 'selected' : ''; ?>>
+                            <?php echo htmlspecialchars($protectora['nombre']); ?>
+                        </option>
+                    <?php } ?>
+                </select>
+            </div>
 
-    <div class="form-grupo">
-        <label>Fecha de Ingreso</label>
-        <input type="date" name="fecha_ingreso"
-                value="<?php echo htmlspecialchars($mascota['fecha_ingreso']); ?>">
-    </div>
-</div>
+            <div class="form-grupo">
+                <label>Fecha de Ingreso</label>
+                <input type="date" name="fecha_ingreso"
+                       value="<?php echo htmlspecialchars($mascota['fecha_ingreso']); ?>">
+            </div>
+        </div>
 
-<div class="form-grupo">
-    <label>Descripcion</label>
-    <textarea name="descripcion" rows="4"><?php echo htmlspecialchars($mascota['descripcion']); ?></textarea>
-</div>
+        <div class="form-grupo">
+            <label>Descripcion</label>
+            <textarea name="descripcion" rows="4"><?php echo htmlspecialchars($mascota['descripcion']); ?></textarea>
+        </div>
 
-<div class="form-grupo">
-    <label>Caracter</label>
-    <textarea name="caracter" rows="3"><?php echo htmlspecialchars($mascota['caracter']); ?></textarea>
-</div>
+        <div class="form-grupo">
+            <label>Caracter</label>
+            <textarea name="caracter" rows="3"><?php echo htmlspecialchars($mascota['caracter']); ?></textarea>
+        </div>
 
-<!-- Foto actual -->
-<?php if ($fotoPrincipal) { ?>
-    <div class="form-grupo">
-        <label>Foto Actual</label>
-        <img src="<?php echo htmlspecialchars('../' . $fotoPrincipal['ruta_foto']); ?>"
-                alt="Foto actual"
-                style="width:150px; height:150px; object-fit:cover; border-radius:8px; display:block; margin-bottom:8px;">
-    </div>
-<?php } ?>
+        <!-- Foto actual -->
+        <?php if ($fotoPrincipal) { ?>
+            <div class="form-grupo">
+                <label>Foto Actual</label>
+                <img src="<?php echo htmlspecialchars('../' . $fotoPrincipal['ruta_foto']); ?>"
+                     alt="Foto actual"
+                     style="width:150px; height:150px; object-fit:cover; border-radius:8px; display:block; margin-bottom:8px;">
+            </div>
+        <?php } ?>
 
-<div class="form-grupo">
-    <label><?php echo $fotoPrincipal ? 'Cambiar Foto' : 'Subir Foto'; ?></label>
-    <input type="file" name="foto" accept="image/*">
-    <small style="color:#888;">Deja en blanco para mantener la foto actual.</small>
-</div>
+        <div class="form-grupo">
+            <label><?php echo $fotoPrincipal ? 'Cambiar Foto' : 'Subir Foto'; ?></label>
+            <input type="file" name="foto" accept="image/*">
+            <small style="color:#888;">Deja en blanco para mantener la foto actual.</small>
+        </div>
 
-<div class="form-botones">
-    <a href="mascotas.php" class="btn-outline-coral">Cancelar</a>
-    <button type="submit" class="btn-coral">
-        <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios
-    </button>
-</div>
+        <div class="form-botones">
+            <a href="mascotas.php" class="btn-outline-coral">Cancelar</a>
+            <button type="submit" class="btn-coral">
+                <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios
+            </button>
+        </div>
 
-</form>
+    </form>
 </div>
 
 <?php require_once '../templates/footer-admin.php'; ?>

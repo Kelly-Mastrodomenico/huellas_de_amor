@@ -1,101 +1,134 @@
-// components/_buttons.scss
-.btn {
-    display: inline-block;
-    padding: 10px 24px;
-    border: none;
-    border-radius: $radio-lg;
-    cursor: pointer;
-    font-size: $fs-normal;
-    font-family: $fuente-cuerpo;
-    font-weight: 700;
+// ============================================================
+// layout/_grid.scss — Mobile First
+// ============================================================
+
+.contenedor {
+    max-width: $ancho-maximo;
+    margin: 0 auto;
+    padding: 0 $espacio-sm;
+}
+
+.seccion {
+    padding: $espacio-lg 0;
+    @include desde-desktop { padding: $espacio-xl 0; }
+}
+
+.seccion-gris { background-color: $color-fondo; }
+
+.seccion-titulo {
     text-align: center;
-    text-decoration: none;
-    transition: $transicion;
+    margin-bottom: $espacio-md;
 
-    &:hover  { transform: scale(1.03); }
-    &:active { transform: scale(0.98); }
+    h2 {
+        font-family: $fuente-titulo;
+        font-size: $fs-h2;
+        font-weight: 800;
+        color: $color-oscuro;
+        margin-bottom: 8px;
+        @include desde-desktop { font-size: 2rem; }
+    }
+
+    p {
+        color: #888;
+        font-size: $fs-normal;
+        max-width: 520px;
+        margin: 0 auto;
+        @include desde-desktop { font-size: $fs-base; }
+    }
 }
 
-.btn-coral {
-    @extend .btn;
-    background-color: $color-coral;
-    color: $color-blanco;
+// -----------------------------------------------
+// MASCOTAS
+// Móvil V: 1 col | Móvil H (576px): 2 col
+// Tablet V (768px): 3 col
+// Tablet H (1024px) + Desktop: 4 col
+// -----------------------------------------------
+.grid-mascotas {
+    display: grid;
+    gap: $espacio-sm;
+    grid-template-columns: 1fr;
 
-    &:hover { background-color: $color-coral-hover; color: $color-blanco; }
+    @include desde-movil-grande {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include desde-tablet {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include desde-tablet-h {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
-.btn-turquesa {
-    @extend .btn;
-    background-color: $color-turquesa;
-    color: $color-blanco;
+// -----------------------------------------------
+// CATEGORIAS
+// Móvil V: 1 col | Móvil H+: 3 col
+// -----------------------------------------------
+.grid-categorias {
+    display: grid;
+    gap: $espacio-sm;
+    grid-template-columns: 1fr;
 
-    &:hover { background-color: $color-turquesa-hover; color: $color-blanco; }
+    @include desde-movil-grande {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
-.btn-outline-coral {
-    @extend .btn;
-    background-color: transparent;
-    border: 2px solid $color-coral;
-    color: $color-coral;
+// -----------------------------------------------
+// TESTIMONIOS
+// Móvil V/H: 1 col | Tablet V+: 3 col
+// -----------------------------------------------
+.grid-testimonios {
+    display: grid;
+    gap: $espacio-sm;
+    grid-template-columns: 1fr;
 
-    &:hover { background-color: $color-coral; color: $color-blanco; }
+    @include desde-tablet {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
-.btn-outline-turquesa {
-    @extend .btn;
-    background-color: transparent;
-    border: 2px solid $color-turquesa;
-    color: $color-turquesa;
+// -----------------------------------------------
+// NOTICIAS
+// Móvil V/H: 1 col | Tablet V+: 3 col
+// -----------------------------------------------
+.grid-noticias {
+    display: grid;
+    gap: $espacio-sm;
+    grid-template-columns: 1fr;
 
-    &:hover { background-color: $color-turquesa; color: $color-blanco; }
+    @include desde-tablet {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
-.btn-oscuro {
-    @extend .btn;
-    background-color: $color-oscuro;
-    color: $color-blanco;
+// -----------------------------------------------
+// CONTADORES
+// -----------------------------------------------
+.grid-contadores {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
 
-    &:hover { background-color: #1a252f; color: $color-blanco; }
+    @include desde-tablet {
+        grid-template-columns: repeat(3, 1fr);
+        gap: $espacio-sm;
+    }
 }
 
-.btn-blanco {
-    @extend .btn;
-    background-color: $color-blanco;
-    color: $color-oscuro;
+// -----------------------------------------------
+// ALERTAS FLASH
+// -----------------------------------------------
+.alerta {
+    padding: 12px $espacio-sm;
+    border-radius: $radio-sm;
+    margin: $espacio-sm auto;
+    max-width: $ancho-maximo;
+    font-weight: 600;
+    text-align: center;
 
-    &:hover { background-color: $color-fondo; color: $color-oscuro; }
-}
-
-.btn-editar {
-    @extend .btn;
-    background-color: #36b9cc;
-    color: $color-blanco;
-    padding: 6px 14px;
-    font-size: $fs-pequeno;
-
-    &:hover { background-color: #2c9faf; color: $color-blanco; }
-}
-
-.btn-borrar {
-    @extend .btn;
-    background-color: #e74a3b;
-    color: $color-blanco;
-    padding: 6px 14px;
-    font-size: $fs-pequeno;
-
-    &:hover { background-color: #c82333; color: $color-blanco; }
-}
-
-.btn-nuevo {
-    @extend .btn;
-    background-color: $color-verde;
-    color: $color-blanco;
-
-    &:hover { background-color: #3d8b40; color: $color-blanco; }
-}
-
-.btn-sm {
-    padding: 6px 14px;
-    font-size: $fs-pequeno;
-    border-radius: $radio-md;
+    &.alerta-exito { background-color: $color-exito-fondo; color: #2e7d32; }
+    &.alerta-error { background-color: $color-error-fondo; color: #c62828; }
+    &.alerta-aviso { background-color: $color-aviso-fondo; color: #f57f17; }
 }

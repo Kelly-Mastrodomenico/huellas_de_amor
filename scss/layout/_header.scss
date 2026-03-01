@@ -1,39 +1,76 @@
+// ============================================================
+// layout/_header.scss — Mobile First
+// Basado en mockups: movil V/H, tablet V/H, escritorio
+// ============================================================
+
 header {
     background-color: $color-blanco;
     box-shadow: $sombra-nav;
     position: sticky;
     top: 0;
     z-index: 1000;
-    height: $alto-header;
+    height: 60px;
+
+    @include desde-tablet {
+        height: $alto-header;
+    }
 }
 
 .contenedor-header {
     max-width: $ancho-maximo;
     margin: 0 auto;
-    padding: 0 $espacio-sm;
-    height: 100%;
+    padding: 0 16px;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
-}
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-
-    i    { color: $color-coral; font-size: 1.5rem; }
-    span {
-        font-family: $fuente-titulo;
-        font-size: $fs-medio;
-        font-weight: 800;
-        color: $color-oscuro;
+    @include desde-tablet {
+        height: $alto-header;
     }
 }
 
-// Checkbox hamburguesa — igual que en el portfolio
+// -----------------------------------------------
+// LOGO
+// -----------------------------------------------
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    z-index: 10;
+    flex-shrink: 0;
+
+    img {
+        height: 46px;
+        width: auto;
+
+        @include desde-tablet {
+            height: 50px;
+        }
+
+        @include desde-tablet-h {
+            height: 52px;
+        }
+    }
+
+    span {
+        font-family: $fuente-titulo;
+        font-size: 0.95rem;
+        font-weight: 800;
+        color: $color-oscuro;
+        white-space: nowrap;
+
+        @include desde-tablet-h {
+            font-size: 1.05rem;
+        }
+    }
+}
+
+// -----------------------------------------------
+// HAMBURGUESA — visible en movil y tablet V
+// -----------------------------------------------
 #menu-hamburguesa { display: none; }
 
 #icono-hamburguesa {
@@ -41,83 +78,153 @@ header {
     cursor: pointer;
     color: $color-oscuro;
     padding: 8px;
-    display: block;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    margin-left: auto;
 
-    @include desde-desktop {
-        display: none;
+    @include desde-tablet-h {
+        display: none !important;
     }
 }
 
+// Manu y tablet vertical
 nav {
     .menu-principal {
         display: none;
-        position: absolute;
-        top: $alto-header;
+        position: fixed;
+        top: 60px; 
         left: 0;
         right: 0;
         background-color: $color-blanco;
-        box-shadow: $sombra-nav;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         flex-direction: column;
-        padding: $espacio-sm 0;
-        z-index: 999;
+        padding: 8px 0 80px;
+        z-index: 998;
+        list-style: none;
+        margin: 0;
+        max-height: calc(100vh - 60px);
+        overflow-y: auto; // Activa el scroll vertical
+        -webkit-overflow-scrolling: touch; 
+        
+        @include desde-tablet {
+            top: $alto-header;
+            max-height: calc(100vh - #{$alto-header}); 
+        }
 
-        li a {
-            display: block;
-            padding: 12px $espacio-md;
-            color: $color-oscuro;
-            font-size: $fs-base;
-            transition: $transicion;
+        li {
+            width: 100%;
+            border-bottom: 1px solid #f0f0f0;
 
-            &:hover {
-                background-color: $color-fondo;
-                color: $color-coral;
+            &:last-child { border-bottom: none; }
+
+            a {
+                display: block;
+                padding: 14px 24px;
+                color: $color-oscuro;
+                font-size: $fs-base;
+                font-weight: 500;
+                text-decoration: none;
+                text-align: center;
+                transition: $transicion;
+
+                &:hover  { color: $color-coral; background-color: #fff8f8; }
+                &.active { color: $color-coral; font-weight: 700; }
             }
+        }
 
-            &.active {
-                color: $color-coral;
+        // Colores especiales
+        .btn-login         a { color: $color-turquesa !important; font-weight: 700; }
+        .btn-admin         a { color: $color-turquesa !important; font-weight: 700; }
+        .btn-cerrar-sesion a { color: #e74a3b !important; font-weight: 700; }
+
+        // Boton registrarse centrado
+        .btn-registro {
+            display: flex;
+            justify-content: center;
+            border-bottom: none;
+
+            a {
+                display: inline-block;
+                background-color: $color-coral;
+                color: $color-blanco !important;
+                border-radius: $radio-lg;
+                padding: 10px 32px;
+                margin: 8px 0;
                 font-weight: 700;
+                text-align: center;
+                width: auto;
+
+                &:hover { background-color: $color-coral-hover; }
             }
         }
     }
 
-    .btn-login    { color: $color-turquesa !important; font-weight: 700; }
-    .btn-admin    { color: $color-turquesa !important; font-weight: 700; }
-    .btn-cerrar-sesion { color: #e74a3b !important; font-weight: 700; }
-
-    .btn-registro {
-        background-color: $color-coral;
-        color: $color-blanco !important;
-        border-radius: $radio-lg;
-        padding: 8px 16px !important;
-        font-weight: 700;
-
-        &:hover { background-color: $color-coral-hover; }
-    }
-
-    @include desde-desktop {
+    // TABLET HORIZONTAL y DESKTOP: menu horizontal
+    @include desde-tablet-h {
         .menu-principal {
             display: flex !important;
             position: static;
             flex-direction: row;
             box-shadow: none;
             padding: 0;
-            gap: 4px;
+            gap: 0;
             background-color: transparent;
+            align-items: center;
+            top: auto;
+
+            li {
+                width: auto;
+                border-bottom: none;
+
+                a {
+                    padding: 6px 9px;
+                    text-align: left;
+                    white-space: nowrap;
+                    font-size: 0.85rem;
+                }
+            }
+
+            .btn-registro {
+                display: block;
+                margin-left: 4px;
+
+                a {
+                    padding: 7px 16px;
+                    margin: 0;
+                    font-size: 0.85rem;
+                }
+            }
+        }
+    }
+
+    @include desde-desktop {
+        .menu-principal {
+            gap: 2px;
 
             li a {
-                padding: 8px 12px;
-                border-radius: $radio-sm;
+                padding: 8px 11px;
+                font-size: $fs-normal;
+            }
+
+            .btn-registro a {
+                padding: 8px 20px;
+                font-size: $fs-normal;
             }
         }
     }
 }
 
-// Mostrar menu en movil cuando checkbox esta marcado
+// Menu visible al activar checkbox hamburguesa
 #menu-hamburguesa:checked ~ nav .menu-principal {
-    display: flex;
+    @media (max-width: ($bp-lg - 1px)) {
+        display: flex !important;
+    }
 }
 
-// Nav inferior fija — solo en movil
+// -----------------------------------------------
+// NAV INFERIOR FIJA — solo movil y tablet V
+// -----------------------------------------------
 .nav-inferior {
     position: fixed;
     bottom: 0;
@@ -125,7 +232,7 @@ nav {
     right: 0;
     height: $alto-nav-movil;
     background-color: $color-blanco;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -135,18 +242,30 @@ nav {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 4px;
+        gap: 3px;
         color: #9e9e9e;
-        font-size: 0.65rem;
+        font-size: 0.6rem;
         text-decoration: none;
         transition: $transicion;
+        padding: 4px 8px;
 
-        i { font-size: 1.2rem; }
+        i { font-size: 1.1rem; }
 
         &.active, &:hover { color: $color-coral; }
     }
 
-    @include desde-desktop {
+    @include desde-tablet-h {
         display: none;
+    }
+}
+
+@media (max-height: 450px) {
+    nav .menu-principal {
+        max-height: calc(100vh - 60px); 
+        
+        li a {
+            padding: 8px 24px; 
+            font-size: 0.9rem;
+        }
     }
 }

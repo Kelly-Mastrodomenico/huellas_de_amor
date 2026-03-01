@@ -1,4 +1,9 @@
 <?php
+// Definir ruta base
+if (!defined('BASE_PATH')) {
+    define('BASE_PATH', dirname(__DIR__));
+}
+
 session_start();
 
 // Proteger — solo admin puede ver esto
@@ -7,8 +12,8 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['rol'] !== 'admin') {
     exit();
 }
 
-require_once dirname(__DIR__) . '/includes/conexion.php';
-require_once dirname(__DIR__) . '/includes/funciones.php';
+require_once BASE_PATH . '/includes/conexion.php';
+require_once BASE_PATH . '/includes/funciones.php';
 
 $paginaActual = basename($_SERVER['PHP_SELF']);
 
@@ -81,6 +86,23 @@ if (!isset($tituloPagina)) {
                     </a>
                 </li>
                 <li>
+    <a href="contacto.php" class="<?php echo $paginaAdmin === 'contacto' ? 'activo' : ''; ?>">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Mensajes</span>
+        <?php
+        // Contar no leídos
+        try {
+            $stmtBadge = $conexion->prepare("SELECT COUNT(*) FROM `contacto` WHERE `leido` = 0");
+            $stmtBadge->execute();
+            $noLeidos = $stmtBadge->fetchColumn();
+            if ($noLeidos > 0) {
+                echo '<span class="menu-badge">' . $noLeidos . '</span>';
+            }
+        } catch (PDOException $e) {}
+        ?>
+    </a>
+</li>
+                <li>
                     <a href="../index.php">
                         <i class="fa-solid fa-globe"></i> Ver web
                     </a>
@@ -108,4 +130,4 @@ if (!isset($tituloPagina)) {
 <?php } ?>
 
 <main>
-<div class="contenedor"></div>
+<div class="contenedor">

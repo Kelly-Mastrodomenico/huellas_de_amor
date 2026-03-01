@@ -1,3 +1,5 @@
+// ============================================================
+// main.scss
 // Archivo principal — importa todos los parciales en orden.
 // Este es el archivo que se compila a css/style.css
 //
@@ -11,7 +13,7 @@
 
 // 2. Base
 @import 'base/reset';
-@import 'base/tipografia';
+@import 'base/typography';
 
 // 3. Layout
 @import 'layout/header';
@@ -27,3 +29,11 @@
 @import 'pages/home';
 @import 'pages/adoptar';
 @import 'pages/admin';
+@import 'pages/apadrinar';
+@import 'pages/contacto';
+@import 'pages/detalle';
+@import 'pages/donaciones';
+@import 'pages/noticias';
+@import 'pages/panel_usuario';
+@import 'pages/solicitud';
+

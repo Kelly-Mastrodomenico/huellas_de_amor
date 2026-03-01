@@ -1,4 +1,5 @@
 /**
+ * main.js — Huellas de Amor
  * Funcionalidades principales con jQuery
  * 
  * Contenido:
@@ -12,8 +13,11 @@
 
 $(document).ready(function () {
 
+    // ============================================================
     // 1. CARRUSEL HERO
     // Cambia las slides con efecto fadeIn/fadeOut cada 4 segundos
+    // Requisito DWEC: efectos Fade, eventos, DOM
+    // ============================================================
 
     var slideActual = 0;
     var totalSlides = $('.hero-slide').length;
@@ -23,6 +27,7 @@ $(document).ready(function () {
     function mostrarSlide(indice) {
         // Ocultar todas las slides
         $('.hero-slide').fadeOut(500).removeClass('activo');
+        // Actualizar puntos indicadores
         $('.hero-dots span').removeClass('activo');
 
         // Si el indice se pasa del final, volver al principio
@@ -70,8 +75,11 @@ $(document).ready(function () {
     }
 
 
+    // ============================================================
     // 2. CONTADORES ANIMADOS
     // Anima los numeros desde 0 hasta el valor de data-objetivo
+    // Requisito DWEC: DOM, eventos, animaciones con jQuery
+    // ============================================================
 
     function animarContadores() {
         $('.contador-numero').each(function () {
@@ -117,8 +125,12 @@ $(document).ready(function () {
         $(window).trigger('scroll');
     }
 
+
+    // ============================================================
     // 3. MENSAJE FLASH
     // Se oculta automaticamente despues de 4 segundos con slideUp
+    // Requisito DWEC: efectos Slide, eventos
+    // ============================================================
 
     if ($('#mensajeFlash').length > 0) {
         setTimeout(function () {
@@ -126,8 +138,12 @@ $(document).ready(function () {
         }, 4000);
     }
 
+
+    // ============================================================
     // 4. BOTON FAVORITO
     // Marca/desmarca favoritos con AJAX sin recargar la pagina
+    // Requisito DWEC: AJAX, DOM, eventos
+    // ============================================================
 
     $(document).on('click', '.btn-favorito', function () {
         var $btn       = $(this);
@@ -160,31 +176,50 @@ $(document).ready(function () {
         });
     });
 
+
+    // ============================================================
     // 5. MOSTRAR / OCULTAR con jQuery
+    // Requisito DWEC: mostrar y ocultar partes de la pagina
+    // ============================================================
+
     // Si hay un formulario con clase .form-toggle, lo gestionamos aqui
     $(document).on('click', '.btn-toggle-form', function () {
         var objetivo = $(this).data('objetivo');
         $('#' + objetivo).slideToggle(300);
     });
 
+
+    // ============================================================
     // 6. OBJETO Date — mostrar fecha actual en el footer
+    // Requisito DWEC: uso del objeto Date
+    // ============================================================
 
-var hoy = new Date();
-var dia = hoy.getDate();
-var mes = hoy.getMonth() + 1;
-var anio = hoy.getFullYear();
+    var hoy       = new Date();
+    var opciones  = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    var fechaTexto = hoy.toLocaleDateString('es-ES', opciones);
 
-$('#fechaHoy').text(dia + '/' + mes + '/' + anio);
+    // Si hay un elemento con id fechaHoy, mostrar la fecha ahi
+    if ($('#fechaHoy').length > 0) {
+        $('#fechaHoy').text(fechaTexto);
+    }
 
+
+    // ============================================================
     // 7. INICIALIZAR jQuery UI Tabs
     // Se activa en cualquier elemento con id="tabs"
+    // Requisito DWEC: jQuery UI
+    // ============================================================
 
     if ($('#tabs').length > 0) {
         $('#tabs').tabs();
     }
 
+
+    // ============================================================
     // 8. INICIALIZAR FancyBox
     // Se activa en cualquier enlace con data-fancybox
+    // Requisito DWEC: libreria FancyBox (slideshow de imagenes)
+    // ============================================================
 
     if (typeof $.fancybox !== 'undefined') {
         $('[data-fancybox]').fancybox({

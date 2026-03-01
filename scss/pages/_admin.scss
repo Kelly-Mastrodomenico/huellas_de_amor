@@ -1,18 +1,121 @@
-// pages/_admin.scss
+// ============================================================
+// pages/_admin.scss — Mobile First
+// ============================================================
+
 .contenedor-admin {
     background-color: $color-blanco;
-    padding: $espacio-md;
+    padding: $espacio-sm;
     border-radius: $radio-md;
     box-shadow: $sombra-card;
+    margin-bottom: $espacio-md;
+
+    @include desde-tablet {
+        padding: $espacio-md;
+    }
 
     h1 {
         text-align: center;
         color: $color-oscuro;
         margin-bottom: $espacio-md;
-        font-size: $fs-grande;
+        font-size: $fs-h2;
+
+        @include desde-tablet {
+            font-size: $fs-grande;
+        }
+    }
+
+    h2 {
+        font-size: $fs-base;
+        color: $color-oscuro;
+        margin-bottom: 16px;
+        font-family: $fuente-titulo;
+        font-weight: 700;
+
+        @include desde-tablet {
+            font-size: $fs-h2;
+        }
     }
 }
 
+// -----------------------------------------------
+// STATS GRID
+// Móvil: 2 col | Desktop: 4 col
+// -----------------------------------------------
+.grid-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $espacio-sm;
+    margin-bottom: $espacio-md;
+
+    @include desde-desktop {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.stat-card {
+    padding: $espacio-sm;
+    border-radius: $radio-md;
+    color: $color-blanco;
+    text-align: center;
+
+    @include desde-tablet {
+        padding: $espacio-md;
+    }
+
+    i {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+        display: block;
+        opacity: 0.85;
+
+        @include desde-tablet { font-size: 2rem; }
+    }
+
+    .stat-numero {
+        font-size: 1.5rem;
+        font-weight: 800;
+        font-family: $fuente-titulo;
+        display: block;
+        line-height: 1;
+        margin-bottom: 4px;
+
+        @include desde-tablet { font-size: 2rem; }
+    }
+
+    span:last-child {
+        font-size: 0.6rem;
+        opacity: 0.85;
+
+        @include desde-tablet { font-size: $fs-pequeno; }
+    }
+
+    &.stat-coral    { background-color: $color-coral; }
+    &.stat-turquesa { background-color: $color-turquesa; }
+    &.stat-verde    { background-color: $color-verde; }
+    &.stat-oscuro   { background-color: $color-oscuro; }
+}
+
+// -----------------------------------------------
+// BOTONES ACCESO RAPIDO
+// -----------------------------------------------
+.botones-rapidos {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: $espacio-md;
+
+    a {
+        flex: 1;
+        min-width: 140px;
+        text-align: center;
+        font-size: $fs-normal;
+        padding: 10px 14px;
+    }
+}
+
+// -----------------------------------------------
+// BARRA ADMIN (filtros + botones)
+// -----------------------------------------------
 .barra-admin {
     display: flex;
     justify-content: space-between;
@@ -20,8 +123,6 @@
     margin-bottom: $espacio-md;
     flex-wrap: wrap;
     gap: $espacio-sm;
-
-    @include desde-tablet { } // ya funciona con flex-wrap
 }
 
 .form-filtro {
@@ -37,7 +138,6 @@
         border: 1px solid #d1d3e2;
         border-radius: $radio-sm;
         font-size: $fs-normal;
-
         &:focus { outline: none; border-color: $color-turquesa; }
     }
 }
@@ -48,69 +148,306 @@
     flex-wrap: wrap;
 }
 
+// -----------------------------------------------
+// TABLA ADMIN — scroll horizontal en móvil
+// -----------------------------------------------
+.tabla-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: $radio-sm;
+    margin-bottom: $espacio-md;
+}
+
 .tabla-admin {
     width: 100%;
     border-collapse: collapse;
     background-color: $color-blanco;
-    font-size: $fs-normal;
+    font-size: $fs-pequeno;  // más pequeño en móvil
+    min-width: 500px;        // fuerza scroll antes de romperse
 
-    thead { background-color: $color-oscuro; color: $color-blanco; }
+    @include desde-tablet {
+        font-size: $fs-normal;
+        min-width: unset;
+    }
 
-    th { padding: 12px; text-align: left; font-weight: 700; }
+    thead {
+        background-color: $color-oscuro;
+        color: $color-blanco;
+    }
+
+    th {
+        padding: 10px 8px;
+        text-align: left;
+        font-weight: 700;
+        white-space: nowrap;
+
+        @include desde-tablet { padding: 12px; }
+    }
 
     td {
-        padding: 12px;
+        padding: 10px 8px;
         border-bottom: 1px solid #e3e6f0;
         vertical-align: middle;
+
+        @include desde-tablet { padding: 12px; }
     }
 
     tbody tr:hover { background-color: $color-fondo; }
 
-    .acciones { display: flex; gap: 8px; flex-wrap: wrap; }
-}
-
-.grid-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: $espacio-sm;
-    margin-bottom: $espacio-md;
-
-    @include desde-desktop { grid-template-columns: repeat(4, 1fr); }
-}
-
-.stat-card {
-    padding: $espacio-md;
-    border-radius: $radio-md;
-    color: $color-blanco;
-    text-align: center;
-
-    i {
-        font-size: 2rem;
-        margin-bottom: 8px;
-        display: block;
-        opacity: 0.85;
+    .acciones {
+        display: flex;
+        gap: 6px;
+        flex-wrap: nowrap;  // no romper botones editar/borrar
     }
-
-    .stat-numero {
-        font-size: 2rem;
-        font-weight: 800;
-        font-family: $fuente-titulo;
-        display: block;
-        line-height: 1;
-        margin-bottom: 4px;
-    }
-
-    span:last-child { font-size: $fs-pequeno; opacity: 0.85; }
-
-    &.stat-coral    { background-color: $color-coral; }
-    &.stat-turquesa { background-color: $color-turquesa; }
-    &.stat-verde    { background-color: $color-verde; }
-    &.stat-oscuro   { background-color: $color-oscuro; }
 }
 
+// -----------------------------------------------
+// SIN RESULTADOS
+// -----------------------------------------------
 .sin-resultados {
     text-align: center;
     padding: $espacio-lg;
     color: #888;
     font-size: $fs-base;
+}
+
+// -----------------------------------------------
+// MODAL
+// -----------------------------------------------
+.modal-fondo {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $espacio-sm;
+}
+
+.modal-caja {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-hover;
+    padding: $espacio-md;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+
+    h3 {
+        font-family: $fuente-titulo;
+        font-size: $fs-h2;
+        font-weight: 800;
+        color: $color-oscuro;
+        margin-bottom: $espacio-sm;
+    }
+}
+
+.modal-cerrar {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #aaa;
+    padding: 4px 8px;
+    border-radius: $radio-sm;
+    transition: $transicion;
+
+    &:hover { color: $color-coral; background-color: #fff0f0; }
+}
+
+.modal-detalle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $espacio-sm;
+
+    > div {
+        strong { font-size: $fs-pequeno; color: #888; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
+        p { font-size: $fs-normal; color: $color-oscuro; margin: 0; line-height: 1.5; }
+    }
+
+    .modal-detalle-full { grid-column: 1 / -1; }
+}
+
+// -----------------------------------------------
+// PAGINACION
+// -----------------------------------------------
+.paginacion {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: $espacio-md;
+
+    .paginacion-item {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: $radio-sm;
+        background-color: $color-fondo;
+        color: $color-oscuro;
+        font-weight: 700;
+        font-size: $fs-normal;
+        text-decoration: none;
+        transition: $transicion;
+        border: 1px solid #e3e6f0;
+
+        &:hover { background-color: $color-coral; color: $color-blanco; border-color: $color-coral; }
+        &.activo { background-color: $color-coral; color: $color-blanco; border-color: $color-coral; }
+    }
+}
+
+// -----------------------------------------------
+// FILA NO LEÍDA EN TABLA
+// -----------------------------------------------
+.fila-no-leida {
+    background-color: #fff8f0 !important;
+    font-weight: 600;
+
+    &:hover { background-color: #fff3e0 !important; }
+}
+
+// -----------------------------------------------
+// FORMULARIO ADMIN NOTICIAS — layout 2 columnas
+// -----------------------------------------------
+.form-admin-noticia {
+    display: flex;
+    flex-direction: column;
+    gap: $espacio-md;
+}
+
+.form-admin-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $espacio-md;
+    align-items: start;
+
+    @include desde-tablet-h {
+        grid-template-columns: 1fr 300px;
+    }
+}
+
+.form-admin-principal { display: flex; flex-direction: column; gap: $espacio-sm; }
+
+.form-admin-lateral { display: flex; flex-direction: column; gap: $espacio-sm; }
+
+.admin-lateral-card {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    padding: $espacio-sm $espacio-md;
+
+    h3 {
+        font-family: $fuente-titulo;
+        font-size: $fs-normal;
+        font-weight: 700;
+        color: $color-oscuro;
+        margin-bottom: $espacio-sm;
+        padding-bottom: 8px;
+        border-bottom: 2px solid $color-fondo;
+        i { color: $color-coral; margin-right: 6px; }
+    }
+}
+
+// Toggle publicar
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: $fs-normal;
+    font-weight: 600;
+    color: $color-oscuro;
+
+    input[type="checkbox"] { display: none; }
+
+    .toggle-slider {
+        width: 44px;
+        height: 24px;
+        background-color: #ddd;
+        border-radius: $radio-full;
+        position: relative;
+        transition: $transicion;
+        flex-shrink: 0;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background-color: $color-blanco;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: $transicion;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        }
+    }
+
+    input:checked + .toggle-slider {
+        background-color: $color-verde;
+        &::after { left: 23px; }
+    }
+}
+
+// -----------------------------------------------
+// ESTADÍSTICAS DONACIONES ADMIN
+// -----------------------------------------------
+.donacion-stats-admin {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $espacio-sm;
+    margin-bottom: $espacio-md;
+
+    @include desde-tablet {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.stat-admin-card {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    padding: $espacio-sm;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    i {
+        font-size: 1.6rem;
+        color: $color-coral;
+        flex-shrink: 0;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stat-admin-num {
+        font-family: $fuente-titulo;
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: $color-oscuro;
+        line-height: 1;
+    }
+
+    span:last-child {
+        font-size: $fs-pequeno;
+        color: #888;
+        margin-top: 2px;
+    }
+}
+
+// Fila usuario inactivo
+.fila-inactiva {
+    opacity: 0.6;
+    background-color: #fafafa !important;
 }

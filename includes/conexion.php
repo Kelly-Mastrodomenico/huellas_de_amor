@@ -11,7 +11,5 @@ try {
 } catch (PDOException $e) {
     die('Error de conexion con la base de datos: ' . $e->getMessage());
 }
-// Ruta absoluta al proyecto en el servidor, forma explicada por German,
-//poner para evitar usar ../ o ../../ 
-define('BASE_PATH', dirname(__DIR__));
+
 ?>

@@ -107,20 +107,26 @@ function subirImagen($archivo, $carpeta = 'uploads/') {
         return null;
     }
 
-    $tiposPermitidos = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-    if (!in_array($archivo['type'], $tiposPermitidos)) {
-        return null;
-    }
-
-    $extension   = pathinfo($archivo['name'], PATHINFO_EXTENSION);
-    $nombreUnico = uniqid('foto_', true) . '.' . $extension;
-    $rutaDestino = BASE_PATH . '/' . $carpeta . $nombreUnico;
-
-    if (move_uploaded_file($archivo['tmp_name'], $rutaDestino)) {
-        return $carpeta . $nombreUnico;
-    }
-
+$tiposPermitidos = ['image/jpeg', 'image/jpg', 'image/png', 'image/x-png', 'image/gif', 'image/webp'];
+if (!in_array($archivo['type'], $tiposPermitidos)) {
     return null;
+}
+
+$extension   = strtolower(pathinfo($archivo['name'], PATHINFO_EXTENSION));
+$nombreUnico = uniqid('foto_', true) . '.' . $extension;
+$rutaDestino = BASE_PATH . '/' . $carpeta . $nombreUnico;
+
+// Crear la carpeta si no existe
+$directorioDestino = BASE_PATH . '/' . $carpeta;
+if (!is_dir($directorioDestino)) {
+    mkdir($directorioDestino, 0755, true);
+}
+
+if (move_uploaded_file($archivo['tmp_name'], $rutaDestino)) {
+    return $carpeta . $nombreUnico;
+}
+
+return null;
 }
 
 // Guardar un mensaje flash en sesion para mostrar despues
