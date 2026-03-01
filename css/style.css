@@ -2081,6 +2081,49 @@ footer {
   left: 23px;
 }
 
+.donacion-stats-admin {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media (min-width: 768px) {
+  .donacion-stats-admin {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-admin-card {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.stat-admin-card i {
+  font-size: 1.6rem;
+  color: #FF6B6B;
+  flex-shrink: 0;
+}
+.stat-admin-card div {
+  display: flex;
+  flex-direction: column;
+}
+.stat-admin-card .stat-admin-num {
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #2C3E50;
+  line-height: 1;
+}
+.stat-admin-card span:last-child {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 2px;
+}
+
 .migas-pan {
   display: flex;
   align-items: center;
@@ -4566,5 +4609,3 @@ footer {
   color: #2C3E50;
   margin-bottom: 24px;
 }
-
-/*# sourceMappingURL=style.css.map */

@@ -11,7 +11,7 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['rol'] !== 'admin') {
 
 require_once '../includes/conexion.php';
 require_once '../includes/funciones.php';
-require_once '../fpdf/fpdf.php';
+require_once '../includes/fpdf/fpdf.php';
 // Convertir UTF-8 a Latin-1 para que FPDF muestre bien los acentos
 function utf8($texto) {
     return iconv('UTF-8', 'windows-1252', $texto);

@@ -1,277 +1,252 @@
 <?php
-$tituloPagina = 'Mensajes de Contacto — Admin';
-require_once '../templates/header-admin.php';
-protegerAdmin();
+$tituloPagina = 'Contacto — Huellas de Amor';
+require_once 'templates/header.php';
 
-// MARCAR COMO LEIDO
-if (isset($_GET['leer']) && is_numeric($_GET['leer'])) {
+$errores = [];
+$enviado = false;
+
+// Prellenar datos si está logueado
+$nombrePre = '';
+$emailPre  = '';
+if (estaLogueado() && isset($_SESSION['usuario_id'])) {
     try {
-        $stmt = $conexion->prepare("UPDATE `contacto` SET `leido` = 1 WHERE `id` = :id");
-        $stmt->bindValue(':id', (int) $_GET['leer'], PDO::PARAM_INT);
-        $stmt->execute();
+        $stmtUser = $conexion->prepare("SELECT `nombre`, `apellidos`, `email` FROM `usuarios` WHERE `id` = :id LIMIT 1");
+        $stmtUser->bindValue(':id', (int) $_SESSION['usuario_id'], PDO::PARAM_INT);
+        $stmtUser->execute();
+        $datosUser = $stmtUser->fetch();
+        if ($datosUser) {
+            $nombrePre = trim($datosUser['nombre'] . ' ' . $datosUser['apellidos']);
+            $emailPre  = $datosUser['email'];
+        }
     } catch (PDOException $e) {
-        // silencioso
+        $nombrePre = '';
+        $emailPre  = '';
     }
-    header('Location: contacto.php');
-    exit();
 }
 
-// BORRAR MENSAJE
-if (isset($_GET['borrar']) && is_numeric($_GET['borrar'])) {
-    try {
-        $stmt = $conexion->prepare("DELETE FROM `contacto` WHERE `id` = :id");
-        $stmt->bindValue(':id', (int) $_GET['borrar'], PDO::PARAM_INT);
-        $stmt->execute();
-        mensajeFlash('Mensaje eliminado correctamente.', 'exito');
-    } catch (PDOException $e) {
-        mensajeFlash('Error al eliminar el mensaje.', 'error');
+// PROCESAR FORMULARIO
+if (isset($_POST['enviar'])) {
+    $nombre  = trim($_POST['nombre']  ?? '');
+    $email   = trim($_POST['email']   ?? '');
+    $asunto  = trim($_POST['asunto']  ?? '');
+    $mensaje = trim($_POST['mensaje'] ?? '');
+
+    // Validaciones
+    if (empty($nombre)) {
+        $errores[] = 'El nombre es obligatorio.';
     }
-    header('Location: contacto.php');
-    exit();
-}
-
-// MARCAR TODOS COMO LEÍDOS
-if (isset($_POST['marcar_todos'])) {
-    try {
-        $conexion->prepare("UPDATE `contacto` SET `leido` = 1")->execute();
-        mensajeFlash('Todos los mensajes marcados como leídos.', 'exito');
-    } catch (PDOException $e) {
-        mensajeFlash('Error al actualizar.', 'error');
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errores[] = 'Introduce un email válido.';
     }
-    header('Location: contacto.php');
-    exit();
-}
-
-// Filtro
-$filtroLeido = isset($_GET['leido']) ? trim($_GET['leido']) : '';
-$filtroBuscar = isset($_GET['buscar']) ? trim($_GET['buscar']) : '';
-
-// Paginación
-$porPagina    = 10;
-$paginaActual = isset($_GET['pagina']) && is_numeric($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
-$offset       = ($paginaActual - 1) * $porPagina;
-
-try {
-    $donde  = "WHERE 1=1";
-    $params = [];
-
-    if ($filtroLeido === '0') {
-        $donde .= " AND `leido` = 0";
-    } elseif ($filtroLeido === '1') {
-        $donde .= " AND `leido` = 1";
+    if (empty($asunto)) {
+        $errores[] = 'El asunto es obligatorio.';
+    }
+    if (empty($mensaje)) {
+        $errores[] = 'El mensaje es obligatorio.';
+    } elseif (strlen($mensaje) < 20) {
+        $errores[] = 'El mensaje debe tener al menos 20 caracteres.';
     }
 
-    if (!empty($filtroBuscar)) {
-        $donde .= " AND (`nombre` LIKE :buscar OR `email` LIKE :buscar2 OR `asunto` LIKE :buscar3)";
-        $params[':buscar']  = '%' . $filtroBuscar . '%';
-        $params[':buscar2'] = '%' . $filtroBuscar . '%';
-        $params[':buscar3'] = '%' . $filtroBuscar . '%';
+    if (empty($errores)) {
+        try {
+            // Guardar en BD
+            $stmt = $conexion->prepare(
+                "INSERT INTO `contacto` (`nombre`, `email`, `asunto`, `mensaje`, `leido`, `fecha`)
+                 VALUES (:nombre, :email, :asunto, :mensaje, 0, NOW())"
+            );
+            $stmt->bindParam(':nombre',  $nombre,  PDO::PARAM_STR);
+            $stmt->bindParam(':email',   $email,   PDO::PARAM_STR);
+            $stmt->bindParam(':asunto',  $asunto,  PDO::PARAM_STR);
+            $stmt->bindParam(':mensaje', $mensaje, PDO::PARAM_STR);
+            $stmt->execute();
+
+            // Enviar email al admin (funciona en producción con servidor SMTP)
+            // $emailAdmin = 'admin@huellasdeamor.com';
+            // $asuntoEmail = '[Huellas de Amor] Nuevo mensaje: ' . $asunto;
+            // $cuerpo = "Nombre: $nombre\nEmail: $email\nAsunto: $asunto\n\nMensaje:\n$mensaje";
+            // mail($emailAdmin, $asuntoEmail, $cuerpo, 'From: ' . $email);
+
+            $enviado = true;
+
+        } catch (PDOException $e) {
+            $errores[] = 'Error al enviar el mensaje. Inténtalo de nuevo.';
+        }
     }
-
-    // Total
-    $stmtTotal = $conexion->prepare("SELECT COUNT(*) FROM `contacto` $donde");
-    foreach ($params as $k => $v) { $stmtTotal->bindValue($k, $v); }
-    $stmtTotal->execute();
-    $totalMensajes = $stmtTotal->fetchColumn();
-    $totalPaginas  = ceil($totalMensajes / $porPagina);
-
-    // No leídos
-    $stmtNoLeidos = $conexion->prepare("SELECT COUNT(*) FROM `contacto` WHERE `leido` = 0");
-    $stmtNoLeidos->execute();
-    $totalNoLeidos = $stmtNoLeidos->fetchColumn();
-
-    // Mensajes
-    $stmtMensajes = $conexion->prepare(
-        "SELECT * FROM `contacto` $donde ORDER BY `leido` ASC, `fecha` DESC
-         LIMIT :limite OFFSET :offset"
-    );
-    foreach ($params as $k => $v) { $stmtMensajes->bindValue($k, $v); }
-    $stmtMensajes->bindValue(':limite', $porPagina, PDO::PARAM_INT);
-    $stmtMensajes->bindValue(':offset', $offset,    PDO::PARAM_INT);
-    $stmtMensajes->execute();
-    $mensajes = $stmtMensajes->fetchAll();
-
-} catch (PDOException $e) {
-    $mensajes      = [];
-    $totalMensajes = 0;
-    $totalPaginas  = 1;
-    $totalNoLeidos = 0;
 }
 ?>
 
-<div class="contenedor" style="padding-top:24px; padding-bottom:40px;">
-<div class="contenedor-admin">
-
-    <h1><i class="fa-solid fa-envelope"></i> Mensajes de Contacto
-        <?php if ($totalNoLeidos > 0) { ?>
-        <span class="badge badge-acogida" style="font-size:0.9rem; margin-left:10px;">
-            <?php echo $totalNoLeidos; ?> sin leer
-        </span>
-        <?php } ?>
-    </h1>
-
-    <!-- BARRA -->
-    <div class="barra-admin">
-        <form method="get" action="contacto.php" class="form-filtro">
-            <input type="text" name="buscar"
-                   placeholder="Buscar nombre, email o asunto..."
-                   value="<?php echo htmlspecialchars($filtroBuscar); ?>">
-            <select name="leido">
-                <option value="">Todos</option>
-                <option value="0" <?php echo $filtroLeido === '0' ? 'selected' : ''; ?>>Sin leer</option>
-                <option value="1" <?php echo $filtroLeido === '1' ? 'selected' : ''; ?>>Leídos</option>
-            </select>
-            <button type="submit" class="btn-turquesa btn-sm">
-                <i class="fa-solid fa-magnifying-glass"></i> Filtrar
-            </button>
-            <?php if (!empty($filtroLeido) || !empty($filtroBuscar)) { ?>
-            <a href="contacto.php" class="btn-outline-coral btn-sm">Limpiar</a>
-            <?php } ?>
-        </form>
-
-        <?php if ($totalNoLeidos > 0) { ?>
-        <form method="post" action="contacto.php" style="display:inline;">
-            <button type="submit" name="marcar_todos" class="btn-oscuro btn-sm"
-                    onclick="return confirm('¿Marcar todos como leídos?')">
-                <i class="fa-solid fa-check-double"></i> Marcar todos como leídos
-            </button>
-        </form>
-        <?php } ?>
+<!-- HERO -->
+<section class="contacto-hero">
+    <div class="contacto-hero-overlay"></div>
+    <div class="contacto-hero-contenido">
+        <h1><i class="fa-solid fa-envelope"></i> Contacta con nosotros</h1>
+        <p>¿Tienes alguna pregunta? Estamos aquí para ayudarte.</p>
     </div>
+</section>
 
-    <p style="color:#888; margin-bottom:16px;">
-        Mostrando <?php echo count($mensajes); ?> de <?php echo $totalMensajes; ?> mensajes
-    </p>
+<section class="seccion">
+    <div class="contenedor">
+        <div class="contacto-grid">
 
-    <!-- TABLA -->
-    <?php if (!empty($mensajes)) { ?>
-    <div class="tabla-wrapper">
-        <table class="tabla-admin">
-            <thead>
-                <tr>
-                    <th>Estado</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Asunto</th>
-                    <th>Fecha</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($mensajes as $msg) { ?>
-                <tr class="<?php echo $msg['leido'] ? '' : 'fila-no-leida'; ?>">
-                    <td>
-                        <?php if (!$msg['leido']) { ?>
-                            <span class="badge badge-acogida">Nuevo</span>
-                        <?php } else { ?>
-                            <span class="badge badge-adoptado">Leído</span>
-                        <?php } ?>
-                    </td>
-                    <td><strong><?php echo htmlspecialchars($msg['nombre']); ?></strong></td>
-                    <td>
-                        <a href="mailto:<?php echo htmlspecialchars($msg['email']); ?>"
-                           style="color:<?php echo $color_turquesa ?? '#4ECDC4'; ?>;">
-                            <?php echo htmlspecialchars($msg['email']); ?>
-                        </a>
-                    </td>
-                    <td><?php echo htmlspecialchars($msg['asunto']); ?></td>
-                    <td><?php echo date('d/m/Y H:i', strtotime($msg['fecha'])); ?></td>
-                    <td class="acciones">
-                        <button class="btn-editar btn-sm btn-ver-mensaje"
-                                data-id="<?php echo $msg['id']; ?>">
-                            <i class="fa-solid fa-eye"></i>
-                        </button>
-                        <?php if (!$msg['leido']) { ?>
-                        <a href="contacto.php?leer=<?php echo $msg['id']; ?>"
-                           class="btn-nuevo btn-sm"
-                           title="Marcar como leído">
-                            <i class="fa-solid fa-check"></i>
-                        </a>
-                        <?php } ?>
-                        <a href="contacto.php?borrar=<?php echo $msg['id']; ?>"
-                           class="btn-borrar btn-sm"
-                           onclick="return confirm('¿Eliminar este mensaje?')">
-                            <i class="fa-solid fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
+            <!-- INFO LATERAL -->
+            <div class="contacto-info">
+
+                <div class="contacto-info-card">
+                    <h2>¿Cómo podemos ayudarte?</h2>
+                    <p>Puedes escribirnos para cualquier consulta sobre adopciones, apadrinamientos, donaciones o colaboraciones.</p>
+                </div>
+
+                <div class="contacto-datos">
+                    <div class="contacto-dato">
+                        <div class="contacto-dato-icono">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4>Dirección</h4>
+                            <p>Calle del Refugio, 12<br>03500 Benidorm, Alicante</p>
+                        </div>
+                    </div>
+                    <div class="contacto-dato">
+                        <div class="contacto-dato-icono">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>+34 612 345 678</p>
+                            <small>Lunes a Viernes, 9h - 18h</small>
+                        </div>
+                    </div>
+                    <div class="contacto-dato">
+                        <div class="contacto-dato-icono">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@huellasdeamor.com</p>
+                        </div>
+                    </div>
+                    <div class="contacto-dato">
+                        <div class="contacto-dato-icono">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Horario de visitas</h4>
+                            <p>Sábados y Domingos<br>10h - 14h y 16h - 19h</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Redes sociales -->
+                <div class="contacto-redes">
+                    <h4>Síguenos</h4>
+                    <div class="contacto-redes-iconos">
+                        <a href="#" class="red-facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="red-instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="red-twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="red-whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FORMULARIO -->
+            <div class="contacto-formulario">
+
+                <?php if ($enviado) { ?>
+                <div class="contacto-exito">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h2>¡Mensaje enviado!</h2>
+                    <p>Hemos recibido tu mensaje y te responderemos en un plazo de <strong>24-48 horas</strong>.</p>
+                    <a href="contacto.php" class="btn-coral" style="margin-top:20px; display:inline-block;">
+                        Enviar otro mensaje
+                    </a>
+                </div>
+
+                <?php } else { ?>
+
+                <h2>Envíanos un mensaje</h2>
+
+                <?php if (!empty($errores)) { ?>
+                <div class="alerta alerta-error">
+                    <?php foreach ($errores as $error) { ?>
+                        <p><?php echo htmlspecialchars($error); ?></p>
+                    <?php } ?>
+                </div>
                 <?php } ?>
-            </tbody>
-        </table>
+
+                <form method="post" action="contacto.php" class="form-contacto">
+
+                    <div class="form-dos-columnas">
+                        <div class="form-grupo">
+                            <label for="nombre">Nombre <span class="obligatorio">*</span></label>
+                            <input type="text" id="nombre" name="nombre"
+                                   value="<?php echo htmlspecialchars($_POST['nombre'] ?? $nombrePre); ?>"
+                                   placeholder="Tu nombre completo" required>
+                        </div>
+                        <div class="form-grupo">
+                            <label for="email">Email <span class="obligatorio">*</span></label>
+                            <input type="email" id="email" name="email"
+                                   value="<?php echo htmlspecialchars($_POST['email'] ?? $emailPre); ?>"
+                                   placeholder="tu@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="asunto">Asunto <span class="obligatorio">*</span></label>
+                        <select id="asunto" name="asunto" required>
+                            <option value="">Selecciona el motivo de tu consulta</option>
+                            <option value="Consulta sobre adopcion"
+                                <?php echo ($_POST['asunto'] ?? '') === 'Consulta sobre adopcion' ? 'selected' : ''; ?>>
+                                Consulta sobre adopción
+                            </option>
+                            <option value="Consulta sobre apadrinamiento"
+                                <?php echo ($_POST['asunto'] ?? '') === 'Consulta sobre apadrinamiento' ? 'selected' : ''; ?>>
+                                Consulta sobre apadrinamiento
+                            </option>
+                            <option value="Informacion sobre donaciones"
+                                <?php echo ($_POST['asunto'] ?? '') === 'Informacion sobre donaciones' ? 'selected' : ''; ?>>
+                                Información sobre donaciones
+                            </option>
+                            <option value="Quiero ser casa de acogida"
+                                <?php echo ($_POST['asunto'] ?? '') === 'Quiero ser casa de acogida' ? 'selected' : ''; ?>>
+                                Quiero ser casa de acogida
+                            </option>
+                            <option value="Colaboracion o voluntariado"
+                                <?php echo ($_POST['asunto'] ?? '') === 'Colaboracion o voluntariado' ? 'selected' : ''; ?>>
+                                Colaboración o voluntariado
+                            </option>
+                            <option value="Otro"
+                                <?php echo ($_POST['asunto'] ?? '') === 'Otro' ? 'selected' : ''; ?>>
+                                Otro
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="mensaje">Mensaje <span class="obligatorio">*</span></label>
+                        <textarea id="mensaje" name="mensaje" rows="5"
+                                  placeholder="Escribe tu mensaje aquí... (mínimo 20 caracteres)"
+                                  required><?php echo htmlspecialchars($_POST['mensaje'] ?? ''); ?></textarea>
+                        <small class="form-ayuda">Mínimo 20 caracteres.</small>
+                    </div>
+
+                    <!-- Anti-spam honeypot -->
+                    <div style="display:none;">
+                        <input type="text" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="form-botones">
+                        <button type="submit" name="enviar" class="btn-coral btn-grande">
+                            <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje
+                        </button>
+                    </div>
+
+                </form>
+                <?php } ?>
+            </div>
+
+        </div>
     </div>
+</section>
 
-    <!-- PAGINACIÓN -->
-    <?php if ($totalPaginas > 1) { ?>
-    <div class="paginacion">
-        <?php for ($i = 1; $i <= $totalPaginas; $i++) { ?>
-        <a href="contacto.php?pagina=<?php echo $i; ?>&leido=<?php echo urlencode($filtroLeido); ?>&buscar=<?php echo urlencode($filtroBuscar); ?>"
-           class="paginacion-item <?php echo $i === $paginaActual ? 'activo' : ''; ?>">
-            <?php echo $i; ?>
-        </a>
-        <?php } ?>
-    </div>
-    <?php } ?>
-
-    <?php } else { ?>
-    <p class="sin-resultados">No hay mensajes que coincidan.</p>
-    <?php } ?>
-
-</div>
-</div>
-
-<!-- MODAL VER MENSAJE -->
-<div id="modalMensaje" class="modal-fondo" style="display:none;">
-    <div class="modal-caja">
-        <button class="modal-cerrar" id="btnCerrarMensaje">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <h3 id="modalMsgTitulo">Mensaje</h3>
-        <div id="modalMsgContenido"></div>
-    </div>
-</div>
-
-<script>
-const datosMensajes = <?php echo json_encode($mensajes); ?>;
-
-document.querySelectorAll('.btn-ver-mensaje').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-        const id  = parseInt(this.dataset.id);
-        const msg = datosMensajes.find(function(x) { return x.id == id; });
-        if (!msg) { return; }
-
-        document.getElementById('modalMsgTitulo').textContent = msg.asunto;
-        document.getElementById('modalMsgContenido').innerHTML =
-            '<div class="modal-detalle-grid">' +
-                '<div><strong>De:</strong><p>' + msg.nombre + '</p></div>' +
-                '<div><strong>Email:</strong><p><a href="mailto:' + msg.email + '">' + msg.email + '</a></p></div>' +
-                '<div><strong>Fecha:</strong><p>' + msg.fecha + '</p></div>' +
-                '<div><strong>Estado:</strong><p>' + (msg.leido == 1 ? 'Leído' : 'Sin leer') + '</p></div>' +
-                '<div class="modal-detalle-full"><strong>Mensaje:</strong>' +
-                '<p style="white-space:pre-wrap; background:#f7f9fc; padding:12px; border-radius:8px; margin-top:6px;">' +
-                msg.mensaje + '</p></div>' +
-                '<div class="modal-detalle-full" style="margin-top:8px;">' +
-                '<a href="mailto:' + msg.email + '?subject=Re: ' + encodeURIComponent(msg.asunto) + '" ' +
-                'class="btn-turquesa btn-sm"><i class="fa-solid fa-reply"></i> Responder por email</a>' +
-                '</div>' +
-            '</div>';
-
-        document.getElementById('modalMensaje').style.display = 'flex';
-
-        // Marcar como leído automáticamente al abrir
-        if (msg.leido == 0) {
-            fetch('contacto.php?leer=' + msg.id);
-            msg.leido = 1;
-        }
-    });
-});
-
-document.getElementById('btnCerrarMensaje').addEventListener('click', function() {
-    document.getElementById('modalMensaje').style.display = 'none';
-});
-
-document.getElementById('modalMensaje').addEventListener('click', function(e) {
-    if (e.target === this) { this.style.display = 'none'; }
-});
-</script>
-
-<?php require_once '../templates/footer-admin.php'; ?>
+<?php require_once 'templates/footer.php'; ?>

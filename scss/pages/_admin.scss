@@ -1,3 +1,7 @@
+// ============================================================
+// pages/_admin.scss — Mobile First
+// ============================================================
+
 .contenedor-admin {
     background-color: $color-blanco;
     padding: $espacio-sm;
@@ -390,5 +394,54 @@
     input:checked + .toggle-slider {
         background-color: $color-verde;
         &::after { left: 23px; }
+    }
+}
+
+// -----------------------------------------------
+// ESTADÍSTICAS DONACIONES ADMIN
+// -----------------------------------------------
+.donacion-stats-admin {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $espacio-sm;
+    margin-bottom: $espacio-md;
+
+    @include desde-tablet {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.stat-admin-card {
+    background-color: $color-blanco;
+    border-radius: $radio-md;
+    box-shadow: $sombra-card;
+    padding: $espacio-sm;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    i {
+        font-size: 1.6rem;
+        color: $color-coral;
+        flex-shrink: 0;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stat-admin-num {
+        font-family: $fuente-titulo;
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: $color-oscuro;
+        line-height: 1;
+    }
+
+    span:last-child {
+        font-size: $fs-pequeno;
+        color: #888;
+        margin-top: 2px;
     }
 }
