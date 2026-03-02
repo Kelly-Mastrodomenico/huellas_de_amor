@@ -5,33 +5,35 @@ title: Arquitectura
 
 # 🏗️ Arquitectura del Proyecto
 
-← [Volver al índice](index.md)
+[← Volver al índice](index.md)
 
 ---
 
-## Stack tecnológico
+## 🚀 Stack Tecnológico
 
 ### Frontend
+
 | Tecnología | Uso |
-|---|---|
-| HTML5 semántico | Estructura de páginas |
-| CSS3 + SASS/SCSS | Estilos con preprocesador |
-| JavaScript Vanilla | Validaciones, DOM, contadores |
-| jQuery + jQuery UI | AJAX, efectos, datepicker |
-| Bootstrap 5 | Grid, componentes responsive |
-| Font Awesome 6 | Iconografía |
-| Google Fonts | Nunito (títulos) + Lato (cuerpo) |
-| FancyBox | Galería de fotos de mascotas |
+| :--- | :--- |
+| **HTML5** | Estructura semántica de las vistas |
+| **SASS/SCSS** | Estilos modulares y mantenibles |
+| **JavaScript** | Lógica de cliente y validaciones (Vanilla) |
+| **jQuery + UI** | Interacciones AJAX y componentes como Datepicker |
+| **Bootstrap 5** | Sistema de rejilla (Grid) y componentes responsive |
+| **Font Awesome** | Iconografía del sitio |
+| **FancyBox** | Visualización de galerías de mascotas |
 
 ### Backend
-| Tecnología | Uso |
-|---|---|
-| PHP 8.2 | Lógica del servidor |
-| MySQL 8.0 | Base de datos relacional |
-| PDO | Conexión segura con prepare/bindParam |
-| FPDF | Generación de certificados PDF |
-| TinyMCE | Editor de contenido para noticias |
 
+| Tecnología | Uso |
+| :--- | :--- |
+| **PHP 8.2** | Motor de lógica del lado del servidor |
+| **MySQL 8.0** | Gestión de base de datos relacional |
+| **PDO** | Capa de abstracción para consultas seguras |
+| **FPDF** | Generación dinámica de certificados en PDF |
+| **TinyMCE** | Editor de texto enriquecido para el panel admin |
+
+---
 
 ## Estructura de archivos
 
