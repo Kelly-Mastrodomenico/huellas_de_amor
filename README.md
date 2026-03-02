@@ -101,7 +101,7 @@ mysql -u root -p huellas_de_amor < db/huellas_de_amor.sql
 
 ## 📚 Documentación
 
-Consulta la documentación completa en [GitHub Pages](https://Kelly-Mastrodomenico.github.io/HuellasDeAmor/)
+Consulta la documentación completa en [GitHub Pages](https://kelly-mastrodomenico.github.io/huellas_de_amor/)
 
 - [Introducción](docs/introduccion.md)
 - [Arquitectura](docs/arquitectura.md)
