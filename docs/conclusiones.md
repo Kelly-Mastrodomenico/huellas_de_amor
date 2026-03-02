@@ -1,65 +1,76 @@
-# 📚 Referencias y Recursos
+---
+layout: default
+title: Conclusiones
+---
 
-## Documentación oficial
+# 🎯 Conclusiones
 
-| Recurso | URL |
-|---|---|
-| PHP Manual | https://www.php.net/manual/es/ |
-| MySQL Docs | https://dev.mysql.com/doc/ |
-| MDN Web Docs (HTML/CSS/JS) | https://developer.mozilla.org/es/ |
-| Bootstrap 5 | https://getbootstrap.com/docs/5.0/ |
-| jQuery Docs | https://api.jquery.com/ |
-| jQuery UI | https://jqueryui.com/ |
-| Font Awesome | https://fontawesome.com/icons |
-| FPDF | http://www.fpdf.org/ |
-| TinyMCE | https://www.tiny.cloud/docs/ |
-| FancyBox | https://fancyapps.com/docs/ui/fancybox/ |
-| SASS/SCSS | https://sass-lang.com/documentation/ |
-
-## Herramientas utilizadas
-
-| Herramienta | Uso |
-|---|---|
-| XAMPP | Servidor local de desarrollo |
-| Visual Studio Code | Editor de código |
-| phpMyAdmin | Gestión de base de datos |
-| GitHub Desktop | Control de versiones visual |
-| SASS | Preprocesador CSS |
-| Visily | Diseño de mockups y wireframes |
-
-## Recursos de diseño
-
-| Recurso | URL |
-|---|---|
-| Google Fonts (Nunito + Lato) | https://fonts.google.com/ |
-| Picsum Photos (imágenes placeholder) | https://picsum.photos/ |
-| Shields.io (badges README) | https://shields.io/ |
-| CSS Gradient | https://cssgradient.io/ |
-| Coolors (paleta de colores) | https://coolors.co/ |
-
-## Bibliografía del módulo
-
-- **Diseño de Interfaces Web** — Apuntes del módulo, I.E.S. Macià Àbela
-- **Desarrollo Web en Entorno Servidor** — Apuntes del módulo, I.E.S. Macià Àbela
-- **Despliegue de Aplicaciones Web** — Apuntes del módulo, I.E.S. Macià Àbela
-- **CSS Grid Layout** — Material del módulo (PDF adjunto al proyecto)
-- **Fuentes Flexibles** — Material del módulo (PDF adjunto al proyecto)
-- **Imágenes Responsivas** — Material del módulo (PDF adjunto al proyecto)
-- **Preprocesadores SASS** — Material del módulo (PDF adjunto al proyecto)
-- **Responsive Web Design Mobile First** — Material del módulo (PDF adjunto al proyecto)
-
-## Licencias
-
-| Librería | Licencia |
-|---|---|
-| Bootstrap 5 | MIT License |
-| jQuery | MIT License |
-| Font Awesome (Free) | CC BY 4.0 + MIT |
-| FPDF | Freeware |
-| TinyMCE (Community) | MIT License |
-| FancyBox (Free) | GPL-3.0 |
-| SASS | MIT License |
+← [Volver al índice](index.md)
 
 ---
 
-[← Conclusiones](conclusiones.md) | [Inicio →](index.md)
+## Resultados obtenidos
+
+El proyecto **Huellas de Amor** ha sido desarrollado como proyecto intermodular de 2º DAW, integrando conocimientos de todos los módulos del ciclo. Se ha conseguido una plataforma web funcional y completa que cubre los tres perfiles de usuario definidos en los requisitos.
+
+## Funcionalidades implementadas
+
+| Funcionalidad | Estado |
+|---|---|
+| Catálogo de mascotas con filtros AJAX | ✅ Completado |
+| Ficha de mascota con galería FancyBox | ✅ Completado |
+| Sistema de solicitudes de adopción con seguimiento | ✅ Completado |
+| Apadrinamiento con 3 planes de pago | ✅ Completado |
+| Donaciones con pasarela simulada | ✅ Completado |
+| Certificado PDF de adopción | ✅ Completado |
+| Certificado PDF de donación | ✅ Completado |
+| Panel de usuario completo | ✅ Completado |
+| Registro con validación DNI | ✅ Completado |
+| Panel de administración con estadísticas | ✅ Completado |
+| CRUD completo de mascotas con fotos | ✅ Completado |
+| Exportación PDF listado de mascotas | ✅ Completado |
+| Gestión de solicitudes (aprobar/rechazar) | ✅ Completado |
+| Gestión de noticias con TinyMCE | ✅ Completado |
+| Gestión de donaciones con exportación PDF | ✅ Completado |
+| Gestión de usuarios con cambio de rol | ✅ Completado |
+| Mensajes de contacto con modal | ✅ Completado |
+| Diseño responsive Mobile First con SASS/SCSS | ✅ Completado |
+| Control de versiones con Git + GitHub | ✅ Completado |
+| Despliegue en AWS EC2 | ✅ Completado |
+| Documentación GitHub Pages | ✅ Completado |
+
+## Aprendizajes
+
+### Técnicos
+- Dominio de PHP con PDO para consultas seguras
+- Integración de librerías externas (FPDF, TinyMCE, FancyBox)
+- Gestión de sesiones y autenticación con bcrypt
+- Arquitectura SASS/SCSS modular con estructura 7-1
+- Generación de PDFs con FPDF
+- Peticiones AJAX con jQuery para filtros sin recargar página
+- Despliegue en AWS EC2 con Apache + PHP + MySQL
+
+### Metodológicos
+- Planificación de un proyecto complejo desde cero
+- Separación de responsabilidades (includes, templates, scss modular)
+- Documentación técnica con Markdown en GitHub Pages
+- Control de versiones con ramas y tags (v0.1 → v1.0)
+
+## Dificultades encontradas
+
+- **FPDF y UTF-8:** La librería no soporta UTF-8 nativamente — se resolvió con `iconv()` a windows-1252
+- **SASS deprecations:** Las versiones nuevas deprecan `@import`, generando warnings al compilar
+- **Gestión de ramas Git:** Conflictos al fusionar ramas — se resolvió con `--force` controlado
+- **Rutas en subcarpetas:** Requieren rutas relativas distintas según la profundidad del archivo
+
+## Posibles mejoras futuras
+
+- Sistema de recuperación de contraseña por email
+- Foro comunitario completamente funcional
+- Galería de testimonios con fotos antes/después
+- Integración con pasarela de pago real (Stripe)
+- Notificaciones por email al cambiar estado de solicitud
+
+---
+
+← [Anterior: Uso](uso.md) | [Siguiente: Referencias →](referencias.md)

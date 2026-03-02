@@ -1,6 +1,3 @@
-title: Huellas de Amor
+theme: jekyll-theme-cayman
+title: Huellas de amor
 description: Plataforma web de adopción y apadrinamiento de mascotas
-theme: minima
-baseurl: "/huellas_de_amor"
-url: "https://kelly-mastrodomenico.github.io"
-author: Kelly Rodríguez Mastrodomenico

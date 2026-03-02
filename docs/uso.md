@@ -1,4 +1,13 @@
+---
+layout: default
+title: Guía de Uso
+---
+
 # 📖 Guía de Uso
+
+← [Volver al índice](index.md)
+
+---
 
 ## Perfil: Visitante (sin registrar)
 
@@ -11,7 +20,6 @@
 ### Contactar
 1. Ve a **"Contacto"** en el menú
 2. Rellena el formulario con nombre, email, asunto y mensaje
-3. El administrador recibirá tu mensaje en el panel
 
 ---
 
@@ -20,24 +28,21 @@
 ### Registrarse
 1. Haz clic en **"Registrarse"** en el menú
 2. Rellena todos los campos obligatorios (nombre, apellidos, email, DNI, contraseña)
-3. Serás redirigido al login con un mensaje de confirmación
 
 ### Solicitar una adopción
 1. Entra en la ficha de una mascota disponible
 2. Haz clic en **"Solicitar adopción"**
 3. Rellena el formulario con tu motivación y situación del hogar
-4. El estado de tu solicitud aparecerá en **Mi Panel → Mis Solicitudes**
+4. El estado aparecerá en **Mi Panel → Mis Solicitudes**
 
 ### Descargar certificado de adopción
 1. Ve a **Mi Panel → Mis Solicitudes**
-2. En una solicitud con estado **"Aprobada"** verás el botón **"Certificado"**
-3. Se descargará un PDF oficial con tus datos y los de la mascota
+2. En una solicitud **"Aprobada"** verás el botón **"Certificado"**
+3. Se descargará un PDF oficial
 
 ### Apadrinar una mascota
 1. Ve a **"Apadrinar"** en el menú
-2. Elige una mascota y haz clic en **"Apadrinar"**
-3. Selecciona un plan: Básico (5€), Estándar (15€) o Completo (30€)
-4. Completa el formulario de pago
+2. Selecciona un plan: Básico (5€), Estándar (15€) o Completo (30€)
 
 ### Hacer una donación
 1. Ve a **"Donaciones"** en el menú
@@ -49,35 +54,26 @@
 ## Perfil: Administrador
 
 ### Acceder al panel
-1. Inicia sesión con una cuenta de administrador
-2. Serás redirigido automáticamente a `/admin/panel.php`
+Inicia sesión con `admin@huellasdeamor.com` — serás redirigido a `/admin/panel.php`
 
 ### Gestionar mascotas
 - **Añadir:** Botón **"+ Nueva Mascota"** → rellena ficha + sube fotos
-- **Editar:** Icono lápiz en la tabla de mascotas
-- **Cambiar estado:** Toggle disponible/acogida/adoptado
+- **Editar:** Icono lápiz en la tabla
 - **Exportar PDF:** Botón **"Exportar PDF"** con los filtros activos
 
-### Gestionar solicitudes de adopción
+### Gestionar solicitudes
 1. Ve a **Admin → Solicitudes**
-2. Haz clic en el ojo para ver los detalles
-3. Usa **"Aprobar"** o **"Rechazar"** con notas opcionales
+2. Usa **"Aprobar"** o **"Rechazar"** con notas opcionales
 
 ### Gestionar usuarios
-1. Ve a **Admin → Usuarios**
-2. Cambia el rol directamente desde el select de la tabla
-3. Activa/desactiva cuentas con el botón de estado
+- Cambia el rol directamente desde el select de la tabla
+- Activa/desactiva cuentas con el botón de estado
 
 ### Publicar noticias
 1. Ve a **Admin → Noticias → Nueva Noticia**
-2. Escribe el contenido con el editor TinyMCE
+2. Escribe el contenido con el editor **TinyMCE**
 3. Elige categoría y marca como publicada
-
-### Ver mensajes de contacto
-1. Ve a **Admin → Mensajes**
-2. Haz clic en el ojo para leer el mensaje completo
-3. Usa el botón **"Responder por email"** para contestar directamente
 
 ---
 
-[← Instalación](instalacion.md) | [Conclusiones →](conclusiones.md)
+← [Anterior: Instalación](instalacion.md) | [Siguiente: Conclusiones →](conclusiones.md)

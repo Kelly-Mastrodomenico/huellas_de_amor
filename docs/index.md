@@ -1,48 +1,68 @@
-# 🐾 Huellas de Amor
+---
+layout: default
+title: Inicio
+---
 
-**Plataforma web de adopción y apadrinamiento de mascotas**
+# 🐾 Huellas de Amor — Documentación Técnica
+
+## Plataforma web de adopción y apadrinamiento de mascotas
 
 ---
 
-![Estado](https://img.shields.io/badge/Estado-En%20Desarrollo-yellow)
-![Versión](https://img.shields.io/badge/Versión-1.0-blue)
-![PHP](https://img.shields.io/badge/PHP-8.2-purple)
-![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
+## 📖 Índice de Contenidos
 
-## ¿Qué es Huellas de Amor?
+### [1. Introducción](introduccion.md)
+Conoce el proyecto, sus objetivos y las funcionalidades principales de la plataforma.
 
-**Huellas de Amor** es una plataforma web completa para la gestión de adopciones y apadrinamientos de animales rescatados. Centraliza protectoras, refugios y veterinarias en un único espacio digital para facilitar la adopción responsable.
+### [2. Arquitectura](arquitectura.md)
+Estructura técnica del proyecto, tecnologías empleadas y guía de estilo visual.
 
-## 👥 Autora
+### [3. Instalación](instalacion.md)
+Requisitos del sistema, pasos de instalación y configuración del entorno de desarrollo.
 
-| Campo | Información |
+### [4. Guía de Uso](uso.md)
+Guía de usuario, perfiles disponibles y casos de uso prácticos de la aplicación.
+
+### [5. Conclusiones](conclusiones.md)
+Logros alcanzados, dificultades encontradas y posibles mejoras futuras.
+
+### [6. Referencias](referencias.md)
+Bibliografía, documentación técnica y recursos utilizados en el desarrollo.
+
+---
+
+## 🎯 Accesos Rápidos
+
+| Recurso | Enlace |
 |---|---|
-| **Nombre** | Kelly Rodríguez Mastrodomenico |
-| **Ciclo** | 2º DAW — Desarrollo de Aplicaciones Web |
-| **Centro** | I.E.S. Macià Àbela |
-| **Tutor** | Carlos Fernández |
-| **Curso** | 2025-2026 |
-
-## 📖 Contenido de la documentación
-
-- [Introducción](introduccion.md) — Descripción del proyecto y objetivos
-- [Arquitectura](arquitectura.md) — Estructura de archivos y base de datos
-- [Instalación](instalacion.md) — Cómo instalar y configurar el proyecto
-- [Guía de uso](uso.md) — Manual de usuario por perfiles
-- [Conclusiones](conclusiones.md) — Resultados y aprendizajes
-- [Referencias](referencias.md) — Recursos y bibliografía
-
-## 🚀 Características principales
-
-- ✅ Catálogo de mascotas con filtros avanzados
-- ✅ Sistema de solicitudes de adopción
-- ✅ Apadrinamiento con 3 planes de pago
-- ✅ Donaciones con certificados PDF
-- ✅ Panel de usuario y panel de administración
-- ✅ Diseño 100% responsive Mobile First
-- ✅ Editor de noticias con TinyMCE
-- ✅ Exportación de informes en PDF con FPDF
+| **Repositorio GitHub** | [Ver código fuente](https://github.com/Kelly-Mastrodomenico/huellas_de_amor) |
+| **Demo en producción** | [http://3.220.231.221](http://3.220.231.221) |
+| **GitHub Pages** | [Ver código fuente](https://kelly-mastrodomenico.github.io/huellas_de_amor/) |
 
 ---
 
-[Ver repositorio en GitHub](https://github.com/Kelly-Mastrodomenico/huellas_de_amor)
+## 👤 Información del Proyecto
+
+**Proyecto:** Huellas de Amor — Plataforma de adopción de mascotas  
+**Estudiante:** Kelly Rodríguez Mastrodomenico  
+**Curso:** 2º DAW (2025-2026)  
+**Centro:** I.E.S. Macià Àbela  
+**Tutor:** Carlos Fernández  
+
+---
+
+## 📊 Estado del Proyecto
+
+```
+Frontend:        ████████████████████ 100%
+Backend PHP:     ████████████████████ 100%
+Base de datos:   ████████████████████ 100%
+Certificados PDF:████████████████████ 100%
+Panel Admin:     ████████████████████ 100%
+Documentación:   ████████████████████ 100%
+Despliegue AWS:  ████████████████████ 100%
+```
+
+---
+
+**Última actualización:** Marzo 2026

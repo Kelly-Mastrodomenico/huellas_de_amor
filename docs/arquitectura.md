@@ -1,4 +1,13 @@
+---
+layout: default
+title: Arquitectura
+---
+
 # 🏗️ Arquitectura del Proyecto
+
+← [Volver al índice](index.md)
+
+---
 
 ## Stack tecnológico
 
@@ -22,6 +31,7 @@
 | PDO | Conexión segura con prepare/bindParam |
 | FPDF | Generación de certificados PDF |
 | TinyMCE | Editor de contenido para noticias |
+
 
 ## Estructura de archivos
 
@@ -143,7 +153,7 @@ HuellasDeAmor/
 
 ## Base de datos
 
-La base de datos `huellas_de_amor` contiene 16 tablas:
+La base de datos `huellas_de_amor` contiene **16 tablas**:
 
 | Tabla | Descripción |
 |---|---|
@@ -176,4 +186,4 @@ La base de datos `huellas_de_amor` contiene 16 tablas:
 
 ---
 
-[← Introducción](introduccion.md) | [Instalación →](instalacion.md)
+← [Anterior: Introducción](introduccion.md) | [Siguiente: Instalación →](instalacion.md)

@@ -1,4 +1,13 @@
+---
+layout: default
+title: Introducción
+---
+
 # 📋 Introducción
+
+← [Volver al índice](index.md)
+
+---
 
 ## Descripción del proyecto
 
@@ -36,4 +45,4 @@ El proyecto cubre tres perfiles de usuario:
 
 ---
 
-[← Inicio](index.md) | [Arquitectura →](arquitectura.md)
+← [Anterior: Inicio](index.md) | [Siguiente: Arquitectura →](arquitectura.md)

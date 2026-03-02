@@ -1,4 +1,13 @@
+---
+layout: default
+title: Instalación
+---
+
 # ⚙️ Guía de Instalación
+
+← [Volver al índice](index.md)
+
+---
 
 ## Requisitos previos
 
@@ -11,7 +20,7 @@
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/Kelly-Mastrodomenico/HuellasDeAmor.git
+git clone https://github.com/Kelly-Mastrodomenico/huellas_de_amor.git
 ```
 
 Mueve la carpeta a `C:\xampp\htdocs\HuellasDeAmor`
@@ -24,13 +33,15 @@ Mueve la carpeta a `C:\xampp\htdocs\HuellasDeAmor`
 
 ### 3. Configurar la conexión
 
-Edita `includes/conexion.php`:
+Edita `includes/configuracion.php`:
 
 ```php
-$host     = 'localhost';
-$dbname   = 'huellas_de_amor';
-$usuario  = 'root';
-$password = '';
+define('DB_HOST',    'localhost');
+define('DB_NAME',    'huellas_de_amor');
+define('DB_USER',    'root');
+define('DB_PASS',    '');
+define('BASE_URL',   '/HuellasDeAmor/');
+define('BASE_PATH',  'C:/xampp/htdocs/HuellasDeAmor');
 ```
 
 ### 4. Arrancar XAMPP
@@ -48,33 +59,27 @@ $password = '';
 
 ## Compilar SASS (opcional)
 
-Si modificas los archivos `.scss`:
-
 ```bash
-# Instalar SASS
 npm install -g sass
-
-# Compilar
 sass scss/main.scss css/style.css --watch
 ```
 
-## Estructura de carpetas a crear
+## Despliegue en AWS EC2
 
-Si no existen, crea estas carpetas en la raíz:
+La aplicación está desplegada en **AWS EC2** con Ubuntu 22.04 + Apache + MySQL + PHP 8.2.
 
+**URL de producción:** [http://3.220.231.221](http://3.220.231.221)
+
+```bash
+# Configuración en producción (includes/configuracion.php)
+define('DB_HOST',    'localhost');
+define('DB_NAME',    'huellas_de_amor');
+define('DB_USER',    'huellas');
+define('DB_PASS',    'huellas2026');
+define('BASE_URL',   '/');
+define('BASE_PATH',  '/var/www/html');
 ```
-uploads/
-uploads/mascotas/
-uploads/noticias/
-uploads/perfiles/
-```
-
-Y dales permisos de escritura.
-
-## Despliegue en AWS
-
-Consulta la sección de despliegue para instrucciones de puesta en producción en AWS EC2 con Apache + PHP + MySQL.
 
 ---
 
-[← Arquitectura](arquitectura.md) | [Guía de uso →](uso.md)
+← [Anterior: Arquitectura](arquitectura.md) | [Siguiente: Uso →](uso.md)
