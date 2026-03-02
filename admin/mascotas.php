@@ -150,6 +150,7 @@ $queryFiltros = http_build_query([
 
     <!-- TABLA -->
     <?php if (!empty($mascotas)) { ?>
+    <div class="tabla-wrapper">
         <table class="tabla-admin">
             <thead>
                 <tr>
@@ -191,6 +192,7 @@ $queryFiltros = http_build_query([
                 <?php } ?>
             </tbody>
         </table>
+        </div>
 
         <!-- PAGINACION — igual que en la tienda del profesor -->
         <?php if ($totalPaginas > 1) { ?>
