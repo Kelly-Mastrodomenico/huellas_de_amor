@@ -36,7 +36,7 @@ Bibliografía, documentación técnica y recursos utilizados en el desarrollo.
 | Recurso | Enlace |
 |---|---|
 | **Repositorio GitHub** | [Ver código fuente](https://github.com/Kelly-Mastrodomenico/huellas_de_amor) |
-| **Demo en producción** | [http://3.220.231.221](http://3.220.231.221) |
+| **Demo en producción** | [https://huellas-de-amor.gt.tc/](https://huellas-de-amor.gt.tc/) |
 | **GitHub Pages** | [Ver código fuente](https://kelly-mastrodomenico.github.io/huellas_de_amor/) |
 
 ---
