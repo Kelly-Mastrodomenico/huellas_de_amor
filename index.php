@@ -386,7 +386,7 @@ $totalAcogida    = contarMascotas('acogida',     $conexion);
                             <?php echo htmlspecialchars($noticia['categoria']); ?>
                         </p>
                         <h3><?php echo htmlspecialchars($noticia['titulo']); ?></h3>
-                        <p><?php echo htmlspecialchars(substr($noticia['contenido'], 0, 100)) . '...'; ?></p>
+                        <p><?php echo mb_substr(strip_tags($noticia['contenido']), 0, 150); ?></p>
                         <span class="noticia-fecha">
                             <i class="fa-regular fa-calendar"></i>
                             <?php echo date('d/m/Y', strtotime($noticia['fecha_publicacion'])); ?>
