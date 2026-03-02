@@ -42,15 +42,18 @@
 
         <!-- Columna 4: Newsletter + redes (desktop) -->
         <div class="bloque-footer">
-            <h3>Newsletter</h3>
-            <p>Suscribete para recibir noticias de nuevas mascotas y eventos especiales.</p>
-            <form class="form-newsletter" action="#" method="post">
-                <input type="email" name="email_newsletter" placeholder="Tu email">
-                <button type="submit">
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
-            </form>
-        </div>
+    <h3>Newsletter</h3>
+    <p>Suscribete para recibir noticias de nuevas mascotas y eventos especiales.</p>
+    <form class="form-newsletter" id="formNewsletter">
+        <input type="email" name="email_newsletter" placeholder="Tu email" required>
+        <button type="submit">
+            <i class="fa-solid fa-paper-plane"></i>
+        </button>
+    </form>
+    <p id="mensajeNewsletter" style="display:none; color:#4ECDC4; font-size:0.85rem; margin-top:8px;">
+        <i class="fa-solid fa-check"></i> ¡Gracias! Te avisaremos de las novedades.
+    </p>
+</div>
 
     </div>
 

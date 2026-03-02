@@ -98,15 +98,16 @@ footer {
         }
 
         img {
-            height: 65px;
+            height: 10rem;
             width: auto;
+            object-fit: contain;
 
             @include desde-tablet {
-                height: 55px;
+                height: 12rem;
             }
 
             @include desde-desktop {
-                height: 36px;
+                height: 10rem;
             }
         }
 

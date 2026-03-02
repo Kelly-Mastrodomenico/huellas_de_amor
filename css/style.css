@@ -476,17 +476,18 @@ footer {
   }
 }
 .bloque-footer .logo-footer img {
-  height: 65px;
+  height: 10rem;
   width: auto;
+  object-fit: contain;
 }
 @media (min-width: 768px) {
   .bloque-footer .logo-footer img {
-    height: 55px;
+    height: 12rem;
   }
 }
 @media (min-width: 1200px) {
   .bloque-footer .logo-footer img {
-    height: 36px;
+    height: 10rem;
   }
 }
 .bloque-footer .logo-footer span {

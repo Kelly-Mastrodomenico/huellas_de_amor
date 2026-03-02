@@ -229,4 +229,14 @@ $(document).ready(function () {
         });
     }
 
+    // Newsletter
+const formNewsletter = document.getElementById('formNewsletter');
+if (formNewsletter) {
+    formNewsletter.addEventListener('submit', function(e) {
+        e.preventDefault();
+        this.style.display = 'none';
+        document.getElementById('mensajeNewsletter').style.display = 'block';
+    });
+}
+
 });

@@ -210,26 +210,26 @@ if ($exportarPDF) {
     </div>
 
 <!-- ESTADÍSTICAS -->
-<div class="dashboard-stats">
+<div class="grid-stats">
     <div class="stat-card stat-coral">
         <i class="fa-solid fa-hand-holding-heart"></i>
-        <span class="stat-num"><?php echo $stats['total_donaciones']; ?></span>
-        <span class="stat-label">Total donaciones</span>
+        <span class="stat-numero"><?php echo $stats['total_donaciones']; ?></span>
+        <span>Total donaciones</span>
     </div>
     <div class="stat-card stat-turquesa">
         <i class="fa-solid fa-euro-sign"></i>
-        <span class="stat-num"><?php echo number_format($stats['total_monto'], 2, ',', '.'); ?>€</span>
-        <span class="stat-label">Total recaudado</span>
+        <span class="stat-numero"><?php echo number_format($stats['total_monto'], 2, ',', '.'); ?>€</span>
+        <span>Total recaudado</span>
     </div>
     <div class="stat-card stat-verde">
         <i class="fa-solid fa-chart-line"></i>
-        <span class="stat-num"><?php echo number_format($stats['media_monto'], 2, ',', '.'); ?>€</span>
-        <span class="stat-label">Donación media</span>
+        <span class="stat-numero"><?php echo number_format($stats['media_monto'], 2, ',', '.'); ?>€</span>
+        <span>Donación media</span>
     </div>
     <div class="stat-card stat-oscuro">
         <i class="fa-solid fa-users"></i>
-        <span class="stat-num"><?php echo $stats['total_donantes']; ?></span>
-        <span class="stat-label">Donantes únicos</span>
+        <span class="stat-numero"><?php echo $stats['total_donantes']; ?></span>
+        <span>Donantes únicos</span>
     </div>
 </div>
 

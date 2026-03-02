@@ -145,26 +145,26 @@ try {
     </div>
 
     <!-- ESTADISTICAS -->
-    <div class="dashboard-stats">
+    <div class="grid-stats">
         <div class="stat-card stat-coral">
             <i class="fa-solid fa-users"></i>
-            <span class="stat-num"><?php echo $stats['total']; ?></span>
-            <span class="stat-label">Total usuarios</span>
+            <span class="stat-numero"><?php echo $stats['total']; ?></span>
+            <span>Total usuarios</span>
         </div>
         <div class="stat-card stat-turquesa">
             <i class="fa-solid fa-user-check"></i>
-            <span class="stat-num"><?php echo $stats['registrados']; ?></span>
-            <span class="stat-label">Registrados</span>
+            <span class="stat-numero"><?php echo $stats['registrados']; ?></span>
+            <span>Registrados</span>
         </div>
         <div class="stat-card stat-verde">
             <i class="fa-solid fa-user-shield"></i>
-            <span class="stat-num"><?php echo $stats['admins']; ?></span>
-            <span class="stat-label">Administradores</span>
+            <span class="stat-numero"><?php echo $stats['admins']; ?></span>
+            <span>Administradores</span>
         </div>
         <div class="stat-card stat-oscuro">
             <i class="fa-solid fa-user-slash"></i>
-            <span class="stat-num"><?php echo $stats['inactivos']; ?></span>
-            <span class="stat-label">Inactivos</span>
+            <span class="stat-numero"><?php echo $stats['inactivos']; ?></span>
+            <span>Inactivos</span>
         </div>
     </div>
 
