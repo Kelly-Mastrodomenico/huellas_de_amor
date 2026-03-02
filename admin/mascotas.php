@@ -117,7 +117,7 @@ $queryFiltros = http_build_query([
         </form>
 
         <div class="botones-admin">
-            <a href="exportar_mascotas.php?<?php echo $queryFiltros; ?>" class="btn-oscuro">
+            <a href="exportar_mascotas.php?<?php echo $queryFiltros; ?>" class="btn-oscuro" target="_blank">
                 <i class="fa-solid fa-file-pdf"></i> Exportar PDF
             </a>
             <a href="mascota_nueva.php" class="btn-coral">
