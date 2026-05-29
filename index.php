@@ -6,7 +6,7 @@
 $tituloPagina = 'Huellas de Amor — Adopta, no compres';
 require_once 'templates/header.php';
 
-// Obtener mascotas destacadas (las 8 mas recientes disponibles)
+// Obtener mascotas destacadas (las 8 mas antiguas disponibles)
 $mascotasDestacadas = [];
 try {
     $sql = "SELECT m.*, 
@@ -15,7 +15,7 @@ try {
                     LIMIT 1) AS foto_principal
             FROM mascotas m
             WHERE m.activo = 1 AND m.estado = 'disponible'
-            ORDER BY m.fecha_ingreso DESC
+            ORDER BY m.fecha_ingreso ASC
             LIMIT 8";
     $stmt = $conexion->prepare($sql);
     $stmt->execute();
